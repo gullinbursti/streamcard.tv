@@ -35,13 +35,33 @@ $(function(){
   });
 
   // add event hndlers to IM buttons to animate chat messages on mouseover
-  $('.im-icons')
-    .on('mouseover', '.im-icon', function(){
-      $('.im-chat').removeClass('reveal-chat').addClass('reveal-chat');
+  var $imChat = $('.im-chat');
+  var $imIcons = $('.im-icon');
+  $imIcons
+    .on('mouseover', function(event){
+      // trigger the chat animation when mousing over an individual chat icon
+      $imChat.addClass('reveal-chat');
     })
-    .on('mouseout', '.im-icon', function(){
-      $('.im-chat').removeClass('reveal-chat');
+    .on('mouseout', function(event){
+      // reset for chat animation when mousing out of an individual chat icon
+      $imChat.removeClass('reveal-chat');
     });
+
+  // add events to the container of the im chat icons so the chat list animates when chat is visible when the mouse is totally
+  //  outside the chat icons container.
+  $('.im-icons')
+    .on('mouseout', function(event){
+      // in the final mouseout of the im icons container, put the reveal-chat class back after all 
+      //  threads exit so that the chat is still visible when the mouse is no longer in the im icons container.
+      setTimeout(function(){
+        $imChat.addClass('reveal-chat');
+      }, 0);
+    })
+    .get(0).addEventListener('mouseover', function(event){
+      // remove the reveal-chat class in the event capture phase, so that mousing over the im icons re-triggers the animation
+      $imChat.removeClass('reveal-chat');
+    }, true);
+
 
 
 

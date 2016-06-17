@@ -50,7 +50,7 @@ function populate() {
 		data: { channel: channel },
 		dataType: 'json',
 		success: function (response) {
-			console.log(response);
+			// console.log(response);
 		}
 	});
 
@@ -66,7 +66,7 @@ function populate() {
 }
 
 function statsUpdater(channelName) {
-	console.log("--statsUpdater-- "+channelName);
+	// console.log("--statsUpdater-- "+channelName);
 
 	$.ajax({
 		url: 'http://beta.modd.live/api/stream_card.php',
@@ -326,7 +326,7 @@ function statsUpdater(channelName) {
 		},
 		dataType: 'json',
 		success: function(response) {
-			if (response.cohort.length > 0) {
+			if (response && response.cohort && response.cohort.length > 0) {
 				var reten = response.cohort;
 				retention.init = reten.shift().percent;
 				retention.curr = reten.pop().percent;
@@ -387,7 +387,7 @@ function streamRank(channelName) {
 	var streamPosition = 1;
 	var rankLimit = 5000;
 	(function streamRank (name, offset) {
-		console.log("--streamRank-- "+streamPosition);
+		// console.log("--streamRank-- "+streamPosition);
 		$.ajax({
 			url: 'https://api.twitch.tv/kraken/streams?limit=100&offset='+offset,
 			beforeSend: function (request) {
@@ -438,7 +438,7 @@ function updateGraph() {
 	canvas.height = canvas.clientHeight;
 
 	var topVal = (viewers.max < 100) ? Math.floor(viewers.max * 2) : Math.floor(viewers.max * 1.5);
-	console.log("--updateGraph--\n("+viewers.max+","+topVal+")");
+	// console.log("--updateGraph--\n("+viewers.max+","+topVal+")");
 
 	var availHeight = canvas.height - 35;
 	var ratio = (availHeight / topVal);
