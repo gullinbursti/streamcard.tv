@@ -1,0 +1,7 @@
+
+RewriteEngine on
+RewriteRule ^channel/?([a-zA-Z0-9-_]+)$ /card.html?channel=$1 [QSA,L]
+#RewriteRule ^/?$ http://streamcard.tv/index.html [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ http://streamcard.tv/index.html [R=301,L]
