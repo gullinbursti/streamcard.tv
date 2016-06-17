@@ -8,15 +8,12 @@ function rowHit(channel) {
 		'eventValue'		: 1
 	});
 
-	window.open("player.html?channel="+encodeURIComponent(channel));
+	window.open("/channel/"+encodeURIComponent(channel));
 }
 
 function viewMore() {
 	$('#view-more').hide();
-	for (var i=25; i<channel_rows.length; i++) {
-		onlineChecker(channel_rows[i].item.channel);
-		$('.leaderboard-wrapper').append(channel_rows[i].html);
-	}
+
 }
 
 function populateRows() {
@@ -26,12 +23,28 @@ function populateRows() {
 		dataType: 'json',
 		success: function (response) {
 
-			var cnt = 0;
 			$.each(response, function(i, item) {
 				var price = Math.max(Math.ceil(item.views * 0.00001) - 0.01, 0.99);
 				//console.log(response.message+': ('+item.views+') '+price);
 
-				var html = '<div id="row_' + cnt + '" class="row2">';
+				var html = '<div id="row_' + i + '" class="" style="'+((i % 2 == 0) ? '' : 'background-color:#111216')+'">';
+				html += '  <div class="row center-xs" style="border-top: 0 solid #1a1a1a;border-bottom: 1px solid #1a1a1a; color:#ccc; font-weight:400;">';
+				html += '    <div class="col-xs-10">';
+				html += '      <div class="box">';
+				html += '        <div style="line-height:80px; width:80px; text-align:left; float:left;">#' + (i + 1) + '</div> <div style="line-height:80px; text-align:left; float:left;">'+item.channel+'</div>';
+				html += '        <div style="line-height:80px; text-align:right; padding-left:60px; float:right;" onclick="rowHit(\'' + item.channel + '\')">$' + price + '</div>';
+				html += '        <div style="line-height:80px; text-align:right; padding-left:60px; float:right;"><span class="hover-link">' + numberWithCommas(item.views) + '</span></div>';
+				html += '        <div style="line-height:80px; text-align:right; float:right;">100%</div>';
+				html += '      </div>';
+				html += '    </div>';
+				html += '  </div>';
+				html += '</div>';
+
+
+
+
+
+				/*var html = '<div id="row_' + i + '" class="row2">';
 				html += '<div class="row" style="' + ((i % 2 == 0) ? '' : 'background-color:#1c1c1c; ') + 'border:0 solid #8c8c8c; border-top-width:1px; font-weight:500;">';
 				html += '<div class="row-rank" style="float:left; line-height:100px; padding-left:10px; width:50px; padding-right:0; font-weight:700;">' + (i + 1) + '</div>';
 				html += '<div class="row-name" style="float:left; line-height:100px; font-weight:700;" ><span id="led-online_' + item.channel + '" style="padding-bottom:15px; padding-right:10px; font-size:16px; line-height:25px; font-weight:400; color:#666;"><i class="fa fa-circle-o" aria-hidden="true"></i></span></div>';
@@ -44,20 +57,18 @@ function populateRows() {
 				html += '<div class="row-value" style="line-height:100px; padding-left:80%; font-weight:700;"><span class="hover-link"><div onclick="rowHit(\'' + item.channel + '\')">VIEW CARD</div></span></div>';
 				html += '</div>';
 				html += '</div>';
+				*/
 
 				channel_rows.push({
 					html : html,
 					item : item
 				});
-				cnt++;
 
-				if (cnt <= 25) {
+				if (i < 25) {
 					onlineChecker(item.channel);
 					$('.leaderboard-wrapper').append(html);
 				}
 			});
-
-			$('.leaderboard-wrapper').append('<div id="view-more" class="row2"><div onclick="viewMore();">VIEW MORE</div></div>');
 		}
 	});
 }
@@ -128,9 +139,16 @@ function onlineChecker(channelName) {
 
 
 var channel_rows = [];
+var game_video = "Overwatch";
+
+var kik_info = "KIK - Get chat updates from your favorite game, team, and eSports players";
+var discord_info = "DISCORD - Get chat updates from your favorite game, team, and eSports players";
+var whisper_info = "WHISPER - Get chat updates from your favorite game, team, and eSports players";
+var facebook_info = "FACEBOOK - Get chat updates from your favorite game, team, and eSports players";
 
 
 $(document).ready(function() {
+	$('.game-name').text(game_video);
 
 	$.ajax({
 		url: 'http://beta.modd.live/api/card_total.php',
@@ -149,11 +167,40 @@ $(document).ready(function() {
 		beforeSend: function (request) {
 			request.setRequestHeader("Accept", "application/vnd.twitchtv.v3+json");
 		},
-		data : { q : 'overwatch' },
+		data : { q : game_video.toLowerCase() },
 		dataType: 'json',
 		success: function (response) {
 			$('.player-frame').attr('src', "http://player.twitch.tv/?channel=" + response.streams[0].channel.name);
 		}
+	});
+
+
+	$('#more-button').click(function () {
+		$('#more-button').hide();
+
+		for (var i=25; i<channel_rows.length; i++) {
+			onlineChecker(channel_rows[i].item.channel);
+			$('.leaderboard-wrapper').append(channel_rows[i].html);
+		}
+	});
+
+
+
+
+	$('.box-kik').mouseover(function() {
+		$('#messenger-info').text(kik_info);
+	});
+
+	$('.box-discord').mouseover(function() {
+		$('#messenger-info').text(discord_info);
+	});
+
+	$('.box-twitch').mouseover(function() {
+		$('#messenger-info').text(whisper_info);
+	});
+
+	$('.box-fb').mouseover(function() {
+		$('#messenger-info').text(facebook_info);
 	});
 
 
