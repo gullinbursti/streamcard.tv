@@ -49,7 +49,7 @@
     <div class="index-wrapper">
 			
       <!-- PLAYER TITLE -->
-      <div class="row center-xs" style="background-color:#0e1116; border-top: 1px solid #1a1a1a; border-bottom: 0px solid #1a1a1a; border-right: 1px solid #1a1a1a; border-left: 1px solid #1a1a1a;">
+      <div class="row center-xs" style="background-color:#0e1116; border: 1px solid #1a1a1a; border-bottom: 0;">
         <div class="col-xs-10">
           <div class="box" style="font-weight:700px;">
             <div class="info"><span class="channel-name" onclick="channel_name()" style="color:#ccc; text-decoration:;"></span> is ranked #<span class="card-rank-value" onclick="channel_name()" style="color:#ccc; text-decoration:;"></span> and is worth <span class="card-value" onclick="channel_name()" style="color:#ccc; text-decoration:;"></span> </div>
@@ -58,35 +58,14 @@
       </div>
 			
       <!-- PLAYER & CHAT -->
-      <div class="row start-xs" style="background-color:#000; border-top: 1px solid #1a1a1a; border-bottom: 0px solid #1a1a1a; border-right: 1px solid #1a1a1a; border-left: 1px solid #1a1a1a;">
-        <div class="">
-          <div class="box" style="width:100%; border-right:1px solid #1a1a1a; padding-right:0px">
-					<script src= "http://player.twitch.tv/js/embed/v1.js"></script>
-					<div id="{PLAYER_DIV_ID}"></div>
-					<script type="text/javascript">
-					    var options = {
-					        width: 854,
-					        height: 480,
-					        channel: "{twitch}", 
-					        //video: "{VIDEO_ID}"       
-					    };
-					    var player = new Twitch.Player("{PLAYER_DIV_ID}", options);
-					    player.setVolume(0.5);
-					</script>	
-					</div>
-        </div>
-        <div class="">
-          <div class="box"><iframe src="https://www.nightdev.com/hosted/obschat/?channel=cincinbear&fade=false&bot_activity=false&prevent_clipping=false" frameborder="0" scrolling="no" height="440" width="100%"></iframe></div>
-        </div>
+      <div id="video-and-chat" style="background-color:#000; border: 1px solid #1a1a1a; border-bottom: 0;">
+          <div id="twitch-video"></div>
+          <iframe id="chat-iframe" src="https://www.nightdev.com/hosted/obschat/?channel=cincinbear&fade=false&bot_activity=false&prevent_clipping=false" frameborder="0" scrolling="no"></iframe>
       </div>
 			
       <!-- PLAYER TITLE -->
-      <div class="row center-xs"  style="border: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; background-color:#000;">
-        <div class="col-xs-10">
-          <div class="box">
-            <div class="title"><span class="channel-name"></span> is playing <span class="game-name"></span></div>
-          </div>
-        </div>
+      <div style="border: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; background-color:#000;">
+          <div class="title"><span class="channel-name"></span> is playing <span class="game-name"></span></div>
       </div>
 			
       <!-- BUY NOW BUTTON -->
@@ -169,5 +148,15 @@
 			
 			
     </div>
+    <script type="text/javascript">
+        var options = {
+            width: 854,
+            height: 480,
+            channel: "{twitch}", 
+            //video: "{VIDEO_ID}"       
+        };
+        var player = new Twitch.Player('twitch-video', options);
+        player.setVolume(0.5);
+    </script> 
   </body>
 </html>

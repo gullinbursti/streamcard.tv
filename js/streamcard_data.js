@@ -536,23 +536,22 @@ function submitGiveaway() {
 }
 
 function resizer() {
-	var height = (window.innerWidth * 9) / 16;
+	var height = Math.floor((window.innerWidth * 9) / 16);
 
 	if ($(window).width() < 600) {
-		$('.index-background').css('top', Math.floor(height * 0) + 'px');
-		$('.preview-video').css('height', Math.floor(height) + 'px');
-		$('.player-frame').attr('height', Math.floor(height));
-		$('.giveaway-wrapper').css('top', Math.floor(height * 0.99) + Math.floor(height * -0.2) + 'px');
-		$('.video-clipper').css('top', Math.floor(height * 0.99) + Math.floor(height * -0.2) + 'px');
-		$('.app-wrapper').css('top', (400 + (Math.floor(height * 0.99) + Math.floor(height * -0.2) + 50)) + 'px');
-
+		$('.index-background').css('top', 0);
+		$('.preview-video').css('height', height + 'px');
+		$('.player-frame').attr('height', height);
+		$('.giveaway-wrapper').css('top', Math.floor(height * 0.79) + 'px');
+		$('.video-clipper').css('top', Math.floor(height * 0.79) + 'px');
+		$('.app-wrapper').css('top', (450 + Math.floor(height * 0.79)) + 'px');
 
 	} else {
-		$('.preview-video').css('height', Math.floor(height) + 'px');
-		$('.player-frame').attr('height', Math.floor(height));
-		$('.giveaway-wrapper').css('top', Math.floor(height * 0.99) + Math.floor(height * -0.33) + 'px');
-		$('.video-clipper').css('top', Math.floor(height * 0.99) + Math.floor(height * -0.33) + 'px');
-		$('.app-wrapper').css('top', (400 + (Math.floor(height * 0.99) + Math.floor(height * -0.33) + 50)) + 'px');
+		$('.preview-video').css('height', height + 'px');
+		$('.player-frame').attr('height', height);
+		$('.giveaway-wrapper').css('top', Math.floor(height * 0.66) + 'px');
+		$('.video-clipper').css('top', Math.floor(height * 0.66) + 'px');
+		$('.app-wrapper').css('top', (450 + Math.floor(height * 0.66)) + 'px');
 	}
 }
 

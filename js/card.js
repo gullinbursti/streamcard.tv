@@ -25,9 +25,25 @@ function topButton () {
 	alert ("top");
 }
 
-$(function(){
-  // on document ready
+function resizeCardPage() {
+  var $twitchVideo = $('#twitch-video');
 
+  // use the width of the video container to calculate the correct height of the video container
+  var height = Math.floor(($twitchVideo.innerWidth() * 9) / 16);
+
+  if (window.innerWidth > 600) {
+    // video and chat are side by side
+    $('#video-and-chat').css('height', height + 'px' );
+    $('#twitch-video').css('height', '100%');
+  } else {
+    // video and chat are stacked.  each has it's own line
+    $('#video-and-chat').css('height', 'auto');
+    $('#twitch-video').css('height', height + 'px');
+  }
+}
+
+function setupChatAnimationEvents() {
+  // show the chat animation when the chat area scrolls into view
   $('.im-chat').one('inview', function(event, isInView){
     if (isInView) {
       $(this).addClass('reveal-chat');
@@ -62,14 +78,14 @@ $(function(){
       $imChat.removeClass('reveal-chat');
     }, true);
 
+}
 
+$(function(){
+  // on document ready
 
+  resizeCardPage();
+  window.addEventListener('resize', resizeCardPage);
 
-
-
-
-
-
-
+  setupChatAnimationEvents();
 });
 
