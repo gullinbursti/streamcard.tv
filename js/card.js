@@ -25,19 +25,31 @@ function topButton () {
 	alert ("top");
 }
 
-function kik () {
-	//alert ("kik");
-}
+$(function(){
+  // on document ready
 
-function discord () {
-	//alert ("discord");
-}
+  $('.im-chat').one('inview', function(event, isInView){
+    if (isInView) {
+      $(this).addClass('reveal-chat');
+    }
+  });
 
-function twitch () {
-	//alert ("discord");
-}
+  // add event hndlers to IM buttons to animate chat messages on mouseover
+  $('.im-icons')
+    .on('mouseover', '.im-icon', function(){
+      $('.im-chat').removeClass('reveal-chat').addClass('reveal-chat');
+    })
+    .on('mouseout', '.im-icon', function(){
+      $('.im-chat').removeClass('reveal-chat');
+    });
 
-function fb () {
-	//alert ("discord");
-}
+
+
+
+
+
+
+
+
+});
 

@@ -81,7 +81,7 @@ body,html {padding:0px;margin:0px;width:100%; height:100%; font-family: "Lato", 
 		
 		.purchase-wrapper {position:absolute; left:-300px; top:68; z-index: 3000; width:285px; height: auto; padding:0px; border-top:.5px solid #242424;}
 			
-				.giveaway {background-color:#000;  border-bottom:.5px solid #242424; padding-top:20px; font-size:24px; font-weight:400; padding-bottom:20px; width: 100%; height:100%; display: inline-block; text-transform:uppercase;}
+				.giveaway {background-color:#000;  border-bottom:.5px solid #242424; padding-top:20px; font-size:24px; font-weight:400; padding-bottom:20px; width: 100%; height:100%; display: inline-block; text-trjksform:uppercase;}
 
 				.footer-legal {font-size:12px;line-height:60px; color:#333; font-weight:600; text-transform:uppercase; letter-spacing:.2px;}
 				
@@ -274,3 +274,5 @@ a :hover {color:#fff; text-decoration:underline;}
 
 }
 /* END: Accommodating for IE */
+
+

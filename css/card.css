@@ -17,37 +17,6 @@ html {
 		
 		
 }
-.box-kik {
-	
-}
-.box-kik :hover {
-	cursor: pointer;
-	opacity:.2;
-}
-
-.box-discord {
-	
-}
-.box-discord :hover {
-	cursor: pointer;
-	opacity:.2;
-}
-
-.box-twitch {
-	
-}
-.box-twitch :hover {
-	cursor: pointer;
-	opacity:.2;
-}
-
-.box-fb {
-	
-}
-.box-fb :hover {
-	cursor: pointer;
-	opacity:.2;
-}
 
 .player {
 	height:440px;
@@ -177,4 +146,57 @@ html {
 		font-size:14px;
 	}
 	
+}
+
+.im-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.im-chat.reveal-chat > .chat-row {
+  margin-top: 0;
+  opacity: 1;
+
+  transition: margin-top 500ms,
+              opacity 500ms;
+}
+
+.im-icon {
+  flex: 1 1 auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50px;
+  background-color:#050608;
+  border-right: 0px solid #1a1a1a; 
+  border-left: 1px solid #1a1a1a; 
+  border-bottom: 1px solid #1a1a1a;
+  cursor: pointer;
+}
+.im-icon:hover {
+  opacity: .2;
+}
+
+.im-icon.box-kik { background-image: url(/img/icon-kik.png); }
+.im-icon.box-discord { background-image: url(/img/icon-discord.png); }
+.im-icon.box-twitch { background-image: url(/img/icon-twitch.png); }
+.im-icon.box-fb { background-image: url(/img/icon-fb.png); }
+
+
+.im-chat {
+  width: 428px;
+  height: 590px;
+  overflow: hidden;
+
+  margin: 0 auto;
+  padding: 20px 0 0 0;
+  border-radius: 10px;
+}
+
+.chat-row {
+  display: block;
+  width: 90%;
+  margin-top: 100px;
+  opacity: 0;
 }
