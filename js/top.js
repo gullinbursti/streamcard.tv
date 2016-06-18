@@ -26,11 +26,11 @@ function topButton () {
 }
 
 function kik () {
-	//alert ("kik");
+	kik.openConversation('streamCard');
 }
 
 function discord () {
-	//alert ("discord");
+	location.href = "https://discord.gg/014do3goV6bJgwIf8";
 }
 
 function twitch () {
@@ -38,7 +38,7 @@ function twitch () {
 }
 
 function fb () {
-	//alert ("discord");
+	alert ("Coming soon");
 }
 
 function addCard() {

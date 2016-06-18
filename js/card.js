@@ -25,7 +25,7 @@ function shareButton () {
 		'eventLabel'		: channel,
 		'eventValue'		: 1
 	});
-	window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent("Check out "+channel+"'s Stream Card. p.00m.co/"+channel)+"&via=TeamMODD");
+	window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent("Check out "+channel+"'s Stream Card. scard.tv/channel/"+channel)+"&via=TeamMODD");
 }
 
 function topButton () {
@@ -38,6 +38,52 @@ function addCard() {
 
 function legal() {
 	location.href = "/legal.html";
+}
+
+function openKik () {
+	console.log("KIK");
+	if (kik.enabled) {
+		//kik.openConversation("streamcard");
+		window.open("https://kik.me/streamcard", '_blank');
+
+		//kik.send('streamcard', {
+		//	title     : 'Streamcard Notifications',
+		//	text      : channel,
+		//	data      : {
+		//		channel : channel
+		//	}
+		//});
+
+	} else {
+		alert("Open on Kik to signup");
+	}
+}
+
+function openDiscord () {
+	console.log("DISCORD");
+	//location.href = "https://discord.gg/014do3goV6bJgwIf8";
+	window.open("https://discord.gg/014do3goV6bJgwIf8", '_blank');
+}
+
+function openTwitch () {
+	console.log("TWITCH");
+	$.ajax({
+		url: 'http://beta.modd.live/api/streamer_subscribe.php',
+		type: 'GET',
+		data: {
+			type : 'whisper',
+			channel : channel,
+			username : authed_username
+		},
+		dataType: 'json',
+		success: function(response) {
+		}
+	});
+}
+
+function openFacebook () {
+	console.log("FACEBOOK");
+	window.alert ("Coming soon");
 }
 
 function support () {
@@ -120,6 +166,9 @@ function setupChatAnimationEvents() {
     }, true);
 
 }
+
+
+var authed_username = "matty_devdev";
 
 $(function(){
   // on document ready
