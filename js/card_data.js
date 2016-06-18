@@ -258,28 +258,29 @@ function statsUpdater(channelName) {
 		}
 	});
 
-	$.ajax({
-		url: 'http://159.203.220.30:8888/cohort',//'http://159.203.220.30:8888/retention',
-		type: 'GET',
-		data: {
-			date : "2016-04-01",
-			streamer : channelName
-		},
-		dataType: 'json',
-		success: function(response) {
-			if (response && response.cohort && response.cohort.length > 0) {
-				var reten = response.cohort;
-				retention.init = reten.shift().percent;
-				retention.curr = reten.pop().percent;
-				retention.last = reten.pop().percent;
-				retention.perc = (retention.curr - retention.last) / retention.last;
+  // @NOTE: (aplatti) commenting out this because it isnt used, and it sometimes throws an error when response.cohort is an empty array
+	// $.ajax({
+	// 	url: 'http://159.203.220.30:8888/cohort',//'http://159.203.220.30:8888/retention',
+	// 	type: 'GET',
+	// 	data: {
+	// 		date : "2016-04-01",
+	// 		streamer : channelName
+	// 	},
+	// 	dataType: 'json',
+	// 	success: function(response) {
+	// 		if (response && response.cohort && response.cohort.length > 0) {
+	// 			var reten = response.cohort;
+	// 			retention.init = reten.shift().percent;
+	// 			retention.curr = reten.pop().percent;
+	// 			retention.last = reten.pop().percent;
+	// 			retention.perc = (retention.curr - retention.last) / retention.last;
 
-				$('.retention-value').text((retention.curr * 100).toFixed(2)+'%');
-				$('.retention-percent').text(Math.round(Math.abs(retention.perc) * 100)+'%');
-				$('.retention-arrow').html((retention.curr > retention.last) ? '<i class="fa fa-arrow-up" aria-hidden="true"></i>' : (retention.curr < retention.last) ? '<i class="fa fa-arrow-down" aria-hidden="true"></i>' : '');
-			}
-		}
-	});
+	// 			$('.retention-value').text((retention.curr * 100).toFixed(2)+'%');
+	// 			$('.retention-percent').text(Math.round(Math.abs(retention.perc) * 100)+'%');
+	// 			$('.retention-arrow').html((retention.curr > retention.last) ? '<i class="fa fa-arrow-up" aria-hidden="true"></i>' : (retention.curr < retention.last) ? '<i class="fa fa-arrow-down" aria-hidden="true"></i>' : '');
+	// 		}
+	// 	}
+	// });
 
 	$.ajax({
 		url: 'https://api.twitch.tv/kraken/channels/'+channelName+'/teams',

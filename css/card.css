@@ -222,10 +222,44 @@ html {
 
 .chat-row {
 	display: block;
-	width: 90%;
 	margin-top: 100px;
 	opacity: 0;
+  color: #666;
+  width: 100%;
 }
+.chat-row > .chat-inner {
+  position: relative;
+  border: 2px solid #181818;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 20px;
+}
+.chat-inner p {
+  width: 235px;
+  padding: 10px 15px 15px 15px;
+  margin: 0;
+}
+.chat-inner img {
+  border-radius: 7px;
+  height: 100%;
+}
+.chat-inner:before {
+  position: absolute;
+  width: 14px;
+  height: 12px;
+  top: 15px;
+}
+.chat-left .chat-inner:before {
+  content: url('/img/chat-left-caret.png');
+  left: -12px;
+}
+.chat-right .chat-inner:before {
+  content: url('/img/chat-right-caret.png');
+  right: -12px;
+}
+
+.chat-row.chat-left {text-align: left;}
+.chat-row.chat-right {text-align: right;}
 
 .hover-link:hover {
 	opacity: .5;
