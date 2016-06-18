@@ -204,7 +204,7 @@ html {
   margin: 20px;
 }
 .chat-inner p {
-  width: 235px;
+  max-width: 235px;
   padding: 10px 15px 15px 15px;
   margin: 0;
 }
