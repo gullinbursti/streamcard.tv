@@ -166,9 +166,13 @@ body {
   border-left: 1px solid #1a1a1a;
   border-bottom: 1px solid #1a1a1a;
   cursor: pointer;
+  opacity: .6;
+}
+.im-icon.is-selected{
+  opacity: 1;
 }
 .im-icon:hover {
-  opacity: .2;
+  opacity: 1;
 }
 
 .im-icon.box-kik { background-image: url(/img/icon-kik.png); }
@@ -189,7 +193,7 @@ body {
 
 .chat-row {
   display: block;
-  margin-top: 100px;
+  margin-top: 50px;
   opacity: 0;
   color: #666;
   width: 100%;
@@ -206,6 +210,13 @@ body {
   padding: 10px 15px 15px 15px;
   margin: 0;
 }
+.chat-inner p a {
+  display: block;
+}
+.chat-inner img {
+  margin: 5px 5px 2px 5px;
+}
+
 .chat-inner img {
   border-radius: 7px;
   height: 100%;
@@ -231,6 +242,10 @@ body {
 .hover-link:hover {
   opacity: .5;
   cursor: pointer;
+}
+
+.channel-link {
+  text-transform: lowercase;
 }
 
 a, a:link, a:active, a:visited {

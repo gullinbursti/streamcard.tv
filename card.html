@@ -86,10 +86,10 @@
       <!-- MESSENGER ICONS -->
       <div class="animation-desktop">
         <div class="im-icons">
-          <div class="im-icon box-kik" onclick="openKik();"></div>
-          <div class="im-icon box-discord" onclick="openDiscord();"></div>
-          <div class="im-icon box-twitch" onclick="openTwitch();"></div>
-          <div class="im-icon box-fb" onclick="openFacebook();"></div>
+          <div class="im-icon box-kik" data-im="kik"></div>
+          <div class="im-icon box-discord" data-im="discord"></div>
+          <div class="im-icon box-twitch" data-im="twitch"></div>
+          <div class="im-icon box-fb" data-im="fb"></div>
         </div>
 				
         <!-- MARKETING ANIMATIONS -->
@@ -99,17 +99,17 @@
 	        </div>
           <div class="chat-row chat-left">
             <div class="chat-inner">
-              <p>TeamAchron just went live with 42,069 viewers. <a href="#">scart.tv/teamachron</a></p>
+              <p><span class="channel-name"></span> just went live with <span class="viewers-value"></span> viewers. <a class="channel-link" href="#">scart.tv/<span class="channel-name"></a></p>
             </div>
           </div>
           <div class="chat-row chat-right">
             <div class="chat-inner">
-              <img src="img/chat-kik-b-no-caret.jpg">
+              <img class="preview-image" src="">
             </div>
           </div>
           <div class="chat-row chat-left">
             <div class="chat-inner">
-              <p>50% of the current stream are returning. <a href="#">scart.tv/teamachron</a></p>
+              <p><span class="retention-value"></span> of the current stream are returning. <a class="channel-link" href="#">scart.tv/<span class="channel-name"></span></a></p>
             </div>
           </div>
         </div>
