@@ -11,11 +11,6 @@ function rowHit(channel) {
 	window.open("/channel/"+encodeURIComponent(channel));
 }
 
-function viewMore() {
-	$('#view-more').hide();
-
-}
-
 function populateRows() {
 	$.ajax({
 		url: 'http://beta.modd.live/api/top_cards.php',
@@ -27,20 +22,30 @@ function populateRows() {
 				var price = Math.max(Math.ceil(item.views * 0.00001) - 0.01, 0.99);
 				//console.log(response.message+': ('+item.views+') '+price);
 
-				var html = '<div id="row_' + i + '" class="" style="'+((i % 2 == 0) ? '' : 'background-color:#111216')+'">';
-				html += '  <div class="row center-xs" style="border-top: 0 solid #1a1a1a;border-bottom: 1px solid #1a1a1a; color:#ccc; font-weight:400;">';
-				html += '    <div class="col-xs-10">';
-				html += '      <div class="box">';
-				html += '        <div style="line-height:80px; width:80px; text-align:left; float:left;">#' + (i + 1) + '</div> <div style="line-height:80px; text-align:left; float:left;">'+item.channel+'</div>';
-				html += '        <div style="line-height:80px; text-align:right; padding-left:60px; float:right;" onclick="rowHit(\'' + item.channel + '\')">$' + price + '</div>';
-				html += '        <div style="line-height:80px; text-align:right; padding-left:60px; float:right;"><span class="hover-link">' + numberWithCommas(item.views) + '</span></div>';
-				html += '        <div style="line-height:80px; text-align:right; float:right;">100%</div>';
-				html += '      </div>';
-				html += '    </div>';
-				html += '  </div>';
+
+				//var html = '<div id="row_' + i + '" class="" style="'+((i % 2 == 0) ? '' : 'background-color:#111216')+'">';
+				//html += '  <div class="row center-xs" style="border-top: 0 solid #1a1a1a;border-bottom: 1px solid #1a1a1a; color:#ccc; font-weight:400;">';
+				//html += '    <div class="col-xs-10">';
+				//html += '      <div class="box">';
+				//html += '        <div style="line-height:80px; width:80px; text-align:left;">#' + (i + 1) + '</div> <div style="line-height:80px; text-align:left; float:left;">'+item.channel+'</div>';
+				//html += '        <div style="line-height:80px; text-align:right; padding-left:60px;"><span class="hover-link">' + numberWithCommas(item.views) + '</span></div>';
+				//html += '        <div style="line-height:80px; text-align:right;">100%</div>';
+				//html += '        <div style="line-height:80px; text-align:right; padding-left:60px;" onclick="rowHit(\'' + item.channel + '\')">$' + price + '</div>';
+				//html += '      </div>';
+				//html += '    </div>';
+				//html += '  </div>';
+				//html += '</div>';
+
+
+				var html = '<div class="flex-container" style="border-top: 0 solid #1a1a1a;border-bottom: 1px solid #1a1a1a; color:#ccc; font-weight:400; '+((i % 2 == 0) ? '' : 'background-color:#111216')+'">';
+				html += '<div class="rank-flex">#' + (i + 1) + '</div>';
+				html += '<div class="channel-avatar-flex"><img id="img_' + item.channel + '" src="' + ((item.img_url == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.img_url) + '" width="40" height="40" style="border-radius:20px;"></div>';
+				html += '<div class="channel-name-flex">'+item.channel+'</div>';
+				html += '<div class="retention-flex">100%</div>';
+				html += '<div class="viewers-flex">' + numberWithCommas(item.views) + '</div>';
+				html += '<div class="card-value-flex">$' + price + '</div>';
+				html += '<div class="card-button-flex" onclick="rowHit(\'' + item.channel + '\')">VIEW</div>';
 				html += '</div>';
-
-
 
 
 
@@ -184,23 +189,48 @@ $(document).ready(function() {
 		}
 	});
 
-
-
-
-	$('.box-kik').mouseover(function() {
+	$('#kik-button').mouseover(function() {
 		$('#messenger-info').text(kik_info);
+		$('#kik-ico').css('opacity', '0.2');
+		$('#kik-button').css('cursor', 'pointer');
 	});
 
-	$('.box-discord').mouseover(function() {
+	$('#discord-button').mouseover(function() {
 		$('#messenger-info').text(discord_info);
+		$('#discord-ico').css('opacity', '0.2');
+		$('#discord-button').css('cursor', 'pointer');
 	});
 
-	$('.box-twitch').mouseover(function() {
+	$('#whisper-button').mouseover(function() {
 		$('#messenger-info').text(whisper_info);
+		$('#whisper-ico').css('opacity', '0.2');
+		$('#whisper-button').css('cursor', 'pointer');
 	});
 
-	$('.box-fb').mouseover(function() {
+	$('#facebook-button').mouseover(function() {
 		$('#messenger-info').text(facebook_info);
+		$('#facebook-ico').css('opacity', '0.2');
+		$('#facebook-button').css('cursor', 'pointer');
+	});
+
+	$('#kik-button').mouseleave(function() {
+		$('#kik-ico').css('opacity', '1');
+		$('#kik-button').css('cursor', 'default');
+	});
+
+	$('#discord-button').mouseleave(function() {
+		$('#discord-ico').css('opacity', '1');
+		$('#discord-button').css('cursor', 'default');
+	});
+
+	$('#whisper-button').mouseleave(function() {
+		$('#whisper-ico').css('opacity', '1');
+		$('#kik-button').css('cursor', 'default');
+	});
+
+	$('#facebook-button').mouseleave(function() {
+		$('#facebook-ico').css('opacity', '1');
+		$('#facebook-button').css('cursor', 'default');
 	});
 
 
