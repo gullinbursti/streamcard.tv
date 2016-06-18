@@ -39,7 +39,7 @@ function populateRows() {
 
 				var html = '<div class="flex-container hover-link" onclick="rowHit(\'' + item.channel + '\')" style="border-top: 0 solid #1a1a1a;border-bottom: 1px solid #1a1a1a; color:#ccc; font-weight:400; '+((i % 2 == 0) ? '' : 'background-color:#0d0e11')+'">';
 				html += '<div class="rank-flex">#' + (i + 1) + '</div>';
-				html += '<div class="channel-avatar-flex" style="padding-top:8px"><img id="img_' + item.channel + '" src="' + ((item.img_url == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.img_url) + '" width="30" height="30" style="border-radius:15px;"><span id="led-online_' + item.channel + '" style="padding-left:10px; line-height:40px; font-size:12px; color:#666;"><i class="fa fa-circle-o" aria-hidden="true"></i></span></div>';
+				html += '<div class="channel-avatar-flex" style="padding-top:8px"><img id="img_' + item.channel + '" src="' + ((item.img_url == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.img_url) + '" width="30" height="30" style="border-radius:15px;"><span id="led-online_' + item.channel + '" style="padding-left:2px; line-height:40px; font-size:12px; color:#666;"><i class="fa fa-circle-o" aria-hidden="true"></i></span></div>';
 				html += '<div class="channel-name-flex">'+item.channel+'</div>';
 				html += '<div class="retention-flex">100%</div>';
 				html += '<div class="viewers-flex">' + numberWithCommas(item.views) + '</div>';
