@@ -160,6 +160,18 @@ html {
 		font-size:14px;
 	}
 
+	.retention-flex {
+		display: none;
+	}
+
+	.viewers-flex {
+		display: none;
+	}
+
+	.card-value-flex {
+		display: none;
+	}
+
 }
 
 .im-icons {
@@ -215,7 +227,7 @@ html {
 	opacity: 0;
 }
 
-.hover-link :hover {
+.hover-link:hover {
 	opacity: .5;
 	cursor: pointer;
 }
