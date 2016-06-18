@@ -247,6 +247,9 @@ body {
 .channel-link {
   text-transform: lowercase;
 }
+.im-service-name {
+  text-transform: capitalize;
+}
 
 a, a:link, a:active, a:visited {
   text-decoration: underline;

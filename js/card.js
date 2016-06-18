@@ -142,15 +142,17 @@ function setupChatAnimationEvents() {
   var $imIcons = $('.im-icon');
   $imIcons
     .on('click', function(event){
-      var $this = $(this);
-      var service = $this.attr('data-im');
+      var $icon = $(event.target);
+      var service = $icon.attr('data-im');
 
-      console.log(service);
+      $('.im-service-name').text(service);
+      $('#im-info').text(capitalize(service) + ' - Get real-time chat updates from your favorite game, team, and eSports players' );
+
       // remove highlight from the previously selected tab
       $imIcons.filter('.is-selected').removeClass('is-selected');
 
       // highlight the new clicked tab
-      $this.addClass('is-selected');
+      $icon.addClass('is-selected');
 
       // trigger the chat animation when mousing over an individual chat icon
       $imChat.removeClass('reveal-chat');
@@ -160,6 +162,9 @@ function setupChatAnimationEvents() {
     });
 }
 
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 var authed_username = "matty_devdev";
 
