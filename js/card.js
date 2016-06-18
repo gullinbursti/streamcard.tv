@@ -25,19 +25,67 @@ function topButton () {
 	alert ("top");
 }
 
-function kik () {
-	//alert ("kik");
+function resizeCardPage() {
+  var $twitchVideo = $('#twitch-video');
+
+  // use the width of the video container to calculate the correct height of the video container
+  var height = Math.floor(($twitchVideo.innerWidth() * 9) / 16);
+
+  if (window.innerWidth > 600) {
+    // video and chat are side by side
+    $('#video-and-chat').css('height', height + 'px' );
+    $('#twitch-video').css('height', '100%');
+  } else {
+    // video and chat are stacked.  each has it's own line
+    $('#video-and-chat').css('height', 'auto');
+    $('#twitch-video').css('height', height + 'px');
+  }
 }
 
-function discord () {
-	//alert ("discord");
+function setupChatAnimationEvents() {
+  // show the chat animation when the chat area scrolls into view
+  $('.im-chat').one('inview', function(event, isInView){
+    if (isInView) {
+      $(this).addClass('reveal-chat');
+    }
+  });
+
+  // add event hndlers to IM buttons to animate chat messages on mouseover
+  var $imChat = $('.im-chat');
+  var $imIcons = $('.im-icon');
+  $imIcons
+    .on('mouseover', function(event){
+      // trigger the chat animation when mousing over an individual chat icon
+      $imChat.addClass('reveal-chat');
+    })
+    .on('mouseout', function(event){
+      // reset for chat animation when mousing out of an individual chat icon
+      $imChat.removeClass('reveal-chat');
+    });
+
+  // add events to the container of the im chat icons so the chat list animates when chat is visible when the mouse is totally
+  //  outside the chat icons container.
+  $('.im-icons')
+    .on('mouseout', function(event){
+      // in the final mouseout of the im icons container, put the reveal-chat class back after all 
+      //  threads exit so that the chat is still visible when the mouse is no longer in the im icons container.
+      setTimeout(function(){
+        $imChat.addClass('reveal-chat');
+      }, 0);
+    })
+    .get(0).addEventListener('mouseover', function(event){
+      // remove the reveal-chat class in the event capture phase, so that mousing over the im icons re-triggers the animation
+      $imChat.removeClass('reveal-chat');
+    }, true);
+
 }
 
-function twitch () {
-	//alert ("discord");
-}
+$(function(){
+  // on document ready
 
-function fb () {
-	//alert ("discord");
-}
+  resizeCardPage();
+  window.addEventListener('resize', resizeCardPage);
+
+  setupChatAnimationEvents();
+});
 

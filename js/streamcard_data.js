@@ -50,7 +50,7 @@ function populate() {
 		data: { channel: channel },
 		dataType: 'json',
 		success: function (response) {
-			console.log(response);
+			// console.log(response);
 		}
 	});
 
@@ -66,7 +66,7 @@ function populate() {
 }
 
 function statsUpdater(channelName) {
-	console.log("--statsUpdater-- "+channelName);
+	// console.log("--statsUpdater-- "+channelName);
 
 	$.ajax({
 		url: 'http://beta.modd.live/api/stream_card.php',
@@ -326,7 +326,7 @@ function statsUpdater(channelName) {
 		},
 		dataType: 'json',
 		success: function(response) {
-			if (response.cohort.length > 0) {
+			if (response && response.cohort && response.cohort.length > 0) {
 				var reten = response.cohort;
 				retention.init = reten.shift().percent;
 				retention.curr = reten.pop().percent;
@@ -387,7 +387,7 @@ function streamRank(channelName) {
 	var streamPosition = 1;
 	var rankLimit = 5000;
 	(function streamRank (name, offset) {
-		console.log("--streamRank-- "+streamPosition);
+		// console.log("--streamRank-- "+streamPosition);
 		$.ajax({
 			url: 'https://api.twitch.tv/kraken/streams?limit=100&offset='+offset,
 			beforeSend: function (request) {
@@ -438,7 +438,7 @@ function updateGraph() {
 	canvas.height = canvas.clientHeight;
 
 	var topVal = (viewers.max < 100) ? Math.floor(viewers.max * 2) : Math.floor(viewers.max * 1.5);
-	console.log("--updateGraph--\n("+viewers.max+","+topVal+")");
+	// console.log("--updateGraph--\n("+viewers.max+","+topVal+")");
 
 	var availHeight = canvas.height - 35;
 	var ratio = (availHeight / topVal);
@@ -536,23 +536,22 @@ function submitGiveaway() {
 }
 
 function resizer() {
-	var height = (window.innerWidth * 9) / 16;
+	var height = Math.floor((window.innerWidth * 9) / 16);
 
 	if ($(window).width() < 600) {
-		$('.index-background').css('top', Math.floor(height * 0) + 'px');
-		$('.preview-video').css('height', Math.floor(height) + 'px');
-		$('.player-frame').attr('height', Math.floor(height));
-		$('.giveaway-wrapper').css('top', Math.floor(height * 0.99) + Math.floor(height * -0.2) + 'px');
-		$('.video-clipper').css('top', Math.floor(height * 0.99) + Math.floor(height * -0.2) + 'px');
-		$('.app-wrapper').css('top', (400 + (Math.floor(height * 0.99) + Math.floor(height * -0.2) + 50)) + 'px');
-
+		$('.index-background').css('top', 0);
+		$('.preview-video').css('height', height + 'px');
+		$('.player-frame').attr('height', height);
+		$('.giveaway-wrapper').css('top', Math.floor(height * 0.79) + 'px');
+		$('.video-clipper').css('top', Math.floor(height * 0.79) + 'px');
+		$('.app-wrapper').css('top', (450 + Math.floor(height * 0.79)) + 'px');
 
 	} else {
-		$('.preview-video').css('height', Math.floor(height) + 'px');
-		$('.player-frame').attr('height', Math.floor(height));
-		$('.giveaway-wrapper').css('top', Math.floor(height * 0.99) + Math.floor(height * -0.33) + 'px');
-		$('.video-clipper').css('top', Math.floor(height * 0.99) + Math.floor(height * -0.33) + 'px');
-		$('.app-wrapper').css('top', (400 + (Math.floor(height * 0.99) + Math.floor(height * -0.33) + 50)) + 'px');
+		$('.preview-video').css('height', height + 'px');
+		$('.player-frame').attr('height', height);
+		$('.giveaway-wrapper').css('top', Math.floor(height * 0.66) + 'px');
+		$('.video-clipper').css('top', Math.floor(height * 0.66) + 'px');
+		$('.app-wrapper').css('top', (450 + Math.floor(height * 0.66)) + 'px');
 	}
 }
 
