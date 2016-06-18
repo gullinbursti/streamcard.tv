@@ -1,176 +1,174 @@
-/**div {
-    -webkit-box-shadow: inset 0 0 0 1px #585858;
-    -moz-box-shadow: inset 0 0 0 1px #585858;
-    box-shadow: inset 0 0 0 1px #585858;
-}**/
-body,
-html {
-	padding: 0;
-	background-color: #090a0c;
-	font-family: "Lato", Helvetica, Arial, "Lucida Grande", sans-serif;
-	letter-spacing: .8px;
-	color: #fff;
-	margin: 0 auto;
-	max-width: 100%;
-	width:90%;
-	padding-top:25px;
+body {
+  padding: 0;
+  background-color: #090a0c;
+  font-family: "Lato", Helvetica, Arial, "Lucida Grande", sans-serif;
+  letter-spacing: .8px;
+  color: #fff;
+  margin: 0 auto;
+  max-width: 100%;
+  width:90%;
+  padding-top:25px;
 }
 
 
 #video-and-chat {
-	display: flex;
-	flex-direction: row;
-	height: 440px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 440px;
+  background-color:#000;
+  border: 1px solid #1a1a1a;
+  border-bottom: 0;
 }
 #video-and-chat > * {
-	flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 #chat-iframe {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 #twitch-video,
 #twitch-video iframe {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .info {
-	padding-top:10px;
-	padding-bottom:10px;
-	color:#666;
-	font-weight:400;
+  padding-top:10px;
+  padding-bottom:10px;
+  color:#666;
+  font-weight:400;
 }
 .app-header {
-	position:absolute;
-	z-index:10;
-	left:0;
-	top:0;
-	width:100%;
+  position:absolute;
+  z-index:10;
+  left:0;
+  top:0;
+  width:100%;
 }
 .app-rank {
-	background-color:#000;
-	border:1px solid #242424;
-	position:fixed;
-	top:0px;
-	left:0px;
-	line-height:48px;
-	text-transform:uppercase;
+  background-color:#000;
+  border:1px solid #242424;
+  position:fixed;
+  top:0px;
+  left:0px;
+  line-height:48px;
+  text-transform:uppercase;
 
 }
 
 .app-title {
-	position: fixed;
-	top: 0;
-	left: 0px;
-	padding: 0px;
-	z-index: 12;
-	text-transform:uppercase;
-	font-weight:550;
-	line-height:48px;
-	background-color:#000;
-	border:1px solid #242424;
+  position: fixed;
+  top: 0;
+  left: 0px;
+  padding: 0px;
+  z-index: 12;
+  text-transform:uppercase;
+  font-weight:550;
+  line-height:48px;
+  background-color:#000;
+  border:1px solid #242424;
 }
 .chat-message {
 
-	-webkit-transition:all 1.0s ease-in-out;
-	-moz-transition:all 1.0s ease-in-out;
-	-o-transition:all 1.0s ease-in-out;
-	transition:all 1.0s ease-in-out;
+  -webkit-transition:all 1.0s ease-in-out;
+  -moz-transition:all 1.0s ease-in-out;
+  -o-transition:all 1.0s ease-in-out;
+  transition:all 1.0s ease-in-out;
 }
 .app-value {
-	background-color:#000;
-	border:1px solid #242424;
-	position:fixed;
-	top:0px;
-	right:0px;
-	line-height:48px;
-	text-transform:uppercase;
+  background-color:#000;
+  border:1px solid #242424;
+  position:fixed;
+  top:0px;
+  right:0px;
+  line-height:48px;
+  text-transform:uppercase;
 }
 .nav {
-	position: fixed;
-	top: 0;
-	right: 0px;
-	padding: 0px;
-	z-index: 12;
-	text-transform:uppercase;
-	font-weight:550;
-	width:;
-	line-height:48px;
-	background-color:#000;
-	border:1px solid #242424;
+  position: fixed;
+  top: 0;
+  right: 0px;
+  padding: 0px;
+  z-index: 12;
+  text-transform:uppercase;
+  font-weight:550;
+  width:;
+  line-height:48px;
+  background-color:#000;
+  border:1px solid #242424;
 }
 .nav :hover {
-	opacity:.2;
-	cursor:pointer;;
+  opacity:.2;
+  cursor:pointer;;
 }
 .left-nav {
-	position: fixed;
-	top: 0;
-	left: 0px;
-	padding: 0px;
-	z-index: 12;
-	text-transform:uppercase;
-	font-weight:550;
-	line-height:48px;
-	background-color:#000;
-	border:1px solid #242424;
+  position: fixed;
+  top: 0;
+  left: 0px;
+  padding: 0px;
+  z-index: 12;
+  text-transform:uppercase;
+  font-weight:550;
+  line-height:48px;
+  background-color:#000;
+  border:1px solid #242424;
 }
 .title {
-	font-size:20px;
-	padding-top:20px;
-	padding-bottom:20px;
-	font-weight:400;
-	color:#ccc;
+  font-size:20px;
+  padding-top:20px;
+  padding-bottom:20px;
+  font-weight:400;
+  color:#ccc;
 }
 .buy-buton {
-	line-height:120px;
-	background-color:#40476e;
-	border:1px solid #40476e;
-	padding:22px;
-	color:#FFF;
-	border-radius:5px;
-	padding-left:40px;
-	padding-right:40px;
-	font-size:22px;
+  line-height:120px;
+  background-color:#40476e;
+  border:1px solid #40476e;
+  padding:22px;
+  color:#FFF;
+  border-radius:5px;
+  padding-left:40px;
+  padding-right:40px;
+  font-size:22px;
 }
 
 .index-wrapper {
-	width: 100%;
-	position: relative;
-	text-align: center;
+  width: 100%;
+  position: relative;
+  text-align: center;
 }
 
 
 .im-icons {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 70px;
 }
 
 .im-chat.reveal-chat > .chat-row {
-	margin-top: 0;
-	opacity: 1;
+  margin-top: 0;
+  opacity: 1;
 
-	transition: margin-top 500ms,
-	opacity 500ms;
+  transition: margin-top 500ms,
+  opacity 500ms;
 }
 
 .im-icon {
-	flex: 1 1 auto;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 50px;
-	background-color:#050608;
-	border-right: 0px solid #1a1a1a;
-	border-left: 1px solid #1a1a1a;
-	border-bottom: 1px solid #1a1a1a;
-	cursor: pointer;
+  flex: 1 1 auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50px;
+  background-color:#050608;
+  border-right: 0px solid #1a1a1a;
+  border-left: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+  cursor: pointer;
 }
 .im-icon:hover {
-	opacity: .2;
+  opacity: .2;
 }
 
 .im-icon.box-kik { background-image: url(/img/icon-kik.png); }
@@ -180,19 +178,19 @@ html {
 
 
 .im-chat {
-	width: 428px;
-	height: 590px;
-	overflow: hidden;
+  width: 428px;
+  height: 590px;
+  overflow: hidden;
 
-	margin: 0 auto;
-	padding: 20px 0 0 0;
-	border-radius: 10px;
+  margin: 0 auto;
+  padding: 20px 0 0 0;
+  border-radius: 10px;
 }
 
 .chat-row {
-	display: block;
-	margin-top: 100px;
-	opacity: 0;
+  display: block;
+  margin-top: 100px;
+  opacity: 0;
   color: #666;
   width: 100%;
 }
@@ -231,20 +229,20 @@ html {
 .chat-row.chat-right {text-align: right;}
 
 .hover-link:hover {
-	opacity: .5;
-	cursor: pointer;
+  opacity: .5;
+  cursor: pointer;
 }
 
 a, a:link, a:active, a:visited {
-	text-decoration: underline;
-	font-size: 16px;
-	color: #666;
-	font-weight: 400;
+  text-decoration: underline;
+  font-size: 16px;
+  color: #666;
+  font-weight: 400;
 }
 
 a:hover {
-	text-decoration: none;
-	opacity: .5;
+  text-decoration: none;
+  opacity: .5;
 }
 
 @media (max-width: 600px) {
