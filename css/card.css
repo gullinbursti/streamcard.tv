@@ -142,37 +142,6 @@ html {
 	text-align: center;
 }
 
-@media (max-width: 600px) {
-	#video-and-chat {
-		flex-direction: column;
-		height: auto;
-	}
-
-	.buy-buton {
-		line-height:120px;
-		background-color:#3f3960;
-		border:1px solid #3f3960;
-		padding:16px;
-		color:#FFF;
-		border-radius:0px;
-		padding-left:18px;
-		padding-right:18px;
-		font-size:14px;
-	}
-
-	.retention-flex {
-		display: none;
-	}
-
-	.viewers-flex {
-		display: none;
-	}
-
-	.card-value-flex {
-		display: none;
-	}
-
-}
 
 .im-icons {
 	display: flex;
@@ -276,4 +245,40 @@ a, a:link, a:active, a:visited {
 a:hover {
 	text-decoration: none;
 	opacity: .5;
+}
+
+@media (max-width: 600px) {
+  #video-and-chat {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .buy-buton {
+    line-height:120px;
+    background-color:#3f3960;
+    border:1px solid #3f3960;
+    padding:16px;
+    color:#FFF;
+    border-radius:0px;
+    padding-left:18px;
+    padding-right:18px;
+    font-size:14px;
+  }
+
+  .retention-flex {
+    display: none;
+  }
+
+  .viewers-flex {
+    display: none;
+  }
+
+  .card-value-flex {
+    display: none;
+  }
+
+  .im-chat {
+    width: auto;
+  }
+
 }
