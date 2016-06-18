@@ -5,35 +5,35 @@
 }**/
 body,
 html {
-    padding: 0;
-    background-color: #090a0c;
-    font-family: "Lato", Helvetica, Arial, "Lucida Grande", sans-serif;
-    letter-spacing: .8px;
-    color: #fff;
-    margin: 0 auto;
-    max-width: 100%;
-		width:90%;
-		padding-top:25px;
+	padding: 0;
+	background-color: #090a0c;
+	font-family: "Lato", Helvetica, Arial, "Lucida Grande", sans-serif;
+	letter-spacing: .8px;
+	color: #fff;
+	margin: 0 auto;
+	max-width: 100%;
+	width:90%;
+	padding-top:25px;
 }
 
 
 #video-and-chat {
-  display: flex;
-  flex-direction: row;
-  height: 440px;
+	display: flex;
+	flex-direction: row;
+	height: 440px;
 }
 #video-and-chat > * {
-  flex: 1 1 auto;
+	flex: 1 1 auto;
 }
 #chat-iframe {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
-#twitch-video, 
+#twitch-video,
 #twitch-video iframe {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .info {
@@ -58,15 +58,15 @@ html {
 	left:0px;
 	line-height:48px;
 	text-transform:uppercase;
-	
+
 }
 
 .app-title {
-  position: fixed;
-  top: 0;
-  left: 0px;
-  padding: 0px;
-  z-index: 12;
+	position: fixed;
+	top: 0;
+	left: 0px;
+	padding: 0px;
+	z-index: 12;
 	text-transform:uppercase;
 	font-weight:550;
 	width:;
@@ -75,11 +75,11 @@ html {
 	border:1px solid #242424;
 }
 .chat-message {
-	
+
 	-webkit-transition:all 1.0s ease-in-out;
-	  -moz-transition:all 1.0s ease-in-out;
-	  -o-transition:all 1.0s ease-in-out;
-	  transition:all 1.0s ease-in-out;
+	-moz-transition:all 1.0s ease-in-out;
+	-o-transition:all 1.0s ease-in-out;
+	transition:all 1.0s ease-in-out;
 }
 .app-value {
 	background-color:#000;
@@ -91,11 +91,11 @@ html {
 	text-transform:uppercase;
 }
 .nav {
-  position: fixed;
-  top: 0;
-  right: 0px;
-  padding: 0px;
-  z-index: 12;
+	position: fixed;
+	top: 0;
+	right: 0px;
+	padding: 0px;
+	z-index: 12;
 	text-transform:uppercase;
 	font-weight:550;
 	width:;
@@ -108,11 +108,11 @@ html {
 	cursor:pointer;;
 }
 .left-nav {
-  position: fixed;
-  top: 0;
-  left: 0px;
-  padding: 0px;
-  z-index: 12;
+	position: fixed;
+	top: 0;
+	left: 0px;
+	padding: 0px;
+	z-index: 12;
 	text-transform:uppercase;
 	font-weight:550;
 	width:;
@@ -141,17 +141,17 @@ html {
 }
 
 .index-wrapper {
-    width: 100%;
-    position: relative;
-    text-align: center;
+	width: 100%;
+	position: relative;
+	text-align: center;
 }
 
 @media (max-width: 600px) {
-  #video-and-chat {
-    flex-direction: column;
-    height: auto;
-  }
-	
+	#video-and-chat {
+		flex-direction: column;
+		height: auto;
+	}
+
 	.buy-buton {
 		line-height:120px;
 		background-color:#3f3960;
@@ -163,37 +163,37 @@ html {
 		padding-right:18px;
 		font-size:14px;
 	}
-	
+
 }
 
 .im-icons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 70px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 70px;
 }
 
 .im-chat.reveal-chat > .chat-row {
-  margin-top: 0;
-  opacity: 1;
+	margin-top: 0;
+	opacity: 1;
 
-  transition: margin-top 500ms,
-              opacity 500ms;
+	transition: margin-top 500ms,
+	opacity 500ms;
 }
 
 .im-icon {
-  flex: 1 1 auto;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 50px;
-  background-color:#050608;
-  border-right: 0px solid #1a1a1a; 
-  border-left: 1px solid #1a1a1a; 
-  border-bottom: 1px solid #1a1a1a;
-  cursor: pointer;
+	flex: 1 1 auto;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 50px;
+	background-color:#050608;
+	border-right: 0px solid #1a1a1a;
+	border-left: 1px solid #1a1a1a;
+	border-bottom: 1px solid #1a1a1a;
+	cursor: pointer;
 }
 .im-icon:hover {
-  opacity: .2;
+	opacity: .2;
 }
 
 .im-icon.box-kik { background-image: url(/img/icon-kik.png); }
@@ -203,18 +203,18 @@ html {
 
 
 .im-chat {
-  width: 428px;
-  height: 590px;
-  overflow: hidden;
+	width: 428px;
+	height: 590px;
+	overflow: hidden;
 
-  margin: 0 auto;
-  padding: 20px 0 0 0;
-  border-radius: 10px;
+	margin: 0 auto;
+	padding: 20px 0 0 0;
+	border-radius: 10px;
 }
 
 .chat-row {
-  display: block;
-  width: 90%;
-  margin-top: 100px;
-  opacity: 0;
+	display: block;
+	width: 90%;
+	margin-top: 100px;
+	opacity: 0;
 }
