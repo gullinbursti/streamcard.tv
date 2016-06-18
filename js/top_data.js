@@ -8,7 +8,7 @@ function rowHit(channel) {
 		'eventValue'		: 1
 	});
 
-	window.open("/channel/"+encodeURIComponent(channel));
+	window.open("/card.html?channel="+encodeURIComponent(channel));
 }
 
 function populateRows() {
@@ -37,14 +37,14 @@ function populateRows() {
 				//html += '</div>';
 
 
-				var html = '<div class="flex-container" style="border-top: 0 solid #1a1a1a;border-bottom: 1px solid #1a1a1a; color:#ccc; font-weight:400; '+((i % 2 == 0) ? '' : 'background-color:#111216')+'">';
+				var html = '<div class="flex-container" style="border-top: 0 solid #1a1a1a;border-bottom: 1px solid #1a1a1a; color:#ccc; font-weight:400; '+((i % 2 == 0) ? '' : 'background-color:#0d0e11')+'">';
 				html += '<div class="rank-flex">#' + (i + 1) + '</div>';
-				html += '<div class="channel-avatar-flex"><img id="img_' + item.channel + '" src="' + ((item.img_url == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.img_url) + '" width="40" height="40" style="border-radius:20px;"></div>';
+				html += '<div class="channel-avatar-flex" style="padding-top:8px"><img id="img_' + item.channel + '" src="' + ((item.img_url == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.img_url) + '" width="30" height="30" style="border-radius:15px;"><span id="led-online_' + item.channel + '" style="padding-left:10px; line-height:40px; font-size:12px; color:#666;"><i class="fa fa-circle-o" aria-hidden="true"></i></span></div>';
 				html += '<div class="channel-name-flex">'+item.channel+'</div>';
 				html += '<div class="retention-flex">100%</div>';
 				html += '<div class="viewers-flex">' + numberWithCommas(item.views) + '</div>';
 				html += '<div class="card-value-flex">$' + price + '</div>';
-				html += '<div class="card-button-flex" onclick="rowHit(\'' + item.channel + '\')">VIEW</div>';
+				html += '<div class="card-button-flex" onclick="rowHit(\'' + item.channel + '\')"><span class="hover-link"><div style="background-color:#40476e; border:1px solid #40476e;">VIEW</div></span></div>';
 				html += '</div>';
 
 
@@ -180,8 +180,18 @@ $(document).ready(function() {
 	});
 
 
+	//$('#more-button').mouseover(function() {
+	//	$(this).css('opacity', '0.2');
+	//	$(this).css('cursor', 'pointer');
+	//});
+	//$('#more-button').mouseleave(function() {
+	//	$(this).css('opacity', '1');
+	//	$(this).css('cursor', 'default');
+	//});
+
+
 	$('#more-button').click(function () {
-		$('#more-button').hide();
+		$(this).hide();
 
 		for (var i=25; i<channel_rows.length; i++) {
 			onlineChecker(channel_rows[i].item.channel);
@@ -191,46 +201,46 @@ $(document).ready(function() {
 
 	$('#kik-button').mouseover(function() {
 		$('#messenger-info').text(kik_info);
+		$(this).css('cursor', 'pointer');
 		$('#kik-ico').css('opacity', '0.2');
-		$('#kik-button').css('cursor', 'pointer');
 	});
 
 	$('#discord-button').mouseover(function() {
 		$('#messenger-info').text(discord_info);
+		$(this).css('cursor', 'pointer');
 		$('#discord-ico').css('opacity', '0.2');
-		$('#discord-button').css('cursor', 'pointer');
 	});
 
 	$('#whisper-button').mouseover(function() {
 		$('#messenger-info').text(whisper_info);
+		$(this).css('cursor', 'pointer');
 		$('#whisper-ico').css('opacity', '0.2');
-		$('#whisper-button').css('cursor', 'pointer');
 	});
 
 	$('#facebook-button').mouseover(function() {
 		$('#messenger-info').text(facebook_info);
+		$(this).css('cursor', 'pointer');
 		$('#facebook-ico').css('opacity', '0.2');
-		$('#facebook-button').css('cursor', 'pointer');
 	});
 
 	$('#kik-button').mouseleave(function() {
+		$(this).css('cursor', 'default');
 		$('#kik-ico').css('opacity', '1');
-		$('#kik-button').css('cursor', 'default');
 	});
 
 	$('#discord-button').mouseleave(function() {
+		$(this).css('cursor', 'default');
 		$('#discord-ico').css('opacity', '1');
-		$('#discord-button').css('cursor', 'default');
 	});
 
 	$('#whisper-button').mouseleave(function() {
+		$(this).css('cursor', 'default');
 		$('#whisper-ico').css('opacity', '1');
-		$('#kik-button').css('cursor', 'default');
 	});
 
 	$('#facebook-button').mouseleave(function() {
+		$(this).css('cursor', 'default');
 		$('#facebook-ico').css('opacity', '1');
-		$('#facebook-button').css('cursor', 'default');
 	});
 
 

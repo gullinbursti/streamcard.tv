@@ -18,12 +18,53 @@ function buyButton () {
 }
 
 function shareButton () {
-	alert ("share");
+	ga('send', {
+		'hitType'			: 'event',
+		'eventCategory'	: 'user',
+		'eventAction'		: 'share',
+		'eventLabel'		: channel,
+		'eventValue'		: 1
+	});
+	window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent("Check out "+channel+"'s Stream Card. p.00m.co/"+channel)+"&via=TeamMODD");
 }
 
 function topButton () {
-	alert ("top");
+	location.href = "/index.html";
 }
+
+function addCard() {
+	location.href = "http://dashboard.modd.live";
+}
+
+function legal() {
+	location.href = "/legal.html";
+}
+
+function support () {
+	ga('send', {
+		'hitType'			: 'event',
+		'eventCategory'	: 'user',
+		'eventAction'		: 'report',
+		'eventLabel'		: channel,
+		'eventValue'		: 1
+	});
+
+	setTimeout(function() {
+		$.ajax({
+			url: 'http://beta.modd.live/api/submit_support.php',
+			type: 'POST',
+			data: {
+				channel_id : channelID,
+				message : channel + " has been reported."
+			},
+			dataType: 'json',
+			success: function(response) {
+				$(".overlayLoading").fadeOut("fast", function() {});
+			}
+		});
+	}, 1);
+}
+
 
 function resizeCardPage() {
   var $twitchVideo = $('#twitch-video');
@@ -87,5 +128,7 @@ $(function(){
   window.addEventListener('resize', resizeCardPage);
 
   setupChatAnimationEvents();
+
+  $('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' Streamcard.tv');
 });
 

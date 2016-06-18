@@ -18,8 +18,6 @@
     <!-- CSS -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <link rel="stylesheet" href="css/card.css">
-    <!--<link rel="stylesheet" href="css/flexboxgrid.css">-->
-    <!--<link rel="stylesheet" href="css/flexboxgrid.min.css">-->
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- FONTS -->
     <link href='https://fonts.googleapis.com/css?family=Lato:200,300,400,500,700,800,900' rel='stylesheet' type='text/css'>
@@ -64,7 +62,7 @@
 			  line-height: 50px;
 			  -webkit-flex: 1 0 0;
 			  flex: 1 0 0;
-			  text-align: left;
+			  text-align: center;
 		  }
 
 		  .channel-name-flex {
@@ -75,7 +73,6 @@
 		  }
 
 		  .channel-avatar-flex {
-			  line-height: 50px;
 			  -webkit-flex: 1 0 0;
 			  flex: 1 0 0;
 			  text-align: left;
@@ -85,38 +82,28 @@
 			  line-height: 50px;
 			  -webkit-flex: 1 0 0;
 			  flex: 1 0 0;
-			  text-align: left;
+			  text-align: center;
 		  }
 
 		  .viewers-flex {
 			  line-height: 50px;
 			  -webkit-flex: 1 0 0;
 			  flex: 1 0 0;
-			  text-align: left;
+			  text-align: center;
 		  }
 
 		  .card-value-flex {
 			  line-height: 50px;
 			  -webkit-flex: 1 0 0;
 			  flex: 1 0 0;
-			  text-align: left;
+			  text-align: center;
 		  }
 
 		  .card-button-flex {
 			  line-height: 50px;
 			  -webkit-flex: 1 0 0;
 			  flex: 1 0 0;
-			  text-align: right;
-		  }
-
-		  .flex-item1 {
-			  -webkit-flex: 2 0 0;
-			  flex: 2 0 0;
-		  }
-
-		  .flex-item2 {
-			  -webkit-flex: 1 0 0;
-			  flex: 1 0 0;
+			  text-align: center;
 		  }
 	  </style>
   </head>
@@ -176,7 +163,7 @@
       <!-- ROW HEADER -->
 	    <div class="flex-container" style="border-top: 0 solid #1a1a1a;border-bottom: 1px solid #1a1a1a; color:#2e2e2e; font-weight:400;">
 		    <div class="rank-flex">Rank</div>
-		    <div class="channel-avatar-flex">Avatar</div>
+		    <div class="channel-avatar-flex" style="line-height: 50px;">Live</div>
 		    <div class="channel-name-flex">Player</div>
 		    <div class="retention-flex">Retention</div>
 		    <div class="viewers-flex">Viewers</div>
@@ -215,9 +202,9 @@
       <div id="more-button" class="animation-button" style="display:;">
         <div class="row center-xs" style="border-top: 0px solid #1a1a1a;border-bottom: 1px solid #1a1a1a;">
           <div class="col-xs-10">
-            <div class="box">
+            <div class="box"><span class="hover-link">
 	            <span class="buy-buton" style="background-color:#0e1116; border:1px solid #0e1116;">More</span>
-            </div>
+            </span></div>
           </div>
         </div>
       </div>
@@ -226,18 +213,18 @@
       <div class="row center-xs">
         <div class="col-xs-14">
           <div class="box" style="padding-top:50px; padding-bottom:50px">
-	          <span style="font-size:16px; text-decoration:underline; color:#333; font-weight:400; background-color:; padding-right:8px; border-right:1px solid #1a1a1a;">Add Card</span>
-            <span style="font-size:16px; text-decoration:underline;color:#333; font-weight:400; background-color:;  padding-left :8px; padding-right:8px; border-right:1px solid #1a1a1a;">Legal</span>  
-            <span style="font-size:16px; text-decoration:underline; color:#333; font-weight:400; background-color:; padding-left :8px;">Support</span>
+	          <span class="hover-link" onclick="addCard();" style="padding-right:8px; border-right:1px solid #1a1a1a;"><a>Add Card</a></span>
+            <span class="hover-link" onclick="legal();" style="padding-left :8px; padding-right:8px; border-right:1px solid #1a1a1a;"><a>Legal</a></span>
+            <span class="hover-link" onclick="support();" style="padding-left :8px;"><a>Support</a></span>
           </div>
         </div>
       </div>
 			
-      <!-- LEGAL -->
+      <!-- COPYRIGHT -->
       <div class="row center-xs">
         <div class="col-xs-12">
           <div class="box" style="padding-top:0px; padding-bottom:20px">
-            <span style="font-size:12px; color:#242424; text-transform:uppercase; font-weight:700; background-color:; padding-right:8px; border-right:0px solid #1a1a1a;">Streamcard.tv</span>   
+            <span id="footer-copyright" style="font-size:12px; color:#242424; text-transform:uppercase; font-weight:700; background-color:; padding-right:8px; border-right:0px solid #1a1a1a;"></span>
           </div>
         </div>
       </div>

@@ -41,6 +41,13 @@ function fb () {
 	//alert ("discord");
 }
 
+function addCard() {
+	location.href = "http://dashboard.modd.live";
+}
+
+function legal() {
+	location.href = "/legal.html";
+}
 
 function share () {
 	ga('send', {
@@ -77,3 +84,8 @@ function support () {
 		});
 	}, 1);
 }
+
+
+$(document).ready(function() {
+	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' Streamcard.tv');
+});
