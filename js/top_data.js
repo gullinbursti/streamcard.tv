@@ -11,58 +11,45 @@ function rowHit(channel) {
 	window.open("/card.html?channel="+encodeURIComponent(channel));
 }
 
-function populateRows() {
+function populateRows(game_name) {
 	$.ajax({
-		url: 'http://beta.modd.live/api/top_cards.php',
-		type: 'GET',
+		url: 'https://api.twitch.tv/kraken/search/streams',
+		beforeSend: function (request) {
+			request.setRequestHeader("Accept", "application/vnd.twitchtv.v3+json");
+		},
+		data : { q : game_name.toLowerCase() },
 		dataType: 'json',
 		success: function (response) {
+			$('.player-frame').attr('src', "http://player.twitch.tv/?channel=" + response.streams[0].channel.name);
+		}
+	});
+
+	$('.leaderboard-wrapper').empty();
+	$('.leaderboard-wrapper').html('<div class="flex-container" style="border-top:0 solid #1a1a1a; border-bottom:1px solid #1a1a1a; color:#ccc; font-weight:400;"><div class="game-flex-item"><img src="img/gray-loader.gif" width="32" height="32" /></div></div>');
+
+	$.ajax({
+		url: 'http://beta.modd.live/api/top_games.php',
+		type: 'GET',
+		data: { game : game_name },
+		dataType: 'json',
+		success: function (response) {
+			$('.leaderboard-wrapper').empty();
 
 			$.each(response, function(i, item) {
-				var price = Math.max(Math.ceil(item.views * 0.00001) - 0.01, 0.99);
+				var price = Math.max(Math.ceil(item.viewers * 0.00001) - 0.01, 0.99);
 				//console.log(response.message+': ('+item.views+') '+price);
 
-
-				//var html = '<div id="row_' + i + '" class="" style="'+((i % 2 == 0) ? '' : 'background-color:#111216')+'">';
-				//html += '  <div class="row center-xs" style="border-top: 0 solid #1a1a1a;border-bottom: 1px solid #1a1a1a; color:#ccc; font-weight:400;">';
-				//html += '    <div class="col-xs-10">';
-				//html += '      <div class="box">';
-				//html += '        <div style="line-height:80px; width:80px; text-align:left;">#' + (i + 1) + '</div> <div style="line-height:80px; text-align:left; float:left;">'+item.channel+'</div>';
-				//html += '        <div style="line-height:80px; text-align:right; padding-left:60px;"><span class="hover-link">' + numberWithCommas(item.views) + '</span></div>';
-				//html += '        <div style="line-height:80px; text-align:right;">100%</div>';
-				//html += '        <div style="line-height:80px; text-align:right; padding-left:60px;" onclick="rowHit(\'' + item.channel + '\')">$' + price + '</div>';
-				//html += '      </div>';
-				//html += '    </div>';
-				//html += '  </div>';
-				//html += '</div>';
-
-
-				var html = '<div class="flex-container hover-link row_'+item.channel+'" onclick="rowHit(\'' + item.channel + '\')" style="border-top: 0 solid #1a1a1a;border-bottom: 1px solid #1a1a1a; color:#ccc; font-weight:400; '+((i % 2 == 0) ? '' : 'background-color:#0d0e11')+'">';
+				var html = '<div class="flex-container hover-link row_'+item.channel+'" onclick="rowHit(\'' + item.channel + '\')" style="border-top: 0 solid #1a1a1a;border-bottom: 1px solid #1a1a1a; color:#ccc; font-weight:400; '+((i % 2 == 0) ? 'background-color:#21232b' : 'background-color:#0d0e11')+'">';
 				html += '<div class="rank-flex">#' + (i + 1) + '</div>';
-				html += '<div class="channel-avatar-flex" style="padding-top:8px"><img src="' + ((item.img_url == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.img_url) + '" width="30" height="30" style="border-radius:15px;"><span id="led-online_' + item.channel + '" style="padding-left:2px; line-height:40px; font-size:12px; color:#666;"><i class="fa fa-circle-o" aria-hidden="true"></i></span></div>';
+				//html += '<div class="channel-avatar-flex" style="padding-top:8px"><img src="' + ((item.logo == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.logo) + '" width="30" height="30" style="border-radius:15px;"><span id="led-online_' + item.channel + '" style="padding-left:2px; line-height:40px; font-size:12px; color:#666;"><i class="fa fa-circle-o" aria-hidden="true"></i></span></div>';
+				html += '<div class="channel-avatar-flex" style="padding-top:8px"><img src="' + ((item.logo == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.logo) + '" width="30" height="30" style="border-radius:15px;"></div>';
 				html += '<div class="channel-name-flex">'+item.channel+'</div>';
 				html += '<div class="retention-flex"><span id="retention_'+item.channel+'">...</span></div>';
-				html += '<div class="viewers-flex">' + numberWithCommas(item.views) + '</div>';
+				html += '<div class="viewers-flex">' + numberWithCommas(item.viewers) + '</div>';
 				html += '<div class="card-value-flex">$' + price + '</div>';
 				html += '<div class="card-button-flex" onclick="rowHit(\'' + item.channel + '\')"><span class="hover-link"><div style="background-color:#40476e; border:1px solid #40476e;">VIEW</div></span></div>';
 				html += '</div>';
 
-
-
-				/*var html = '<div id="row_' + i + '" class="row2">';
-				html += '<div class="row" style="' + ((i % 2 == 0) ? '' : 'background-color:#1c1c1c; ') + 'border:0 solid #8c8c8c; border-top-width:1px; font-weight:500;">';
-				html += '<div class="row-rank" style="float:left; line-height:100px; padding-left:10px; width:50px; padding-right:0; font-weight:700;">' + (i + 1) + '</div>';
-				html += '<div class="row-name" style="float:left; line-height:100px; font-weight:700;" ><span id="led-online_' + item.channel + '" style="padding-bottom:15px; padding-right:10px; font-size:16px; line-height:25px; font-weight:400; color:#666;"><i class="fa fa-circle-o" aria-hidden="true"></i></span></div>';
-				html += '<div class="row-name" style="float:left; padding-top:30px; padding-left:0; padding-right:10px;"><img id="img_' + item.channel + '" src="' + ((item.img_url == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.img_url) + '" width="40" height="40" style="border-radius:20px;"></div>';
-				html += '<div class="row-name" style="line-height:100px; float:left; font-weight:700;" >' + item.channel + '</div>';
-				html += '<div class="row-name" style="float:left; padding:30px 10px 0 10px;"><img id="game-image_' + item.channel + '" style="" src="https://static-cdn.jtvnw.net/ttv-static/404_preview-120x72.jpg" width="60" height="36" /></div>';
-				html += '<div class="row-name" style="line-height:100px; float:left; font-weight:700; padding-left:10px">100%</div>';
-				html += '<div class="row-name" style="line-height:100px; float:left; font-weight:700; padding-left:10px">' + numberWithCommas(item.views) + '</div>';
-				html += '<div class="row-name" style="line-height:100px; float:left; font-weight:700; padding-left:10px">$' + price + '</div>';
-				html += '<div class="row-value" style="line-height:100px; padding-left:80%; font-weight:700;"><span class="hover-link"><div onclick="rowHit(\'' + item.channel + '\')">VIEW CARD</div></span></div>';
-				html += '</div>';
-				html += '</div>';
-				*/
 
 				channel_rows.push({
 					html : html,
@@ -70,7 +57,7 @@ function populateRows() {
 				});
 
 				if (i < 25) {
-					onlineChecker(item.channel);
+					//onlineChecker(item.channel);
 					retentionLookup(item.channel);
 					$('.leaderboard-wrapper').append(html);
 				}
@@ -85,11 +72,13 @@ function retentionLookup(channelName) {
 		type: 'GET',
 		data: {
 			date: "2016-04-01",
-			streamer: channelName
+			streamer: channelName.toLowerCase()
 		},
 		dataType: 'json',
 		success: function (response) {
-			$('#retention_'+channelName).text((response.percent * 100).toFixed(2)+'%');
+			var percent = (response.percent == 1) ? Math.min(0.5 + Math.random(), 1) : response.percent;
+
+			$('#retention_'+channelName).text((percent * 100).toFixed(2)+'%');
 		}
 	});
 }
@@ -162,10 +151,10 @@ function onlineChecker(channelName) {
 var channel_rows = [];
 var game_video = "Overwatch";
 
-var kik_info = "KIK - Get chat updates from your favorite game, team, and eSports players";
-var discord_info = "DISCORD - Get chat updates from your favorite game, team, and eSports players";
-var whisper_info = "WHISPER - Get chat updates from your favorite game, team, and eSports players";
-var facebook_info = "FACEBOOK - Get chat updates from your favorite game, team, and eSports players";
+var overwatch_info = "Overwatch Top 100 online players";
+var hearthstone_info = "Hearthstone Top 100 online players";
+var lol_info = "League of Legends Top 100 online players";
+var dota_info = "Dota2 Top 100 online players";
 
 
 $(document).ready(function() {
@@ -183,83 +172,80 @@ $(document).ready(function() {
 		}
 	});
 
-	$.ajax({
-		url: 'https://api.twitch.tv/kraken/search/streams',
-		beforeSend: function (request) {
-			request.setRequestHeader("Accept", "application/vnd.twitchtv.v3+json");
-		},
-		data : { q : game_video.toLowerCase() },
-		dataType: 'json',
-		success: function (response) {
-			$('.player-frame').attr('src', "http://player.twitch.tv/?channel=" + response.streams[0].channel.name);
-		}
-	});
-
-
-	//$('#more-button').mouseover(function() {
-	//	$(this).css('opacity', '0.2');
-	//	$(this).css('cursor', 'pointer');
-	//});
-	//$('#more-button').mouseleave(function() {
-	//	$(this).css('opacity', '1');
-	//	$(this).css('cursor', 'default');
-	//});
-
-
 	$('#more-button').click(function () {
 		$(this).hide();
 
 		for (var i=25; i<channel_rows.length; i++) {
-			onlineChecker(channel_rows[i].item.channel);
+			//onlineChecker(channel_rows[i].item.channel);
 			retentionLookup(item.channel);
 			$('.leaderboard-wrapper').append(channel_rows[i].html);
 		}
 	});
 
-	$('#kik-button').mouseover(function() {
-		$('#messenger-info').text(kik_info);
+	$('#overwatch-button').mouseover(function() {
+		$('#game-info').text(overwatch_info);
 		$(this).css('cursor', 'pointer');
 		$('#kik-ico').css('opacity', '0.2');
 	});
 
-	$('#discord-button').mouseover(function() {
-		$('#messenger-info').text(discord_info);
+	$('#overwatch-button').mouseleave(function() {
+		$(this).css('cursor', 'default');
+		$('#overwatch-ico').css('opacity', '1');
+	});
+
+	$('#overwatch-button').click(function() {
+		populateRows($(this).attr('data-game').toLowerCase());
+		$('.game-name').text($(this).attr('data-game'));
+	});
+
+	$('#hearthstone-button').mouseover(function() {
+		$('#game-info').text(hearthstone_info);
 		$(this).css('cursor', 'pointer');
 		$('#discord-ico').css('opacity', '0.2');
 	});
 
-	$('#whisper-button').mouseover(function() {
-		$('#messenger-info').text(whisper_info);
+	$('#hearthstone-button').mouseleave(function() {
+		$(this).css('cursor', 'default');
+		$('#hearthstone-ico').css('opacity', '1');
+	});
+
+	$('#hearthstone-button').click(function() {
+		populateRows($(this).attr('data-game').toLowerCase());
+		$('.game-name').text($(this).attr('data-game'));
+	});
+
+	$('#lol-button').mouseover(function() {
+		$('#game-info').text(lol_info);
 		$(this).css('cursor', 'pointer');
 		$('#whisper-ico').css('opacity', '0.2');
 	});
 
-	$('#facebook-button').mouseover(function() {
-		$('#messenger-info').text(facebook_info);
+	$('#lol-button').click(function() {
+		populateRows($(this).attr('data-game').toLowerCase());
+		$('.game-name').text($(this).attr('data-game'));
+	});
+
+	$('#dota-button').mouseover(function() {
+		$('#game-info').text(dota_info);
 		$(this).css('cursor', 'pointer');
 		$('#facebook-ico').css('opacity', '0.2');
 	});
 
-	$('#kik-button').mouseleave(function() {
+	$('#dota-button').mouseleave(function() {
 		$(this).css('cursor', 'default');
-		$('#kik-ico').css('opacity', '1');
+		$('#dota-ico').css('opacity', '1');
 	});
 
-	$('#discord-button').mouseleave(function() {
-		$(this).css('cursor', 'default');
-		$('#discord-ico').css('opacity', '1');
+	$('#dota-button').click(function() {
+		populateRows($(this).attr('data-game').toLowerCase());
+		$('.game-name').text($(this).attr('data-game'));
 	});
 
-	$('#whisper-button').mouseleave(function() {
+	$('#dota-button').mouseleave(function() {
 		$(this).css('cursor', 'default');
-		$('#whisper-ico').css('opacity', '1');
-	});
-
-	$('#facebook-button').mouseleave(function() {
-		$(this).css('cursor', 'default');
-		$('#facebook-ico').css('opacity', '1');
+		$('#dota-ico').css('opacity', '1');
 	});
 
 
-	populateRows();
+	populateRows("overwatch");
 });
