@@ -708,6 +708,9 @@ $(document).ready(function() {
 				// set channel to previous cookie
 			} else {
 				channel = getCookie('channel');
+				
+				// refresh to clean url
+				location.href = "/card.html?channel=" + channel;
 			}
 
 			// set channel to query string
