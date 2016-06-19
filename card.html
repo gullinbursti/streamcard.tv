@@ -52,7 +52,7 @@
       <!-- PLAYER TITLE -->
       <div style="background-color:#0e1116; border: 1px solid #1a1a1a; border-bottom: 0;">
         <div style="font-weight:700px;">
-          <div class="info"><span class="channel-name" onclick="channel_name()" style="color:#ccc; text-decoration:;"></span> is ranked #<span class="card-rank-value" onclick="channel_name()" style="color:#ccc; text-decoration:;"></span> and is worth <span class="card-value" onclick="channel_name()" style="color:#ccc; text-decoration:;"></span> </div>
+          <div id="player-summary" class="info is-hidden"><span class="channel-name" onclick="channel_name()" style="color:#ccc;"></span> is ranked #<span class="card-rank-value" onclick="channel_name()" style="color:#ccc; "></span> and is worth <span class="card-value" onclick="channel_name()" style="color:#ccc;"></span> </div>
         </div>
       </div>
 			
@@ -64,11 +64,11 @@
 			
       <!-- PLAYER TITLE -->
       <div style="border: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; background-color:#000;">
-          <div class="title"><span class="channel-name"></span> is playing <span class="game-name"></span></div>
+          <div id="player-title" class="title is-hidden"><span class="channel-name"></span> is playing <span class="game-name"></span></div>
       </div>
 			
       <!-- BUY NOW BUTTON -->
-      <div style="border-bottom: 1px solid #1a1a1a;">
+      <div id="card-buttons" class="is-hidden" style="border-bottom: 1px solid #1a1a1a;">
         <span class="hover-link"><span class="buy-buton" onclick="buyButton();">Buy <span class="card-value">$0.00</span></span></span>
 				<span style="width:4px;">&nbsp</span>
 				<span class="hover-link"><span class="buy-buton" onclick="shareButton();" style="background-color:#0e1116; border:1px solid #0e1116;">Share</span></span>
@@ -115,7 +115,7 @@
         </div>
 				
         <!-- BUY NOW BUTTON -->
-        <div style="border-top: 1px solid #1a1a1a;border-bottom: 1px solid #1a1a1a;">
+        <div id="card-buttons" class="is-hidden" style="border-top: 1px solid #1a1a1a;border-bottom: 1px solid #1a1a1a;">
           <span class="hover-link"><span class="buy-buton" onclick="buyButton();">Buy <span class="card-value">$0.00</span></span></span>
 					<span style="width:4px;">&nbsp</span>
 					<span class="hover-link"><span class="buy-buton" onclick="shareButton();" style="background-color:#0e1116; border:1px solid #0e1116;">Share</span></span>

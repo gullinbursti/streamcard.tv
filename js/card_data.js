@@ -39,6 +39,8 @@ function statsUpdater(channelName) {
       var price = Math.max(Math.ceil(response.views * 0.00001) - 0.01, 0.99);
       $('.card-value').text('$'+price);
       $('#paypal-price').attr('value', paypalButtons[price]);
+
+      revealLoadedMessages();
     }
   });
 
@@ -90,6 +92,8 @@ function statsUpdater(channelName) {
         };
         var player = new Twitch.Player('twitch-video', options);
         player.setVolume(0.5);
+        player.addEventListener('ready', twitchPlayerReady);
+        player.addEventListener('playing', twitchPlayerPlaying);
 
         $('.preview-image').attr('src', response.stream.preview.medium);
 
@@ -375,6 +379,12 @@ function streamRank(channelName) {
   })(channelName, 0);
 }
 
+function revealLoadedMessages() {
+  $('#player-summary').removeClass('is-hidden');
+  $('#player-title').removeClass('is-hidden');
+  $('#card-buttons').removeClass('is-hidden');
+}
+
 function updateGraph() {
   var i;
   var canvas = document.getElementById("chart");
@@ -500,7 +510,13 @@ function resizer() {
   }
 }
 
+function twitchPlayerReady() {
+  // alert('ready');
+}
 
+function twitchPlayerPlaying() {
+  // alert('playing');
+}
 
 
 
