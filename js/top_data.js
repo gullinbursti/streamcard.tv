@@ -25,7 +25,7 @@ function populateRows(game_name) {
 	});
 
 	$('.leaderboard-wrapper').empty();
-	$('.leaderboard-wrapper').html('<div class="flex-container" style="border-top:0 solid #1a1a1a; border-bottom:1px solid #1a1a1a; color:#ccc; font-weight:400;"><div class="game-flex-item"><img src="img/gray-loader.gif" width="32" height="32" /></div></div>');
+	$('.leaderboard-wrapper').html('<div class="flex-container" style="border-top:0 solid #1a1a1a; border-bottom:1px solid #1a1a1a; color:#ccc; font-weight:400;"><div class="game-flex-item"><div class="loader">Loading...</div></div></div>');
 
 	$.ajax({
 		url: 'http://beta.modd.live/api/top_games.php',
