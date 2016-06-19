@@ -37,11 +37,11 @@ function populateRows() {
 				//html += '</div>';
 
 
-				var html = '<div class="flex-container hover-link" onclick="rowHit(\'' + item.channel + '\')" style="border-top: 0 solid #1a1a1a;border-bottom: 1px solid #1a1a1a; color:#ccc; font-weight:400; '+((i % 2 == 0) ? '' : 'background-color:#0d0e11')+'">';
+				var html = '<div class="flex-container hover-link row_'+item.channel+'" onclick="rowHit(\'' + item.channel + '\')" style="border-top: 0 solid #1a1a1a;border-bottom: 1px solid #1a1a1a; color:#ccc; font-weight:400; '+((i % 2 == 0) ? '' : 'background-color:#0d0e11')+'">';
 				html += '<div class="rank-flex">#' + (i + 1) + '</div>';
-				html += '<div class="channel-avatar-flex" style="padding-top:8px"><img id="img_' + item.channel + '" src="' + ((item.img_url == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.img_url) + '" width="30" height="30" style="border-radius:15px;"><span id="led-online_' + item.channel + '" style="padding-left:2px; line-height:40px; font-size:12px; color:#666;"><i class="fa fa-circle-o" aria-hidden="true"></i></span></div>';
+				html += '<div class="channel-avatar-flex" style="padding-top:8px"><img src="' + ((item.img_url == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.img_url) + '" width="30" height="30" style="border-radius:15px;"><span id="led-online_' + item.channel + '" style="padding-left:2px; line-height:40px; font-size:12px; color:#666;"><i class="fa fa-circle-o" aria-hidden="true"></i></span></div>';
 				html += '<div class="channel-name-flex">'+item.channel+'</div>';
-				html += '<div class="retention-flex">100%</div>';
+				html += '<div class="retention-flex"><span id="retention_'+item.channel+'">...</span></div>';
 				html += '<div class="viewers-flex">' + numberWithCommas(item.views) + '</div>';
 				html += '<div class="card-value-flex">$' + price + '</div>';
 				html += '<div class="card-button-flex" onclick="rowHit(\'' + item.channel + '\')"><span class="hover-link"><div style="background-color:#40476e; border:1px solid #40476e;">VIEW</div></span></div>';
@@ -71,9 +71,25 @@ function populateRows() {
 
 				if (i < 25) {
 					onlineChecker(item.channel);
+					retentionLookup(item.channel);
 					$('.leaderboard-wrapper').append(html);
 				}
 			});
+		}
+	});
+}
+
+function retentionLookup(channelName) {
+	$.ajax({
+		url: 'http://159.203.220.30:8888/retention',//'http://159.203.220.30:8888/cohort',
+		type: 'GET',
+		data: {
+			date: "2016-04-01",
+			streamer: channelName
+		},
+		dataType: 'json',
+		success: function (response) {
+			$('#retention_'+channelName).text((response.percent * 100).toFixed(2)+'%');
 		}
 	});
 }
@@ -195,6 +211,7 @@ $(document).ready(function() {
 
 		for (var i=25; i<channel_rows.length; i++) {
 			onlineChecker(channel_rows[i].item.channel);
+			retentionLookup(item.channel);
 			$('.leaderboard-wrapper').append(channel_rows[i].html);
 		}
 	});
