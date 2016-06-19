@@ -14,7 +14,23 @@ function channel_name () {
 }
 
 function buyButton () {
-  alert ("buy");
+	ga('send', {
+		'hitType'			: 'event',
+		'eventCategory'	: 'user',
+		'eventAction'		: 'buy-button',
+		'eventLabel'		: channel,
+		'eventValue'		: 1
+	});
+
+	// not authed
+	if (twitch_auth.oauth_token == "") {
+		setCookie('paypal_request', '1');
+		twitchAuth();
+
+		// submit paypal
+	} else {
+		$('.paypal-form').submit();
+	}
 }
 
 function shareButton () {
@@ -54,9 +70,11 @@ function openKik () {
     //});
 
   } else {
-    alert("Open on Kik to signup");
+	  $('.overlay-title').text('Requires Kik');
+	  $('.overlay-message').text('Visit this page within Kik browser to enable.');
+	  $('.overlay-button').text('OK');
+	  $('.overlay-alert').removeClass('is-hidden');
   }
- 
 }
 
 function openDiscord () {
@@ -66,14 +84,15 @@ function openDiscord () {
 }
 
 function openTwitch () {
-  console.log("TWITCH");
+	console.log("TWITCH");
+
   $.ajax({
     url: 'http://beta.modd.live/api/streamer_subscribe.php',
     type: 'GET',
     data: {
       type : 'whisper',
       channel : channel,
-      username : authed_username
+      username : twitch_auth.twitch_name
     },
     dataType: 'json',
     success: function(response) {
@@ -83,7 +102,10 @@ function openTwitch () {
 
 function openFacebook () {
   console.log("FACEBOOK");
-  window.alert ("Coming soon");
+  $('.overlay-title').text('Comming Soon!');
+	$('.overlay-message').text('Facebook messenger coming shortly.');
+	$('.overlay-button').text('OK');
+	$('.overlay-alert').removeClass('is-hidden');
 }
 
 function support () {
@@ -109,6 +131,19 @@ function support () {
       }
     });
   }, 1);
+}
+
+function twitchAuth() {
+	setCookie('channel', channel);
+
+	// localhost redirect
+	if (location.hostname == "localhost")
+		location.href = "https://api.twitch.tv/kraken/oauth2/authorize?action=authorize&client_id=bdmreezjx7g0syk09kyzmkds978vrdj&login=&login_type=login&redirect_uri=http%3A%2F%2Flocalhost%2Fcard.html&response_type=token&scope=user_read+channel_subscriptions+chat_login&utf8=%E2%9C%93&force_verify=false";
+
+	// live app redirect
+	else {
+		location.href = "https://api.twitch.tv/kraken/oauth2/authorize?action=authorize&client_id=kn6iwqzezy1kir29dvrleq4m0bf1t87&login=&login_type=login&redirect_uri=http%3A%2F%2Fstreamcard.tv%2Fcard.html&response_type=token&scope=user_read+channel_subscriptions+chat_login&utf8=%E2%9C%93&force_verify=false";
+	}
 }
 
 
@@ -147,8 +182,9 @@ function setupChatAnimationEvents() {
 
       $('.im-service-name').text(service);
       $('#im-info').text(capitalize(service) + ' - Get real-time chat updates from your favorite game, team, and eSports players' );
+		  connectService = service;
 
-      // remove highlight from the previously selected tab
+		  // remove highlight from the previously selected tab
       $imIcons.filter('.is-selected').removeClass('is-selected');
 
       // highlight the new clicked tab
@@ -162,11 +198,26 @@ function setupChatAnimationEvents() {
     });
 }
 
-function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+function connectMessenger(service) {
+	if (service == "kik") {
+		openKik();
+
+	} else if (service == "discord") {
+		openDiscord();
+
+	} else if (service == "whisper") {
+		openTwitch();
+
+	} else if (service == "facebook") {
+		openFacebook();
+	}
 }
 
-var authed_username = "matty_devdev";
+function capitalize(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+var connectService = "";
 
 $(function(){
   // on document ready
@@ -175,6 +226,25 @@ $(function(){
   window.addEventListener('resize', resizeCardPage);
 
   setupChatAnimationEvents();
+
+
+	$('#messenger-connected').click(function() {
+		$.ajax({
+			url: 'http://beta.modd.live/api/card_purchases.php',
+			data: {
+				action: 'purchased',
+				twitch_id: twitch_auth.twitch_id,
+				channel: channel
+			},
+			type: 'POST',
+			dataType: 'json',
+			success: function (response) {
+				if (response.result == 1) {
+					connectMessenger(connectService.toLowerCase());
+				}
+			}
+		});
+	});
 
   $('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' Streamcard.tv');
 });

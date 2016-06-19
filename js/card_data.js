@@ -1,3 +1,4 @@
+
 function populate() {
   $.ajax({
     url: 'http://beta.modd.live/api/ad_view.php',
@@ -9,10 +10,37 @@ function populate() {
     }
   });
 
-  $('#chat-iframe').attr('src', 'https://www.nightdev.com/hosted/obschat/?channel='+channel+'&fade=false&bot_activity=false&prevent_clipping=false');
+	// check for card purchase
+	$.ajax({
+		url: 'http://beta.modd.live/api/card_purchases.php',
+		data: {
+			action: 'purchased',
+			twitch_id: twitch_auth.twitch_id,
+			channel: channel
+		},
+		type: 'POST',
+		dataType: 'json',
+		success: function (response) {
 
-  statsUpdater(channel);
-  streamRank(channel);
+			// did purchase, update ui
+			if (response.result == 1) {
+				$('#buy-button-top').prop('onclick', null).off('click');
+				$('#buy-button-top').html('Bought <span class="card-value">$0.00</span>');
+
+				$('#buy-button-bottom').html('Bought <span class="card-value">$0.00</span>');
+				$('#buy-button-bottom').prop('onclick', null).off('click');
+
+				$('#messenger-connected').html('<i class="fa fa-check-circle" aria-hidden="true"></i> Connect to <span class="im-service-name">Kik</span>');
+				$('#messenger-connected').css('background-color', '#1fa67a');
+				$('#messenger-connected').addClass('hover-link');
+			}
+
+			$('#chat-iframe').attr('src', 'https://www.nightdev.com/hosted/obschat/?channel='+channel+'&fade=false&bot_activity=false&prevent_clipping=false');
+
+			statsUpdater(channel);
+			streamRank(channel);
+		}
+	});
 }
 
 function statsUpdater(channelName) {
@@ -39,6 +67,11 @@ function statsUpdater(channelName) {
       var price = Math.max(Math.ceil(response.views * 0.00001) - 0.01, 0.99);
       $('.card-value').text('$'+price);
       $('#paypal-price').attr('value', paypalButtons[price]);
+
+	    if (getCookie('paypal_request') == "1") {
+		    deleteCookie('paypal_request');
+		    $('.paypal-form').submit();
+	    }
 
       revealLoadedMessages();
     }
@@ -262,7 +295,7 @@ function statsUpdater(channelName) {
   });
 
   $.ajax({
-    url: 'http://159.203.220.30:8888/cohort',//'http://159.203.220.30:8888/retention',
+    url: 'http://159.203.220.30:8888/retention',//'http://159.203.220.30:8888/cohort',
     type: 'GET',
     data: {
       date : "2016-04-01",
@@ -286,6 +319,8 @@ function statsUpdater(channelName) {
         // $('.retention-percent').text(Math.round(Math.abs(retention.perc) * 100)+'%');
         // $('.retention-arrow').html((retention.curr > retention.last) ? '<i class="fa fa-arrow-up" aria-hidden="true"></i>' : (retention.curr < retention.last) ? '<i class="fa fa-arrow-down" aria-hidden="true"></i>' : '');
       }
+
+	    $('.retention-value').text((response.percent * 100).toFixed(2)+'%');
     }
   });
 
@@ -382,7 +417,8 @@ function streamRank(channelName) {
 function revealLoadedMessages() {
   $('#player-summary').removeClass('is-hidden');
   $('#player-title').removeClass('is-hidden');
-  $('#card-buttons').removeClass('is-hidden');
+  $('#card-buttons-top').removeClass('is-hidden');
+	$('#card-buttons-bottom').removeClass('is-hidden');
 }
 
 function updateGraph() {
@@ -587,62 +623,141 @@ window.location.href.replace(
 var channel = "";
 var channel_id = "";
 
+var twitch_auth = {
+	twitch_id   : getCookie('twitch_id'),
+	twitch_name : getCookie('twitch_name'),
+	oauth_token : getCookie('twitch_oauth_token')
+};
+
 $(document).ready(function() {
   $('.highlight-wrapper-mobile').hide();
   $('.chat-wrapper-mobile').hide();
 
-  deleteCookie('player');
+	// check if returning from auth
+	if (window.location.hash) {
+		var auth_token = window.location.hash.split("&")[0].replace("#access_token=", "");
+		setCookie('twitch_oauth_token', auth_token);
 
-  if (getCookie('card') != "") {
-    var channelName = getCookie('card');
-    deleteCookie('card');
-    location.href = "/player.html?channel="+channelName;
-  }
+		// retrieve authed user data
+		$.ajax({
+			url: 'https://api.twitch.tv/kraken/user',
+			beforeSend: function (request) {
+				request.setRequestHeader("Accept", "application/vnd.twitchtv.v3+json");
+				request.setRequestHeader("Authorization", "OAuth "+auth_token);
+			},
+			dataType: 'json',
+			success: function(response) {
 
-  if (typeof queryString['paypal'] != 'undefined') {
-    if (queryString['paypal'] == "1") {
-      setCookie('paypal', "1");
-      $('.paypal').hide();
-      $('data.').show();
-    }
-  }
+				setCookie('twitch_id', response._id);
+				setCookie('twitch_name', response.name);
 
-  if (typeof queryString['channel'] != 'undefined') {
-    channel = queryString['channel'];
+				// add new user if needed
+				$.ajax({
+					url: 'http://beta.modd.live/api/add_user.php',
+					type: "POST",
+					data: {
+						twitch_id: response._id,
+						username: response.name,
+						type: "viewer",
+						email: (response.email != null) ? response.email : "",
+						avatar: (response.logo != null) ? response.logo : "http://i.imgur.com/o8KEq67.jpg",
+						auth_token: auth_token,
+						beta_code: ""
+					},
+					dataType: 'json',
+					success: function (response) {
+						// redirect to clean out url
+						location.href = "/card.html?channel="+getCookie('channel');
+					}
+				});
 
-    populate();
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				alert(textStatus+"-"+errorThrown);
+			}
+		});
 
-  } else {
-    $.ajax({
-      url: 'http://beta.modd.live/api/top_streamer.php',
-      type: 'GET',
-      dataType: 'json',
-      success: function (response) {
-        var paypal = queryString['paypal'];
-        if (paypal == "1") {
-        } else {
-        }
+		// entered page
+	} else {
 
-        channel = response.channel;
-        populate();
-      }
-    });
-  }
+		// no channel defined
+		if (typeof queryString['channel'] == 'undefined') {
 
+			// check if returning from paypal
+			if (typeof queryString['paypal'] != 'undefined') {
+				setCookie('paypal_result', (queryString['paypal'] == "1") ? "1" : "0");
+
+				// refresh to clean out url
+				location.href = "/card.html?channel="+getCookie('channel');
+			}
+
+			// no channel defined or previously redirected, get top streamer
+			if (getCookie('channel') == "") {
+				$.ajax({
+					url: 'http://beta.modd.live/api/top_streamer.php',
+					type: 'GET',
+					dataType: 'json',
+					success: function (response) {
+						channel = response.channel;
+
+						// refresh to clean url
+						location.href = "/card.html?channel=" + channel;
+					}
+				});
+
+				// set channel to previous cookie
+			} else {
+				channel = getCookie('channel');
+			}
+
+			// set channel to query string
+		} else {
+			channel = queryString['channel'];
+			setCookie('channel', channel);
+
+			// redirected from successful paypal purchase
+			if (getCookie('paypal_result') == "1") {
+				$.ajax({
+					url: 'http://beta.modd.live/api/card_purchases.php',
+					data: {
+						action : 'purchase',
+						twitch_id : twitch_auth.twitch_id,
+						twitch_name : twitch_auth.twitch_name,
+						channel : channel,
+						price : "0.00"
+					},
+					type: 'POST',
+					dataType: 'json',
+					success: function (response) {
+						deleteCookie('paypal_result');
+
+						// update ui
+						$('#buy-button-top').prop('onclick', null).off('click');
+						$('#buy-button-top').html('Bought <span class="card-value">$0.00</span>');
+
+						$('#buy-button-bottom').html('Bought <span class="card-value">$0.00</span>');
+						$('#buy-button-bottom').prop('onclick', null).off('click');
+
+						$('#messenger-connected').html('<i class="fa fa-check-circle" aria-hidden="true"></i> Connect to <span class="im-service-name">Kik</span>');
+						$('#messenger-connected').css('background-color', '#1fa67a');
+						$('#messenger-connected').addClass('hover-link');
+					}
+				});
+			}
+
+			// fill content
+			populate();
+		}
+	}
 
   resizer();
   window.addEventListener('resize', function(event){
     resizer();
   });
 
-  $('.buy-button').click(function() {
-    setCookie('card', channel);
-    $('.paypal-form').submit();
-  });
 
-
-  $('.card-rank_percent').text((Math.floor(Math.random() * 5) + 1) + '%');
-  $('.card-value-percent').text((Math.floor(Math.random() * 5) + 1) + '%');
+  //$('.card-rank_percent').text((Math.floor(Math.random() * 5) + 1) + '%');
+  //$('.card-value-percent').text((Math.floor(Math.random() * 5) + 1) + '%');
 
   $('.footer-copyright').html('&copy; '+(new Date()).getFullYear()+' MODD Inc.');
 });
