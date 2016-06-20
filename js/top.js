@@ -25,20 +25,67 @@ function topButton () {
 	alert ("top");
 }
 
-function kik () {
-	kik.openConversation('streamCard');
+function openKik () {
+	console.log("KIK");
+	if (kik.enabled) {
+		kik.openConversation("streamcard");
+		//window.open("https://kik.me/streamcard", '_blank');
+
+		//kik.send('streamcard', {
+		//  title     : 'Streamcard Notifications',
+		//  text      : channel,
+		//  data      : {
+		//    channel : channel
+		//  }
+		//});
+
+	} else {
+		window.open("card://streamcard.tv/channel="+channel);
+
+		//$('.overlay-title').text('Requires Kik');
+		//$('.overlay-message').text('Visit this page within Kik browser to enable.');
+		//$('.overlay-button').text('OK');
+		//$('.overlay-alert').removeClass('is-hidden');
+	}
 }
 
-function discord () {
-	location.href = "https://discord.gg/014do3goV6bJgwIf8";
+function openDiscord () {
+	console.log("DISCORD");
+	//location.href = "https://discord.gg/014do3goV6bJgwIf8";
+	window.open("https://discord.gg/014do3goV6bJgwIf8", '_blank');
 }
 
-function twitch () {
-	//alert ("discord");
+function openTwitch () {
+	console.log("TWITCH");
+
+	if (twitch_auth.twitch_id == "") {
+		setCookie('whisper_request', "1");
+		twitchAuth();
+
+	} else {
+
+	}
 }
 
-function fb () {
-	alert ("Coming soon");
+function openFacebook () {
+	console.log("FACEBOOK");
+	$('.overlay-title').text('Comming Soon!');
+	$('.overlay-message').text('Facebook messenger coming shortly.');
+	$('.overlay-button').text('OK');
+	$('.overlay-alert').removeClass('is-hidden');
+}
+
+function twitchAuth(channelName) {
+	setCookie('channel', channelName);
+
+	// localhost redirect
+	if (location.hostname == "localhost")
+		location.href = "https://api.twitch.tv/kraken/oauth2/authorize?action=authorize&client_id=bdmreezjx7g0syk09kyzmkds978vrdj&login=&login_type=login&redirect_uri=http%3A%2F%2Flocalhost%2Fcard.html&response_type=token&scope=user_read+channel_subscriptions+chat_login&utf8=%E2%9C%93&force_verify=false";
+
+	// live app redirect
+	else {
+		location.href = "https://api.twitch.tv/kraken/oauth2/authorize?action=authorize&client_id=kn6iwqzezy1kir29dvrleq4m0bf1t87&login=&login_type=login&redirect_uri=http%3A%2F%2Fstreamcard.tv%2Fcard.html&response_type=token&scope=user_read+channel_subscriptions+chat_login&utf8=%E2%9C%93&force_verify=false";
+	}
 }
 
 function addCard() {
@@ -92,6 +139,12 @@ function resizer() {
 	//$('.preview-video').css('height', Math.floor(height) + 'px');
 	$('.player-frame').attr('height', Math.floor(height));
 }
+
+var twitch_auth = {
+	twitch_id   : getCookie('twitch_id'),
+	twitch_name : getCookie('twitch_name'),
+	oauth_token : getCookie('twitch_oauth_token')
+};
 
 
 $(document).ready(function() {

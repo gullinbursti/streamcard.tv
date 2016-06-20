@@ -58,8 +58,8 @@ function legal() {
 
 function openKik () {
 	if (kik.enabled) {
-		//kik.openConversation("streamcard");
-		window.open("https://kik.me/streamcard", '_blank');
+		kik.openConversation("streamcard");
+		//window.open("https://kik.me/streamcard", '_blank');
 
 		//kik.send('streamcard', {
 		//  title     : 'Streamcard Notifications',
@@ -70,10 +70,12 @@ function openKik () {
 		//});
 
 	} else {
-		$('.overlay-title').text('Requires Kik');
-		$('.overlay-message').text('Visit this page within Kik browser to enable.');
-		$('.overlay-button').text('OK');
-		$('.overlay-alert').removeClass('is-hidden');
+		window.open("card://streamcard.tv/channel="+channel);
+
+		//$('.overlay-title').text('Requires Kik');
+		//$('.overlay-message').text('Visit this page within Kik browser to enable.');
+		//$('.overlay-button').text('OK');
+		//$('.overlay-alert').removeClass('is-hidden');
 	}
 }
 

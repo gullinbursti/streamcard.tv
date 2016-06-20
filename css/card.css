@@ -307,6 +307,20 @@ a:hover {
     font-size:18px;
   }
 
+  .flex-container {
+	  font-size: 12px;
+  }
+
+  .channel-avatar-flex {
+	  display: none;
+  }
+
+
+	.channel-name-flex {
+		-webkit-flex: 1 0 0;
+		flex: 1 0 0;
+	}
+
   .retention-flex {
     display: none;
   }

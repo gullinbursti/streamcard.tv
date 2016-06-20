@@ -39,14 +39,15 @@ function populateRows(game_name) {
 				var price = Math.max(Math.ceil(item.viewers * 0.00001) - 0.01, 0.99);
 				//console.log(response.message+': ('+item.views+') '+price);
 
-				var html = '<div class="flex-container hover-link row_'+item.channel+'" onclick="rowHit(\'' + item.channel + '\')" style="border-top: 0 solid #2f2f42; border-bottom: 1px solid #2f2f42; color:#ccc; font-weight:400; '+((i % 2 == 0) ? 'background-color:#1b1d28' : 'background-color:#15161f')+'">';
-				html += '<div class="rank-flex">#' + (i + 1) + '</div>';
-				html += '<div class="channel-avatar-flex" style="padding-top:16px; vertical-align: middle"><span style="display:inline-block; height:100%; vertical-align:middle;"><img src="' + ((item.logo == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.logo) + '" width="30" height="30" style="vertical-align:middle; max-height:30px; max-width:30px; border-radius:15px;"></span></div>';
-				html += '<div class="channel-name-flex">'+item.channel+'</div>';
-				html += '<div class="retention-flex"><span id="retention_'+item.channel+'">...</span></div>';
-				html += '<div class="viewers-flex">' + numberWithCommas(item.viewers) + '</div>';
-				html += '<div class="card-value-flex">$' + price + '</div>';
-				html += '<div class="card-button-flex" onclick="rowHit(\'' + item.channel + '\')"><span class="hover-link"><div class="buy-buton" style="margin:0; font-size:16px; line-height:0;">VIEW</div></span></div>';
+				var html = '<div class="flex-container hover-link row_'+item.channel+'" style="border-top: 0 solid #2f2f42; border-bottom: 1px solid #2f2f42; color:#ccc; font-weight:400; '+((i % 2 == 0) ? 'background-color:#1b1d28' : 'background-color:#15161f')+'">';
+				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="rank-flex">#' + (i + 1) + '</div>';
+				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="channel-avatar-flex" style="padding-top:16px; vertical-align: middle"><span style="display:inline-block; height:100%; vertical-align:middle;"><img src="' + ((item.logo == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.logo) + '" width="30" height="30" style="vertical-align:middle; max-height:30px; max-width:30px; border-radius:15px;"></span></div>';
+				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="channel-name-flex">'+item.channel+'</div>';
+				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="retention-flex"><span id="retention_'+item.channel+'">...</span></div>';
+				//html += '<div class="viewers-flex">' + numberWithCommas(item.viewers) + '</div>';
+				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="card-value-flex">$'+price+'</div>';
+				//html += '<div class="card-button-flex" onclick="rowHit(\'' + item.channel + '\')"><span class="hover-link"><div class="buy-buton" style="margin:0; font-size:16px; line-height:0;">VIEW</div></span></div>';
+				html += '<div class="card-button-flex" style="padding-top:12px; line-height:0"><img class="im-button" onclick="openKik();" src="/img/icon-kik.png" width="28" height="28" /><img onclick="openDiscord();" class="im-button" src="/img/icon-discord.png" width="28" height="28" /><img onclick="openTwitch(\''+item.channel+'\');" class="im-button" src="/img/icon-twitch.png" width="28" height="28" /><img onclick="openFacebook();" class="im-button" src="/img/icon-fb.png" width="28" height="28" /></div>';
 				html += '</div>';
 
 
