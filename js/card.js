@@ -86,18 +86,28 @@ function openDiscord () {
 function openTwitch () {
 	console.log("TWITCH");
 
-  $.ajax({
-    url: 'http://beta.modd.live/api/streamer_subscribe.php',
-    type: 'GET',
-    data: {
-      type : 'whisper',
-      channel : channel,
-      username : twitch_auth.twitch_name
-    },
-    dataType: 'json',
-    success: function(response) {
-    }
-  });
+	if (twitch_auth.twitch_id == "") {
+		setCookie('whisper_request', "1");
+		twitchAuth();
+
+	} else {
+		$.ajax({
+			url: 'http://beta.modd.live/api/streamer_subscribe.php',
+			type: 'GET',
+			data: {
+				type : 'whisper',
+				channel : channel,
+				username : twitch_auth.twitch_name
+			},
+			dataType: 'json',
+			success: function(response) {
+				$('.overlay-title').text('Subscribed to ' + channel);
+				$('.overlay-message').text('You will now recieve updates from this streamer.');
+				$('.overlay-button').text('OK');
+				$('.overlay-alert').removeClass('is-hidden');
+			}
+		});
+	}
 }
 
 function openFacebook () {
@@ -229,6 +239,7 @@ $(function(){
 
 
 	$('#messenger-connected').click(function() {
+		/*
 		$.ajax({
 			url: 'http://beta.modd.live/api/card_purchases.php',
 			data: {
@@ -244,6 +255,10 @@ $(function(){
 				}
 			}
 		});
+		*/
+
+		connectMessenger(connectService.toLowerCase());
+
 	});
 
   $('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' Streamcard.tv');

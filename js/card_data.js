@@ -1,5 +1,18 @@
 
 function populate() {
+
+	// update ui
+	$('#buy-button-top').prop('onclick', null).off('click');
+	$('#buy-button-top').html('Bought <span class="card-value">$0.00</span>');
+
+	$('#buy-button-bottom').html('Bought <span class="card-value">$0.00</span>');
+	$('#buy-button-bottom').prop('onclick', null).off('click');
+
+	$('#messenger-connected').html('<i class="fa fa-check-circle" aria-hidden="true"></i> Connect to <span class="im-service-name">Kik</span>');
+	$('#messenger-connected').css('background-color', '#1fa67a');
+	$('#messenger-connected').addClass('hover-link');
+
+
   $.ajax({
     url: 'http://beta.modd.live/api/ad_view.php',
     type: 'GET',
@@ -717,6 +730,12 @@ $(document).ready(function() {
 		} else {
 			channel = queryString['channel'];
 			setCookie('channel', channel);
+
+			// redirect to whisper
+			if (getCookie('whisper_request')) {
+				deleteCookie('whisper_request');
+				openTwitch();
+			}
 
 			// redirected from successful paypal purchase
 			if (getCookie('paypal_result') == "1") {

@@ -1,7 +1,7 @@
 body {
   padding: 0;
   /*background-color: #090a0c;*/
-  background-color: #121317;
+  background-color: #242433;
   font-family: "Lato", Helvetica, Arial, "Lucida Grande", sans-serif;
   letter-spacing: .8px;
   color: #fff;
@@ -54,7 +54,7 @@ body {
 }
 .app-rank {
   background-color:#000;
-  border:1px solid #242424;
+  border:1px solid #2f2f2f;
   position:fixed;
   top:0px;
   left:0px;
@@ -73,7 +73,7 @@ body {
   font-weight:550;
   line-height:48px;
   background-color:#000;
-  border:1px solid #242424;
+  border:1px solid #2f2f2f;
 }
 .chat-message {
 
@@ -84,7 +84,7 @@ body {
 }
 .app-value {
   background-color:#000;
-  border:1px solid #242424;
+  border:1px solid #2f2f2f;
   position:fixed;
   top:0px;
   right:0px;
@@ -102,7 +102,7 @@ body {
   width:;
   line-height:48px;
   background-color:#000;
-  border:1px solid #242424;
+  border:1px solid #2f2f2f;
 }
 .nav :hover {
   opacity:.2;
@@ -168,24 +168,23 @@ body {
   background-repeat: no-repeat;
   background-size: 50px;
   background-color:#050608;
-  border-right: 0px solid #1a1a1a;
-  border-left: 1px solid #1a1a1a;
-  border-bottom: 1px solid #1a1a1a;
+  border-right: 0px solid #242424;
+  border-left: 1px solid #242424;
+  border-bottom: 0px solid #242424;
   cursor: pointer;
-  opacity: .6;
+  opacity: .25;
 }
 .im-icon.is-selected{
   opacity: 1;
 }
 .im-icon:hover {
-  opacity: 1;
+  opacity: .6;
 }
 
 .im-icon.box-kik { background-image: url(/img/icon-kik.png); }
 .im-icon.box-discord { background-image: url(/img/icon-discord.png); }
 .im-icon.box-twitch { background-image: url(/img/icon-twitch.png); }
 .im-icon.box-fb { background-image: url(/img/icon-fb.png); }
-
 
 .im-chat {
   width: 428px;
@@ -194,7 +193,7 @@ body {
 
   margin: 0 auto;
   padding: 0;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .chat-row {
@@ -206,10 +205,11 @@ body {
 }
 .chat-row > .chat-inner {
   position: relative;
-  border: 2px solid #181818;
-  border-radius: 10px;
+  border: 2px solid #050608;
+  border-radius: 5px;
   display: inline-block;
   margin: 10px;
+	background-color:#050608;
 }
 .chat-inner p {
   max-width: 235px;
@@ -270,21 +270,41 @@ a:hover {
   opacity: .5;
 }
 
+.main-title {
+	color:#ccc; font-size:18px; font-weight:500;
+}
+
+#im-info {
+	color:#ccc; font-size:18px; font-weight:500;
+}
+
 @media (max-width: 600px) {
+	
+	#im-info {
+		
+		font-size:14px;
+		padding:5px;
+		
+	}
   #video-and-chat {
     flex-direction: column;
     height: auto;
   }
+	
+	.main-title {
+		color:#ccc; font-size:16px; font-weight:500;
+	}
+	
 
   .buy-buton {
     background-color:#3f3960;
     border:1px solid #3f3960;
     padding:16px;
     color:#FFF;
-    border-radius:0px;
-    padding-left:18px;
-    padding-right:18px;
-    font-size:14px;
+    border-radius:8px;
+    padding-left:22px;
+    padding-right:22px;
+    font-size:18px;
   }
 
   .retention-flex {
@@ -304,7 +324,6 @@ a:hover {
   }
 
 }
-
 
 .overlay-alert {
 	z-index: 1000;
@@ -354,4 +373,74 @@ a:hover {
 	padding: 10px 15px;
 	font-size: 16px;
 	border: 0;
+}
+
+.overlay-button:hover {
+	opacity: .5;
+	cursor: pointer;
+}
+
+
+.loader {
+  font-size: 10px;
+  margin: 50px auto;
+  text-indent: -9999em;
+  width: 11em;
+  height: 11em;
+  border-radius: 50%;
+  background: #242433;
+  background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  position: relative;
+  -webkit-animation: load3 1.4s infinite linear;
+  animation: load3 1.4s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.loader:before {
+  width: 50%;
+  height: 50%;
+  background: #ffffff;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+.loader:after {
+  background: #0dc5c1;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  content: '';
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+@-webkit-keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
