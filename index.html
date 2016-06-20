@@ -59,14 +59,14 @@
 		  }
 
 		  .rank-flex {
-			  line-height: 50px;
+			  line-height: 65px;
 			  -webkit-flex: 1 0 0;
 			  flex: 1 0 0;
 			  text-align: center;
 		  }
 
 		  .channel-name-flex {
-			  line-height: 50px;
+			  line-height: 65px;
 			  -webkit-flex: 2 0 0;
 			  flex: 2 0 0;
 			  text-align: left;
@@ -79,28 +79,28 @@
 		  }
 
 		  .retention-flex {
-			  line-height: 50px;
+			  line-height: 65px;
 			  -webkit-flex: 1 0 0;
 			  flex: 1 0 0;
 			  text-align: center;
 		  }
 
 		  .viewers-flex {
-			  line-height: 50px;
+			  line-height: 65px;
 			  -webkit-flex: 1 0 0;
 			  flex: 1 0 0;
 			  text-align: center;
 		  }
 
 		  .card-value-flex {
-			  line-height: 50px;
+			  line-height: 65px;
 			  -webkit-flex: 1 0 0;
 			  flex: 1 0 0;
 			  text-align: center;
 		  }
 
 		  .card-button-flex {
-			  line-height: 50px;
+			  line-height: 65px;
 			  -webkit-flex: 1 0 0;
 			  flex: 1 0 0;
 			  text-align: center;
@@ -180,28 +180,19 @@
   <body>
     <div class="index-wrapper">
 
-      <!-- HEADER -->
-      <div class="animation-title" style="display:;">
-	     <div class="preview-video" style="opacity:.2; position:absolute; left:0; top:0; width:100%; clip:rect(0px auto 260px 0px);"><iframe class="player-frame" src="" frameborder="0" scrolling="no" height="680" width="100%"></iframe></div>
-        <div class="row center-xs" style="border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; border-left: 1px solid #1a1a1a; border-right: 1px solid #1a1a1a;">
+      <!-- HEADER clip:rect(0px auto 260px 0px) -->
+      <div class="header-wrapper" style="background-color:#000;">
+	      <div class="preview-video" style="width:100%; height:260px; background-color: #000; opacity:0.2; overflow:hidden;"><iframe class="player-frame" src="" frameborder="0" scrolling="no" height="260" width="100%"></iframe></div>
+        <div class="row center-xs" style="border:0; position: absolute; top:0; left:0; width:100%;">
           <div class="col-xs-10">
             <div class="box" style="font-weight:700px; padding-top:80px; padding-bottom:80px;">
               <div class="info" style="font-size:34px; color:#fff;">Find the hottest <span class="game-name"></span> players</div>
-	             <div class="info">Get chat updates from your favorite game, team, and eSports players</div>
+	             <div class="info">Get stats from the hottest eSport games, teams, and players on Kik, Discord, Whisper, Facebook, &amp; more.</div>
             </div>
           </div>
         </div>
       </div>
-			
-      <!-- BUY NOW BUTTON -->
-      <div class="row center-xs" style="border-bottom: 1px solid #1a1a1a;">
-        <div class="">
-          <div class="box" style="height:40px;">
-						
-          </div>
-        </div>
-      </div>
-			
+
       <!-- WHAT IS A STREAM CARD HEADER -->
       <div class="animation-title" style="display:;">
         <div class="row center-xs" style="background-color:#0e1116; border-top: 0px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; border-left: 1px solid #1a1a1a; border-right: 1px solid #1a1a1a;">
@@ -214,26 +205,31 @@
       </div>
 			
       <!-- GAME ICONS -->
-	    <div class="flex-container">
-		    <div class="game-flex-item" id="overwatch-button" data-game="Overwatch" style="border-right: 0 solid #1a1a1a; border-left: 1px solid #1a1a1a;background-color:#050608;border-bottom: 1px solid #1a1a1a;">
-			    <img id="overwatch-ico" src="img/game-overwatch.png" width="50" style="padding-top:10px; padding-bottom:10px; vertical-align:middle;"></span>
-		    </div>
-		    <div class="game-flex-item" id="hearthstone-button" data-game="Hearthstone" style="border-right: 0 solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608;border-bottom: 1px solid #1a1a1a;">
-			    <img id="hearthstone-ico" src="img/game-hearthstone.png" width="50" style="padding-top:10px; padding-bottom:10px;">
-		    </div>
-		    <div class="game-flex-item" id="lol-button" data-game="League of Legends" style="border-right: 0 solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608;border-bottom: 1px solid #1a1a1a;">
-			    <img id="lol-ico" src="img/game-leagueoflegends.png" width="50" style="padding-top:10px; padding-bottom:10px;">
-		    </div>
-		    <div class="game-flex-item" id="dota-button" data-game="DOTA 2" style="border-right: 1px solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608;border-bottom: 1px solid #1a1a1a;">
-			    <img id="dota-ico" src="img/game-dota2.png" width="50" style="padding-top:10px; padding-bottom:10px;">
-		    </div>
+	    <div class="flex-container im-icons">
+		    <!--<div class="game-flex-item" id="overwatch-button" data-game="Overwatch" style="border-right: 0 solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608; border-bottom: 1px solid #1a1a1a;">-->
+			    <!--<img id="overwatch-ico" src="img/game-overwatch.png" width="50" style="padding-top:10px; padding-bottom:10px; vertical-align:middle;"></span>-->
+		    <!--</div>-->
+		    <!--<div class="game-flex-item" id="hearthstone-button" data-game="Hearthstone" style="border-right: 0 solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608; border-bottom: 1px solid #1a1a1a;">-->
+			    <!--<img id="hearthstone-ico" src="img/game-hearthstone-256.png" width="50" style="padding-top:25px; padding-bottom:10px;">-->
+		    <!--</div>-->
+		    <!--<div class="game-flex-item" id="lol-button" data-game="League of Legends" style="border-right: 0 solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608; border-bottom: 1px solid #1a1a1a;">-->
+			    <!--<img id="lol-ico" src="img/game-leagueoflegends-256.png" width="50" style="padding-top:25px; padding-bottom:10px;">-->
+		    <!--</div>-->
+		    <!--<div class="game-flex-item" id="dota-button" data-game="DOTA 2" style="border-right: 1px solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608; border-bottom: 1px solid #1a1a1a;">-->
+			    <!--<img id="dota-ico" src="img/game-dota2.png" width="50" style="padding-top:10px; padding-bottom:10px;">-->
+		    <!--</div>-->
+
+		    <div class="im-icon is-selected game-flex-item" id="overwatch-button" data-game="Overwatch" style="background-image: url(/img/game-overwatch-256.png); background-size: 30% auto;"></div>
+		    <div class="im-icon game-flex-item" id="hearthstone-button" data-game="Hearthstone" style="background-image: url(/img/game-hearthstone-256.png); background-size: 30% auto;"></div>
+		    <div class=" im-icon game-flex-item" id="lol-button" data-game="League of Legends" style="background-image: url(/img/game-leagueoflegends-256.png); background-size: 30% auto;"></div>
+		    <div class="im-icon game-flex-item" id="dota-button" data-game="DOTA 2" style="background-image: url(/img/game-dota2-256.png); background-size: 30% auto;"></div>
 	    </div>
 
 
       <!-- ROW HEADER -->
-	    <div class="flex-container" style="border-top: 0 solid #1a1a1a;border-bottom: 1px solid #1a1a1a; color:#2e2e2e; font-weight:400;">
+	    <div class="flex-container" style="border-top:0 solid #2f2f42; border-bottom:1px solid #2f2f42; color:#ccc; font-weight:400; background-color:#0e1116">
 		    <div class="rank-flex">Rank</div>
-		    <div class="channel-avatar-flex" style="line-height: 50px;">Live</div>
+		    <div class="channel-avatar-flex" style="line-height: 65px;">Live</div>
 		    <div class="channel-name-flex">Player</div>
 		    <div class="retention-flex">Retention</div>
 		    <div class="viewers-flex">Viewers</div>
@@ -269,8 +265,8 @@
           <!--</div>-->
         <!--</div>-->
       <!-- MORE BUTTON -->
-      <div id="more-button" class="animation-button" style="display:;">
-        <div class="row center-xs" style="border-top: 0px solid #1a1a1a;border-bottom: 1px solid #1a1a1a;">
+      <div id="more-button" class="animation-button">
+        <div class="row center-xs" style="border-top: 0 solid #2f2f42;border-bottom: 1px solid #2f2f42;">
           <div class="col-xs-10">
             <div class="box"><span class="hover-link">
 	            <span class="buy-buton" style="background-color:#0e1116; border:1px solid #0e1116;">More</span>
@@ -283,8 +279,8 @@
       <div class="row center-xs">
         <div class="col-xs-14">
           <div class="box" style="padding-top:50px; padding-bottom:50px">
-	          <span class="hover-link" onclick="addCard();" style="padding-right:8px; border-right:1px solid #1a1a1a;"><a>Admin</a></span>
-            <span class="hover-link" onclick="legal();" style="padding-left :8px; padding-right:8px; border-right:1px solid #1a1a1a;"><a>Legal</a></span>
+	          <span class="hover-link" onclick="addCard();" style="padding-right:8px; border-right:1px solid #232532;"><a>Admin</a></span>
+            <span class="hover-link" onclick="legal();" style="padding-left :8px; padding-right:8px; border-right:1px solid #232532;"><a>Legal</a></span>
             <span class="hover-link" onclick="support();" style="padding-left :8px;"><a>Support</a></span>
           </div>
         </div>
@@ -294,7 +290,7 @@
       <div class="row center-xs">
         <div class="col-xs-12">
           <div class="box" style="padding-top:0px; padding-bottom:20px">
-            <span id="footer-copyright" style="font-size:12px; color:#242424; text-transform:uppercase; font-weight:700; background-color:; padding-right:8px; border-right:0px solid #1a1a1a;"></span>
+            <span id="footer-copyright" style="font-size:12px; color:#525569; text-transform:uppercase; font-weight:700; background-color:; padding-right:8px; border-right:0px solid #1a1a1a;"></span>
           </div>
         </div>
       </div>

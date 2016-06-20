@@ -86,6 +86,19 @@ function support () {
 }
 
 
+function resizer() {
+	var height = $('.header-wrapper').width() * 9 / 16;
+
+	//$('.preview-video').css('height', Math.floor(height) + 'px');
+	$('.player-frame').attr('height', Math.floor(height));
+}
+
+
 $(document).ready(function() {
+	resizer();
+	window.addEventListener('resize', function(event) {
+		resizer();
+	});
+
 	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' Streamcard.tv');
 });
