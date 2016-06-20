@@ -50,9 +50,9 @@
     <div class="index-wrapper">
 			
       <!-- PLAYER TITLE -->
-      <div style="background-color:#151821; border: 1px solid #1a1a1a; border-bottom: 0;">
-        <div style="font-weight:700px;">
-          <div id="player-summary" class="info is-hidden"><span class="channel-name" onclick="channel_name()" style="color:#ccc;"></span> is ranked #<span class="card-rank-value" onclick="channel_name()" style="color:#ccc; "></span> and is worth <span class="card-value" onclick="channel_name()" style="color:#ccc;"></span> </div>
+      <div style="background-color:#151821; border: 0px solid #2f2f2f; border-bottom: 0;">
+        <div class="main-title">
+          <div id="player-summary" class="info is-hidden"><span class="channel-name" onclick="channel_name()" style="color:#ccc;"></span> stats are ranked #<span class="card-rank-value" onclick="channel_name()" style="color:#ccc; "></span></div>
         </div>
       </div>
 			
@@ -63,23 +63,21 @@
       </div>
 			
       <!-- PLAYER TITLE -->
-      <div style="border: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; background-color:#000;">
+      <div style="border: 0px solid #2f2f2f; border-top: 0px solid #242424; background-color:#000;">
           <div id="player-title" class="title is-hidden"><span class="channel-name"></span> is playing <span class="game-name"></span></div>
       </div>
 			
       <!-- BUY NOW BUTTON -->
-      <div id="card-buttons-top" class="is-hidden" style="border-bottom: 1px solid #1a1a1a;">
-        <span class="hover-link"><span id="buy-button-top" class="buy-buton" onclick="buyButton();">Buy <span class="card-value">$0.00</span></span></span>
-				<span style="width:4px;">&nbsp</span>
+      <div id="card-buttons-top" class="is-hidden" style="border-bottom: 0px solid #242424;">
 				<span class="hover-link"><span class="buy-buton" onclick="shareButton();" style="background-color:#0e1116; border:1px solid #0e1116;">Share</span></span>
-				<span style="width:4px;">&nbsp</span>
-				<span class="hover-link"><span class="buy-buton" onclick="topButton();" style="background-color:#0e1116; border:1px solid #0e1116;">Top</span></span>
+				<span style="width:12px;">&nbsp</span>
+				<span class="hover-link"><span class="buy-buton" onclick="topButton();" style="background-color:#0e1116; border:1px solid #0e1116;">Top Charts</span></span>
       </div>
 			
       <!-- WHAT IS A STREAM CARD HEADER -->
-      <div style="background-color:#0e1116; border-top: 0px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; border-left: 1px solid #1a1a1a; border-right: 1px solid #1a1a1a;">
+      <div style="background-color:#0e1116; border-top: 0px solid #2f2f2f; border-bottom: 1px solid #242424; border-left: 0px solid #2f2f2f; border-right: 0px solid #2f2f2f;">
         <div style="font-weight:700px;">
-          <div id="im-info" class="info">Kik - Get real-time chat updates from your favorite game, team, and eSports players</div>
+          <div id="im-info" class="info" style="">Get stats from the hottest eSport games, teams, and players on Kik, Discord, Whisper, & more</div>
         </div>
       </div>
 			
@@ -94,12 +92,12 @@
 				
         <!-- MARKETING ANIMATIONS -->
         <div class="im-chat">
-	        <div>
-		        <span class="buy-buton" id="messenger-connected" style="background-color:#663a3a; color: #090a0c; border: 0px; padding:10px 15px; font-size:16px;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> <span class="im-service-name">Kik</span> is not connected</span>
+	        <div style="padding-top:10px;">
+		        <span class="buy-buton" id="messenger-connected" style="background-color:#d75959; color: #090a0c; border: 0px; padding:10px 15px; font-size:16px; font-weight:600;"><i class="fa fa-comment" aria-hidden="true"></i> Tap to connect <span class="channel-name"></span> on <span class="im-service-name">Kik</span></span>
 	        </div>
           <div class="chat-row chat-left">
             <div class="chat-inner">
-              <p><span class="channel-name"></span> just went live with <span class="viewers-value"></span> viewers. <a class="channel-link" href="#">scart.tv/<span class="channel-name"></a></p>
+              <p><span class="channel-name"></span> is live with <span class="viewers-value"></span> viewers. <a class="channel-link" href="#" style="color:#fff; font-weight:500;">scart.tv/<span class="channel-name"></a></p>
             </div>
           </div>
           <div class="chat-row chat-right">
@@ -109,31 +107,29 @@
           </div>
           <div class="chat-row chat-left">
             <div class="chat-inner">
-              <p><span class="retention-value"></span> of the current stream are returning. <a class="channel-link" href="#">scart.tv/<span class="channel-name"></span></a></p>
+              <p><span class="retention-value"></span> of the current stream are returning viewers. <a class="channel-link" href="#" style="color:#fff; font-weight:500;">scart.tv/<span class="channel-name"></span></a></p>
             </div>
           </div>
         </div>
 				
         <!-- BUY NOW BUTTON -->
-        <div id="card-buttons-bottom" class="is-hidden" style="border-top: 1px solid #1a1a1a;border-bottom: 1px solid #1a1a1a;">
-          <span class="hover-link"><span id="buy-button-bottom" class="buy-buton" onclick="buyButton();">Buy <span class="card-value">$0.00</span></span></span>
-					<span style="width:4px;">&nbsp</span>
+        <div id="card-buttons-bottom" class="is-hidden" style="border-top: 0px solid #2f2f42;border-bottom: 1px solid #2f2f42;">
 					<span class="hover-link"><span class="buy-buton" onclick="shareButton();" style="background-color:#0e1116; border:1px solid #0e1116;">Share</span></span>
-					<span style="width:4px;">&nbsp</span>
-					<span class="hover-link"><span class="buy-buton" onclick="topButton();" style="background-color:#0e1116; border:1px solid #0e1116;">Top</span></span>
+					<span style="width:12px;">&nbsp</span>
+					<span class="hover-link"><span class="buy-buton" onclick="topButton();" style="background-color:#0e1116; border:1px solid #0e1116;">Top Charts</span></span>
         </div>
       </div>
 
       <!-- FOOTER NAV -->
       <div style="padding-top:50px; padding-bottom:50px">
-	      <span class="hover-link" onclick="addCard();" style="padding-right:8px; border-right:1px solid #1a1a1a;"><a>Admin</a></span>
-	      <span class="hover-link" onclick="legal();" style="padding-left :8px; padding-right:8px; border-right:1px solid #1a1a1a;"><a>Legal</a></span>
+	      <span class="hover-link" onclick="addCard();" style="padding-right:8px; border-right:1px solid #242424;"><a>Admin</a></span>
+	      <span class="hover-link" onclick="legal();" style="padding-left :8px; padding-right:8px; border-right:1px solid #242424;"><a>Legal</a></span>
 	      <span class="hover-link" onclick="support();" style="padding-left :8px;"><a>Support</a></span>
       </div>
 
       <!-- COPYRIGHT -->
       <div style="padding-top:0px; padding-bottom:20px">
-	      <span id="footer-copyright" style="font-size:12px; color:#242424; text-transform:uppercase; font-weight:700; background-color:; padding-right:8px; border-right:0px solid #1a1a1a;"></span>
+	      <span id="footer-copyright" style="font-size:12px; color:#525569; text-transform:uppercase; font-weight:700; background-color:; padding-right:8px; border-right:0px solid #2f2f2f;"></span>
       </div>
     </div>
 
@@ -146,7 +142,6 @@
 	    </div>
     </div>
 
-    <!-- PAYPAL -->
     <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 	    <input type="hidden" name="cmd" value="_s-xclick">
 	    <input id="paypal-price" type="hidden" name="hosted_button_id" value="">
