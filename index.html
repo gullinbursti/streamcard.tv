@@ -17,7 +17,7 @@
     <meta http-equiv="pragma" content="no-cache" />
     <!-- CSS -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-    <link rel="stylesheet" href="css/card.css">
+    <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- FONTS -->
     <link href='https://fonts.googleapis.com/css?family=Lato:200,300,400,500,700,800,900' rel='stylesheet' type='text/css'>
@@ -45,178 +45,69 @@
     <link rel="icon" type="image/png" sizes="16x16" href="img/icon/favicon-16x16.png">
     <link rel="manifest" href="img/icon/manifest.json">
     <title></title>
-
-	  <style type="text/css" rel="stylesheet">
-		  .flex-container {
-			  display: -webkit-flex;
-			  display: flex;
-			  -webkit-flex-direction: row;
-			  flex-direction: row;
-			  width: 100%;
-		  }
-
-		  .game-flex-item {
-			  -webkit-flex: 1 0 0;
-			  flex: 1 0 0;
-		  }
-
-		  .rank-flex {
-			  line-height: 65px;
-			  -webkit-flex: 1 0 0;
-			  flex: 1 0 0;
-			  text-align: center;
-		  }
-
-		  .channel-name-flex {
-			  line-height: 65px;
-			  -webkit-flex: 2 0 0;
-			  flex: 2 0 0;
-			  text-align: left;
-		  }
-
-		  .channel-avatar-flex {
-			  -webkit-flex: 1 0 0;
-			  flex: 1 0 0;
-			  text-align: left;
-		  }
-
-		  .retention-flex {
-			  line-height: 65px;
-			  -webkit-flex: 1 0 0;
-			  flex: 1 0 0;
-			  text-align: center;
-		  }
-
-		  .viewers-flex {
-			  line-height: 65px;
-			  -webkit-flex: 1 0 0;
-			  flex: 1 0 0;
-			  text-align: center;
-		  }
-
-		  .card-value-flex {
-			  line-height: 65px;
-			  -webkit-flex: 1 0 0;
-			  flex: 1 0 0;
-			  text-align: center;
-		  }
-
-		  .card-button-flex {
-			  line-height: 65px;
-			  -webkit-flex: 1 0 0;
-			  flex: 1 0 0;
-			  text-align: center;
-		  }
-
-		  .im-button {
-			  padding: 4px;
-			  border: 1px solid #2f2f42;
-			  border-radius: 5px;
-			  opacity: 0.85;
-		  }
-
-		  .im-button:hover {
-			  opacity: 1;
-			  cursor: pointer;
-		  }
-
-
-		  @media (max-width: 600px) {
-			  .channel-name-flex {
-				  -webkit-flex: 1 0 0;
-				  flex: 1 0 0;
-			  }
-
-			  .card-button-flex {
-				  -webkit-flex: 2 0 0;
-				  flex: 2 0 0;
-			  }
-		  }
-
-		  
-			
-			.app-header-top {
-				
-				position:absolute;
-				top:0px;
-				left:0px;
-				width:100%;
-				line-height:48px;
-				text-align:center;
-				
-				background-color:#0e1116;
-				
-			}
-			
-	  </style>
   </head>
   <body>
-		
-		<div class="app-header-top">
-			
-			<div class="app-header-logo" style="background-color:#161921; border-right:0px solid #2f2f42; width:48px; float:left;"><img src="img/logo.png" width="48px" style="vertical-align:middle;" onclick="home()"></div>
-			<div class="app-header-title" style="float:right;"><img src="img/icon-kik.png" width="32px"> <img src="img/icon-discord.png" width="32px"> <img src="img/icon-twitch.png" width="32px"> <img src="img/icon-fb.png" width="32px"></div>
-			<div>asda</div>
-			
-		</div>
-		
-		
-    <div class="index-wrapper" style="padding-top:48px;">
+    <div class="top-bar">
+      <a href="/"><img class="logo" src="img/logo.png"/></a>
+      <div class="top-bar-icons">
+        <img src="img/icon-kik.png" onclick="openMessenger('kik');">
+        <img src="img/icon-discord.png" onclick="openMessenger('discord');">
+        <img src="img/icon-twitch.png" onclick="openMessenger('twitch');">
+        <img src="img/icon-fb.png" onclick="openMessenger('fb');">
+      </div>
+    </div>
 
+    <div class="index-wrapper">
       <!-- HEADER clip:rect(0px auto 260px 0px) -->
       <div class="header-wrapper" style="background-color:#000;">
 	      <div class="preview-video" style="width:100%; height:260px; background-color: #000; opacity:0.2; overflow:hidden;"><iframe class="player-frame" src="" frameborder="0" scrolling="no" height="260" width="100%"></iframe></div>
         <div class="row center-xs" style="border:0; position: absolute; top:0; left:0; width:100%;">
           <div class="col-xs-10">
-            <div class="box" style="font-weight:700px; padding-top:120px; padding-bottom:80px;">
-              <div class="info" style="font-size:42px; color:#fff;"><span class="game-name"></span> player &amp; team chat stats</div>
-	             <div class="info">Receive chat stats from the best <span class="game-name"></span> players in the world</div>
+            <div class="box" style="font-weight:700px; padding-top:80px; padding-bottom:80px;">
+              <div class="info" style="font-size:34px; color:#fff;">
+                <span class="desktop-text">Get  <span class="game-name"></span> player &amp; team chat stats now.</span>
+                <span class="mobile-text">Get chat stats<span>
+              </div>
+	             <div class="info">
+                <span class="desktop-text">Receive chat stats from the best <span class="game-name"></span> players in the world.</span>
+                <span class="mobile-text">from the best players in the world<span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- WHAT IS A STREAM CARD HEADER -->
-      <div class="animation-title" style="padding-top:24px;">
+      <div class="animation-title">
         <div class="row center-xs" style="background-color:#0e1116; border-top: 0px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; border-left: 1px solid #1a1a1a; border-right: 1px solid #1a1a1a;">
           <div class="col-xs-10">
             <div class="box" style="font-weight:700px;">
-              <div id="game-info" class="info">Get real-time messenger updates from your favorite game, team, and eSports players</div>
+              <div id="game-info" class="info">
+                <span class="desktop-text">Click a <span class="game-name"></span> player below to sign up</span>
+                <span class="mobile-text">Click a player below to sign up</span>
+                </div>
             </div>
           </div>
         </div>
       </div>
 			
       <!-- GAME ICONS -->
-	    <div class="flex-container im-icons">
-		    <!--<div class="game-flex-item" id="overwatch-button" data-game="Overwatch" style="border-right: 0 solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608; border-bottom: 1px solid #1a1a1a;">-->
-			    <!--<img id="overwatch-ico" src="img/game-overwatch.png" width="50" style="padding-top:10px; padding-bottom:10px; vertical-align:middle;"></span>-->
-		    <!--</div>-->
-		    <!--<div class="game-flex-item" id="hearthstone-button" data-game="Hearthstone" style="border-right: 0 solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608; border-bottom: 1px solid #1a1a1a;">-->
-			    <!--<img id="hearthstone-ico" src="img/game-hearthstone-256.png" width="50" style="padding-top:25px; padding-bottom:10px;">-->
-		    <!--</div>-->
-		    <!--<div class="game-flex-item" id="lol-button" data-game="League of Legends" style="border-right: 0 solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608; border-bottom: 1px solid #1a1a1a;">-->
-			    <!--<img id="lol-ico" src="img/game-leagueoflegends-256.png" width="50" style="padding-top:25px; padding-bottom:10px;">-->
-		    <!--</div>-->
-		    <!--<div class="game-flex-item" id="dota-button" data-game="DOTA 2" style="border-right: 1px solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608; border-bottom: 1px solid #1a1a1a;">-->
-			    <!--<img id="dota-ico" src="img/game-dota2.png" width="50" style="padding-top:10px; padding-bottom:10px;">-->
-		    <!--</div>-->
-
-		    <div class="im-icon is-selected game-flex-item" id="overwatch-button" data-game="Overwatch" style="background-image: url(/img/game-overwatch-256.png); background-size: 30% auto;"></div>
-		    <div class="im-icon game-flex-item" id="hearthstone-button" data-game="Hearthstone" style="background-image: url(/img/game-hearthstone-256.png); background-size: 30% auto;"></div>
-		    <div class=" im-icon game-flex-item" id="lol-button" data-game="League of Legends" style="background-image: url(/img/game-leagueoflegends-256.png); background-size: 30% auto;"></div>
-		    <div class="im-icon game-flex-item" id="dota-button" data-game="DOTA 2" style="background-image: url(/img/game-dota2-256.png); background-size: 30% auto;"></div>
+	    <div class="game-icons">
+        <div id="overwatch-button" data-game="Overwatch" class="game-icon is-selected"><img src="/img/game-overwatch-256.png"/></div>
+        <div id="hearthstone-button" data-game="Hearthstone" class="game-icon"><img src="/img/game-hearthstone-256.png"/></div>
+        <div id="lol-button" data-game="League of Legends" class="game-icon"><img src="/img/game-leagueoflegends-256.png"/></div>
+        <div id="dota-button" data-game="DOTA 2" class="game-icon"><img src="/img/game-dota2-256.png"/></div>
 	    </div>
 
 
       <!-- ROW HEADER -->
-	    <div class="flex-container" style="border-top:0 solid #2f2f42; border-bottom:1px solid #2f2f42; color:#ccc; font-weight:400; background-color:#0e1116">
+	    <div id="table-header-row" class="flex-container" style="border-top:0 solid #2f2f42; border-bottom:1px solid #2f2f42; color:#ccc; font-weight:400; background-color:#0e1116">
 		    <div class="rank-flex">Rank</div>
 		    <div class="channel-avatar-flex" style="line-height: 65px;"></div>
 		    <div class="channel-name-flex">Player</div>
 		    <div class="retention-flex">Retention</div>
-		    <div class="viewers-flex">Viewers</div>
-		    <!--<div class="card-value-flex">Value</div>-->
+		    <!-- <div class="viewers-flex">Viewers</div> -->
+		    <div class="card-value-flex">Value</div>
 		    <div class="card-button-flex">Connect</div>
 	    </div>
 

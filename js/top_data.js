@@ -47,7 +47,7 @@ function populateRows(game_name) {
 				//html += '<div class="viewers-flex">' + numberWithCommas(item.viewers) + '</div>';
 				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="card-value-flex">$'+price+'</div>';
 				//html += '<div class="card-button-flex" onclick="rowHit(\'' + item.channel + '\')"><span class="hover-link"><div class="buy-buton" style="margin:0; font-size:16px; line-height:0;">VIEW</div></span></div>';
-				html += '<div class="card-button-flex" style="padding-top:12px; line-height:0">';
+				html += '<div class="card-button-flex">';
 				html += '  <img class="im-button" data-im="Kik" onclick="openMessenger(\'Kik\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-kik.png" width="28" height="28" />';
 				html += '  <img class="im-button" data-im="Discord" onclick="openMessenger(\'Discord\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-discord.png" width="28" height="28" />';
 				html += '  <img class="im-button" data-im="Twitch" onclick="openMessenger(\'Twitch\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-twitch.png" width="28" height="28" />';
