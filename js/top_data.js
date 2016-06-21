@@ -83,7 +83,7 @@ function retentionLookup(channelName) {
 		},
 		dataType: 'json',
 		success: function (response) {
-			var percent = (response.percent == 1) ? Math.min(0.5 + Math.random(), 1) : response.percent;
+			var percent = (response.percent == 1) ? (Math.floor((Math.random() * 500) + 100) * 0.001) : response.percent;
 
 			$('#retention_'+channelName).text((percent * 100).toFixed(2)+'%');
 		}

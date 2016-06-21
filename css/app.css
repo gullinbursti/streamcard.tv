@@ -42,7 +42,7 @@ body {
 .info {
   padding-top:10px;
   padding-bottom:10px;
-  color:#666;
+  color:#ccc;
   font-weight:400;
 }
 .app-header {
@@ -334,15 +334,14 @@ a:hover {
 	cursor: pointer;
 }
 
-
-.loader {
+.loader-circle {
   font-size: 10px;
   margin: 50px auto;
   text-indent: -9999em;
-  width: 11em;
-  height: 11em;
+  width: 5em;
+  height: 5em;
   border-radius: 50%;
-  background: #242433;
+  background: #ffffff;
   background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
   background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
   background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
@@ -355,7 +354,7 @@ a:hover {
   -ms-transform: translateZ(0);
   transform: translateZ(0);
 }
-.loader:before {
+.loader-circle:before {
   width: 50%;
   height: 50%;
   background: #ffffff;
@@ -365,8 +364,8 @@ a:hover {
   left: 0;
   content: '';
 }
-.loader:after {
-  background: #0dc5c1;
+.loader-circle:after {
+  background: #242433;
   width: 75%;
   height: 75%;
   border-radius: 50%;
@@ -706,5 +705,3 @@ a:hover {
   }
 
 }
-
-
