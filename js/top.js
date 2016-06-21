@@ -25,22 +25,28 @@ function topButton () {
 	alert ("top");
 }
 
-function openKik () {
-	console.log("KIK");
-	if (kik.enabled) {
-		kik.openConversation("streamcard");
-		//window.open("https://kik.me/streamcard", '_blank');
+function openKik (channelName) {
+	console.log("KIK - ["+isMobile()+"]["+kik.enabled+"]");
 
-		//kik.send('streamcard', {
-		//  title     : 'Streamcard Notifications',
-		//  text      : channel,
-		//  data      : {
-		//    channel : channel
-		//  }
-		//});
+	if (isMobile()) {
+		if (kik.enabled) {
+			kik.openConversation("streamcard");
+			//window.open("https://kik.me/streamcard", '_blank');
+
+			//kik.send('streamcard', {
+			//  title     : 'Streamcard Notifications',
+			//  text      : channel,
+			//  data      : {
+			//    channel : channel
+			//  }
+			//});
+
+		} else {
+			window.open("card://streamcard.tv/channel=" + channel);
+		}
 
 	} else {
-		window.open("card://streamcard.tv/channel="+channel);
+		window.open("https://kik.me/streamcard", '_blank');
 
 		//$('.overlay-title').text('Requires Kik');
 		//$('.overlay-message').text('Visit this page within Kik browser to enable.');
@@ -49,13 +55,13 @@ function openKik () {
 	}
 }
 
-function openDiscord () {
+function openDiscord (channelName) {
 	console.log("DISCORD");
 	//location.href = "https://discord.gg/014do3goV6bJgwIf8";
 	window.open("https://discord.gg/014do3goV6bJgwIf8", '_blank');
 }
 
-function openTwitch () {
+function openTwitch (channelName) {
 	console.log("TWITCH");
 
 	if (twitch_auth.twitch_id == "") {
@@ -63,16 +69,28 @@ function openTwitch () {
 		twitchAuth();
 
 	} else {
-
+		$.ajax({
+			url: 'http://beta.modd.live/api/streamer_subscribe.php',
+			type: 'GET',
+			data: {
+				type : 'whisper',
+				channel : channelName,
+				username : twitch_auth.twitch_name
+			},
+			dataType: 'json',
+			success: function(response) {
+				$('.overlay-title').text('Subscribed to ' + channelName);
+				$('.overlay-message').text('You will now recieve updates from this streamer.');
+				$('.overlay-button').text('OK');
+				$('.overlay-alert').removeClass('is-hidden');
+			}
+		});
 	}
 }
 
-function openFacebook () {
+function openFacebook (channelName) {
 	console.log("FACEBOOK");
-	$('.overlay-title').text('Comming Soon!');
-	$('.overlay-message').text('Facebook messenger coming shortly.');
-	$('.overlay-button').text('OK');
-	$('.overlay-alert').removeClass('is-hidden');
+	window.open("http://m.me/streamcard", "_blank");
 }
 
 function twitchAuth(channelName) {

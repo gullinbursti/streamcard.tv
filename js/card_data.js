@@ -1,6 +1,8 @@
 
 function populate() {
 
+	$('#channel-name').text(channel);
+
 	im_captions = {
 		kik : "Tap to receive "+channel+"'s stats on Kik Messenger.",
 		discord : "Tap to receive "+channel+"'s stats on Discord.",
@@ -441,6 +443,7 @@ function revealLoadedMessages() {
 	$('#player-title').removeClass('is-hidden');
 	$('#card-buttons-top').removeClass('is-hidden');
 	$('#card-buttons-bottom').removeClass('is-hidden');
+	$('#signup-title').removeClass('is-hidden');
 }
 
 function updateGraph() {
@@ -820,6 +823,63 @@ $(document).ready(function() {
 		}
 	}
 
+	var clipboard = new Clipboard('.connect-im');
+	clipboard.on('success', function(e) {
+		//console.log('Action:', e.action);
+		//console.log('Text:', e.text);
+		//console.log('Trigger:', e.trigger);
+
+		$('.overlay-title').text(channel);
+		$('.overlay-message').html('Copied to clipboard, redirecting to '+$(e.trigger).attr('data-im')+'<br><div class="loader">Loading...</div>');
+		$('.overlay-button').addClass('is-hidden');
+		$('.overlay-alert').removeClass('is-hidden');
+
+		setTimeout(function() {
+			$('.overlay-alert').addClass('is-hidden');
+			$('.overlay-button').removeClass('is-hidden');
+			connectMessenger($(e.trigger).attr('data-im').toLowerCase());
+		}, 3000);
+
+		e.clearSelection();
+	});
+
+	clipboard.on('error', function(e) {
+		console.error('Action:', e.action);
+		console.error('Trigger:', e.trigger);
+	});
+
+
+	var clipboard2 = new Clipboard('#messenger-connected');
+	clipboard2.on('success', function(e) {
+		//console.log('Action:', e.action);
+		//console.log('Text:', e.text);
+		//console.log('Trigger:', e.trigger);
+
+		$('.overlay-title').text(channel);
+		$('.overlay-message').html('Copied to clipboard, redirecting to '+connectService+'<br><div class="loader">Loading...</div>');
+		$('.overlay-button').addClass('is-hidden');
+		$('.overlay-alert').removeClass('is-hidden');
+
+		setTimeout(function() {
+			$('.overlay-alert').addClass('is-hidden');
+			$('.overlay-button').removeClass('is-hidden');
+			connectMessenger(connectService.toLowerCase());
+		}, 3000);
+
+		e.clearSelection();
+	});
+
+	clipboard.on('error', function(e) {
+		console.error('Action:', e.action);
+		console.error('Trigger:', e.trigger);
+	});
+
+
+	connectMessenger(connectService.toLowerCase());
+
+
+
+
 	resizer();
 	window.addEventListener('resize', function(event){
 		resizer();
@@ -832,3 +892,12 @@ $(document).ready(function() {
 	$('.footer-copyright').html('&copy; '+(new Date()).getFullYear()+' MODD Inc.');
 });
 
+
+
+function openMessenger(service) {
+	console.log("openMessenger");
+
+	var range = document.createRange();
+	range.selectNode($('#channel-name'));
+	window.getSelection().addRange(range);
+}

@@ -25,7 +25,7 @@ function populateRows(game_name) {
 	});
 
 	$('.leaderboard-wrapper').empty();
-	$('.leaderboard-wrapper').html('<div class="flex-container" style="border-top:0 solid #1a1a1a; border-bottom:1px solid #1a1a1a; color:#ccc; font-weight:400;"><div class="game-flex-item"><div class="loader">Loading...</div></div></div>');
+	$('.leaderboard-wrapper').html('<div class="flex-container" style="border-top:0 solid #1a1a1a; border-bottom:1px solid #1a1a1a; color:#ccc; font-weight:400;"><div class="game-flex-item"><div class="loader-circle">Loading...</div></div></div>');
 
 	$.ajax({
 		url: 'http://beta.modd.live/api/top_games.php',
@@ -47,7 +47,12 @@ function populateRows(game_name) {
 				//html += '<div class="viewers-flex">' + numberWithCommas(item.viewers) + '</div>';
 				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="card-value-flex">$'+price+'</div>';
 				//html += '<div class="card-button-flex" onclick="rowHit(\'' + item.channel + '\')"><span class="hover-link"><div class="buy-buton" style="margin:0; font-size:16px; line-height:0;">VIEW</div></span></div>';
-				html += '<div class="card-button-flex" style="padding-top:12px; line-height:0"><img class="im-button" onclick="openKik();" src="/img/icon-kik.png" width="28" height="28" /><img onclick="openDiscord();" class="im-button" src="/img/icon-discord.png" width="28" height="28" /><img onclick="openTwitch(\''+item.channel+'\');" class="im-button" src="/img/icon-twitch.png" width="28" height="28" /><img onclick="openFacebook();" class="im-button" src="/img/icon-fb.png" width="28" height="28" /></div>';
+				html += '<div class="card-button-flex" style="padding-top:12px; line-height:0">';
+				html += '  <img class="im-button" data-im="Kik" data-clipboard-text="'+item.channel+'" data-channel="'+item.channel+'" src="/img/icon-kik.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Discord" data-clipboard-text="'+item.channel+'" data-channel="'+item.channel+'" src="/img/icon-discord.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Twitch" data-clipboard-text="'+item.channel+'" data-channel="'+item.channel+'" src="/img/icon-twitch.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Facebook" data-clipboard-text="'+item.channel+'" data-channel="'+item.channel+'" src="/img/icon-fb.png" width="28" height="28" />';
+				html += '</div>';
 				html += '</div>';
 
 
@@ -201,6 +206,43 @@ $(document).ready(function() {
 		$('#overwatch-button').removeClass('is-selected');
 		$('#hearthstone-button').removeClass('is-selected');
 		$('#lol-button').removeClass('is-selected');
+	});
+
+
+	var clipboard = new Clipboard('.im-button');
+	clipboard.on('success', function(e) {
+		//console.log('Action:', e.action);
+		//console.log('Text:', e.text);
+		//console.log('Trigger:', e.trigger);
+
+		$('.overlay-title').text(e.text);
+		$('.overlay-message').html('Copied to clipboard, redirecting to '+$(e.trigger).attr('data-im')+'<br><div class="loader-circle">Loading...</div>');
+		$('.overlay-button').addClass('is-hidden');
+		$('.overlay-alert').removeClass('is-hidden');
+
+		setTimeout(function() {
+			$('.overlay-alert').addClass('is-hidden');
+			$('.overlay-button').removeClass('is-hidden');
+			if ($(e.trigger).attr('data-im').toLowerCase() == "kik") {
+				openKik(e.text);
+
+			} else if ($(e.trigger).attr('data-im').toLowerCase() == "discord") {
+				openDiscord(e.text);
+
+			} else if ($(e.trigger).attr('data-im').toLowerCase() == "twitch") {
+				openTwitch(e.text);
+
+			} else if ($(e.trigger).attr('data-im').toLowerCase() == "facebook") {
+				openFacebook(e.text);
+			}
+		}, 3000);
+
+		e.clearSelection();
+	});
+
+	clipboard.on('error', function(e) {
+		console.error('Action:', e.action);
+		console.error('Trigger:', e.trigger);
 	});
 
 

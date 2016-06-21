@@ -57,20 +57,27 @@ function legal() {
 }
 
 function openKik () {
-	if (kik.enabled) {
-		kik.openConversation("streamcard");
-		//window.open("https://kik.me/streamcard", '_blank');
+	console.log("KIK - ["+isMobile()+"]["+kik.enabled+"]");
 
-		//kik.send('streamcard', {
-		//  title     : 'Streamcard Notifications',
-		//  text      : channel,
-		//  data      : {
-		//    channel : channel
-		//  }
-		//});
+	if (isMobile()) {
+		if (kik.enabled) {
+			kik.openConversation("streamcard");
+			//window.open("https://kik.me/streamcard", '_blank');
+
+			//kik.send('streamcard', {
+			//  title     : 'Streamcard Notifications',
+			//  text      : channel,
+			//  data      : {
+			//    channel : channel
+			//  }
+			//});
+
+		} else {
+			window.open("card://streamcard.tv/channel=" + channel);
+		}
 
 	} else {
-		window.open("card://streamcard.tv/channel="+channel);
+		window.open("https://kik.me/streamcard", '_blank');
 
 		//$('.overlay-title').text('Requires Kik');
 		//$('.overlay-message').text('Visit this page within Kik browser to enable.');
@@ -86,23 +93,35 @@ function openDiscord () {
 }
 
 function openTwitch () {
-	console.log("TWITCH");
+	console.log("TWITCH - "+twitch_auth.twitch_id);
 
 	if (twitch_auth.twitch_id == "") {
 		setCookie('whisper_request', "1");
 		twitchAuth();
 
 	} else {
-
+		$.ajax({
+			url: 'http://beta.modd.live/api/streamer_subscribe.php',
+			type: 'GET',
+			data: {
+				type : 'whisper',
+				channel : channel,
+				username : twitch_auth.twitch_name
+			},
+			dataType: 'json',
+			success: function(response) {
+				$('.overlay-title').text('Subscribed to ' + channel);
+				$('.overlay-message').text('You will now recieve updates from this streamer.');
+				$('.overlay-button').text('OK');
+				$('.overlay-alert').removeClass('is-hidden');
+			}
+		});
 	}
 }
 
 function openFacebook () {
 	console.log("FACEBOOK");
-	$('.overlay-title').text('Comming Soon!');
-	$('.overlay-message').text('Facebook messenger coming shortly.');
-	$('.overlay-button').text('OK');
-	$('.overlay-alert').removeClass('is-hidden');
+	window.open("http://m.me/streamcard", "_blank");
 }
 
 function support () {
@@ -181,16 +200,16 @@ function setupChatAnimationEvents() {
 			//$('#im-info').text(capitalize(service) + ' - Get real-time chat updates from your favorite game, team, and eSports players' );
 			connectService = service;
 
-			if (service == "kik") {
+			if (service.toLowerCase() == "kik") {
 				$('#im-info').text("Tap to receive "+channel+"'s stats on Kik Messenger.");
 
-			} else if (service == "discord") {
+			} else if (service.toLowerCase() == "discord") {
 			  $('#im-info').text("Tap to receive "+channel+"'s stats on Discord.");
 
-			} else if (service == "whisper") {
+			} else if (service.toLowerCase() == "twitch") {
 				$('#im-info').text("Tap to receive "+channel+"'s stats on Twitch's Whisper.");
 
-			} else if (service == "facebook") {
+			} else if (service.toLowerCase() == "facebook") {
 				$('#im-info').text("Tap to receive "+channel+"'s stats on Facebook Messenger.");
 			}
 
@@ -215,7 +234,7 @@ function connectMessenger(service) {
 	} else if (service == "discord") {
 		openDiscord();
 
-	} else if (service == "whisper") {
+	} else if (service == "twitch") {
 		openTwitch();
 
 	} else if (service == "facebook") {
@@ -238,7 +257,7 @@ $(function(){
 	setupChatAnimationEvents();
 
 
-	$('#messenger-connected').click(function() {
+	//$('#messenger-connected').click(function() {
 		/*
 		 $.ajax({
 		 url: 'http://beta.modd.live/api/card_purchases.php',
@@ -257,9 +276,9 @@ $(function(){
 		 });
 		 */
 
-		connectMessenger(connectService.toLowerCase());
+		//connectMessenger(connectService.toLowerCase());
 
-	});
+	//});
 
 	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' Streamcard.tv');
 });
