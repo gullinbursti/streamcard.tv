@@ -120,21 +120,6 @@
 			  cursor: pointer;
 		  }
 
-		  .loader-circle {
-			  color: #999;
-			  font-size: 6px;
-			  margin: 50px auto;
-			  width: 1em;
-			  height: 1em;
-			  border-radius: 50%;
-			  position: relative;
-			  text-indent: -9999em;
-			  -webkit-animation: load4 1.3s infinite linear;
-			  animation: load4 1.3s infinite linear;
-			  -webkit-transform: translateZ(0);
-			  -ms-transform: translateZ(0);
-			  transform: translateZ(0);
-		  }
 
 		  @media (max-width: 600px) {
 			  .channel-name-flex {
@@ -148,80 +133,51 @@
 			  }
 		  }
 
-		  @-webkit-keyframes load4 {
-			  0%,
-			  100% {
-				  box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
-			  }
-			  12.5% {
-				  box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
-			  }
-			  25% {
-				  box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
-			  }
-			  37.5% {
-				  box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
-			  }
-			  50% {
-				  box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
-			  }
-			  62.5% {
-				  box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
-			  }
-			  75% {
-				  box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
-			  }
-			  87.5% {
-				  box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
-			  }
-		  }
-		  @keyframes load4 {
-			  0%,
-			  100% {
-				  box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
-			  }
-			  12.5% {
-				  box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
-			  }
-			  25% {
-				  box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
-			  }
-			  37.5% {
-				  box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
-			  }
-			  50% {
-				  box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
-			  }
-			  62.5% {
-				  box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
-			  }
-			  75% {
-				  box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
-			  }
-			  87.5% {
-				  box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
-			  }
-		  }
+		  
+			
+			.app-header-top {
+				
+				position:absolute;
+				top:0px;
+				left:0px;
+				width:100%;
+				line-height:48px;
+				text-align:center;
+				
+				background-color:#0e1116;
+				
+			}
+			
 	  </style>
   </head>
   <body>
-    <div class="index-wrapper">
+		
+		<div class="app-header-top">
+			
+			<div class="app-header-logo" style="background-color:#161921; border-right:0px solid #2f2f42; width:48px; float:left;"><img src="img/logo.png" width="48px" style="vertical-align:middle;" onclick="home()"></div>
+			<div class="app-header-title" style="float:right;"><img src="img/icon-kik.png" width="32px"> <img src="img/icon-discord.png" width="32px"> <img src="img/icon-twitch.png" width="32px"> <img src="img/icon-fb.png" width="32px"></div>
+			<div>asda</div>
+			
+		</div>
+		
+		
+    <div class="index-wrapper" style="padding-top:48px;">
 
       <!-- HEADER clip:rect(0px auto 260px 0px) -->
       <div class="header-wrapper" style="background-color:#000;">
 	      <div class="preview-video" style="width:100%; height:260px; background-color: #000; opacity:0.2; overflow:hidden;"><iframe class="player-frame" src="" frameborder="0" scrolling="no" height="260" width="100%"></iframe></div>
         <div class="row center-xs" style="border:0; position: absolute; top:0; left:0; width:100%;">
           <div class="col-xs-10">
-            <div class="box" style="font-weight:700px; padding-top:80px; padding-bottom:80px;">
-              <div class="info" style="font-size:34px; color:#fff;">Get  <span class="game-name"></span> player &amp; team chat stats now.</div>
-	             <div class="info">Receive chat stats from the best <span class="game-name"></span> players in the world.</div>
+            <div class="box" style="font-weight:700px; padding-top:120px; padding-bottom:80px;">
+              <div class="info" style="font-size:42px; color:#fff;"><span class="game-name"></span> player &amp; team chat stats</div>
+	             <div class="info">Receive chat stats from the best <span class="game-name"></span> players in the world</div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- WHAT IS A STREAM CARD HEADER -->
-      <div class="animation-title" style="display:;">
+      <div class="animation-title" style="padding-top:24px;">
         <div class="row center-xs" style="background-color:#0e1116; border-top: 0px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; border-left: 1px solid #1a1a1a; border-right: 1px solid #1a1a1a;">
           <div class="col-xs-10">
             <div class="box" style="font-weight:700px;">
@@ -256,7 +212,7 @@
       <!-- ROW HEADER -->
 	    <div class="flex-container" style="border-top:0 solid #2f2f42; border-bottom:1px solid #2f2f42; color:#ccc; font-weight:400; background-color:#0e1116">
 		    <div class="rank-flex">Rank</div>
-		    <div class="channel-avatar-flex" style="line-height: 65px;">Live</div>
+		    <div class="channel-avatar-flex" style="line-height: 65px;"></div>
 		    <div class="channel-name-flex">Player</div>
 		    <div class="retention-flex">Retention</div>
 		    <div class="viewers-flex">Viewers</div>
