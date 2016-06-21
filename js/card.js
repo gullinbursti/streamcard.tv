@@ -62,7 +62,7 @@ function openKik () {
 	if (isMobile()) {
 		if (kik.enabled) {
 			kik.openConversation("streamcard");
-			//window.open("https://kik.me/streamcard", '_blank');
+			//window.open("https://kik.me/streamcard");
 
 			//kik.send('streamcard', {
 			//  title     : 'Streamcard Notifications',
@@ -73,11 +73,11 @@ function openKik () {
 			//});
 
 		} else {
-			window.open("card://streamcard.tv/channel=" + channel);
+			location.href = "card://streamcard.tv/card.html?channel="+channel;
 		}
 
 	} else {
-		window.open("https://kik.me/streamcard", '_blank');
+		location.href = "https://kik.me/streamcard";
 
 		//$('.overlay-title').text('Requires Kik');
 		//$('.overlay-message').text('Visit this page within Kik browser to enable.');
@@ -88,8 +88,8 @@ function openKik () {
 
 function openDiscord () {
 	console.log("DISCORD");
-	//location.href = "https://discord.gg/014do3goV6bJgwIf8";
-	window.open("https://discord.gg/014do3goV6bJgwIf8", '_blank');
+	location.href = "https://discord.gg/014do3goV6bJgwIf8";
+	//window.open("https://discord.gg/014do3goV6bJgwIf8");
 }
 
 function openTwitch () {
@@ -121,7 +121,7 @@ function openTwitch () {
 
 function openFacebook () {
 	console.log("FACEBOOK");
-	window.open("http://m.me/streamcard", "_blank");
+	location.href = "http://m.me/streamcard";
 }
 
 function support () {
@@ -227,19 +227,30 @@ function setupChatAnimationEvents() {
 		});
 }
 
-function connectMessenger(service) {
-	if (service == "kik") {
-		openKik();
+function openMessenger(service) {
+	$('.overlay-title').text(channel);
+	$('.overlay-message').html('Copied to clipboard, redirecting to '+service+'<br><div class="loader">Loading...</div>');
+	$('.overlay-button').addClass('is-hidden');
+	$('.overlay-alert').removeClass('is-hidden');
 
-	} else if (service == "discord") {
-		openDiscord();
+	setTimeout(function() {
+		$('.overlay-alert').addClass('is-hidden');
+		$('.overlay-button').removeClass('is-hidden');
 
-	} else if (service == "twitch") {
-		openTwitch();
+		if (service.toLowerCase() == "kik") {
+			openKik();
 
-	} else if (service == "facebook") {
-		openFacebook();
-	}
+		} else if (service.toLowerCase() == "discord") {
+			openDiscord();
+
+		} else if (service.toLowerCase() == "twitch") {
+			openTwitch();
+
+		} else if (service.toLowerCase() == "facebook") {
+			openFacebook();
+		}
+
+	}, 3000);
 }
 
 function capitalize(string) {
@@ -257,28 +268,27 @@ $(function(){
 	setupChatAnimationEvents();
 
 
-	//$('#messenger-connected').click(function() {
-		/*
-		 $.ajax({
-		 url: 'http://beta.modd.live/api/card_purchases.php',
-		 data: {
-		 action: 'purchased',
-		 twitch_id: twitch_auth.twitch_id,
-		 channel: channel
-		 },
-		 type: 'POST',
-		 dataType: 'json',
-		 success: function (response) {
-		 if (response.result == 1) {
-		 connectMessenger(connectService.toLowerCase());
-		 }
-		 }
-		 });
-		 */
+	$('#messenger-connected').click(function() {
+		console.log("CONNECT TO: "+connectService);
+		//$.ajax({
+		//	url: 'http://beta.modd.live/api/card_purchases.php',
+		//	data: {
+		//		action: 'purchased',
+		//		twitch_id: twitch_auth.twitch_id,
+		//		channel: channel
+		//	},
+		//	type: 'POST',
+		//	dataType: 'json',
+		//	success: function (response) {
+		//		if (response.result == 1) {
+		//			openMessenger(connectService);
+		//		}
+		//	}
+		//});
 
-		//connectMessenger(connectService.toLowerCase());
+		openMessenger(connectService);
 
-	//});
+	});
 
 	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' Streamcard.tv');
 });

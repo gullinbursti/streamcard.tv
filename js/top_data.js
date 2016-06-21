@@ -48,10 +48,10 @@ function populateRows(game_name) {
 				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="card-value-flex">$'+price+'</div>';
 				//html += '<div class="card-button-flex" onclick="rowHit(\'' + item.channel + '\')"><span class="hover-link"><div class="buy-buton" style="margin:0; font-size:16px; line-height:0;">VIEW</div></span></div>';
 				html += '<div class="card-button-flex" style="padding-top:12px; line-height:0">';
-				html += '  <img class="im-button" data-im="Kik" data-clipboard-text="'+item.channel+'" data-channel="'+item.channel+'" src="/img/icon-kik.png" width="28" height="28" />';
-				html += '  <img class="im-button" data-im="Discord" data-clipboard-text="'+item.channel+'" data-channel="'+item.channel+'" src="/img/icon-discord.png" width="28" height="28" />';
-				html += '  <img class="im-button" data-im="Twitch" data-clipboard-text="'+item.channel+'" data-channel="'+item.channel+'" src="/img/icon-twitch.png" width="28" height="28" />';
-				html += '  <img class="im-button" data-im="Facebook" data-clipboard-text="'+item.channel+'" data-channel="'+item.channel+'" src="/img/icon-fb.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Kik" onclick="openMessenger(\'Kik\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-kik.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Discord" onclick="openMessenger(\'Discord\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-discord.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Twitch" onclick="openMessenger(\'Twitch\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-twitch.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Facebook" onclick="openMessenger(\'Facebook\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-fb.png" width="28" height="28" />';
 				html += '</div>';
 				html += '</div>';
 
@@ -209,42 +209,67 @@ $(document).ready(function() {
 	});
 
 
-	var clipboard = new Clipboard('.im-button');
-	clipboard.on('success', function(e) {
-		//console.log('Action:', e.action);
-		//console.log('Text:', e.text);
-		//console.log('Trigger:', e.trigger);
-
-		$('.overlay-title').text(e.text);
-		$('.overlay-message').html('Copied to clipboard, redirecting to '+$(e.trigger).attr('data-im')+'<br><div class="loader-circle">Loading...</div>');
-		$('.overlay-button').addClass('is-hidden');
-		$('.overlay-alert').removeClass('is-hidden');
-
-		setTimeout(function() {
-			$('.overlay-alert').addClass('is-hidden');
-			$('.overlay-button').removeClass('is-hidden');
-			if ($(e.trigger).attr('data-im').toLowerCase() == "kik") {
-				openKik(e.text);
-
-			} else if ($(e.trigger).attr('data-im').toLowerCase() == "discord") {
-				openDiscord(e.text);
-
-			} else if ($(e.trigger).attr('data-im').toLowerCase() == "twitch") {
-				openTwitch(e.text);
-
-			} else if ($(e.trigger).attr('data-im').toLowerCase() == "facebook") {
-				openFacebook(e.text);
-			}
-		}, 3000);
-
-		e.clearSelection();
-	});
-
-	clipboard.on('error', function(e) {
-		console.error('Action:', e.action);
-		console.error('Trigger:', e.trigger);
-	});
+	//var clipboard = new Clipboard('.im-button');
+	//clipboard.on('success', function(e) {
+	//	//console.log('Action:', e.action);
+	//	//console.log('Text:', e.text);
+	//	//console.log('Trigger:', e.trigger);
+	//
+	//	$('.overlay-title').text(e.text);
+	//	$('.overlay-message').html('Copied to clipboard, redirecting to '+$(e.trigger).attr('data-im')+'<br><div class="loader-circle">Loading...</div>');
+	//	$('.overlay-button').addClass('is-hidden');
+	//	$('.overlay-alert').removeClass('is-hidden');
+	//
+	//	setTimeout(function() {
+	//		$('.overlay-alert').addClass('is-hidden');
+	//		$('.overlay-button').removeClass('is-hidden');
+	//		if ($(e.trigger).attr('data-im').toLowerCase() == "kik") {
+	//			openKik(e.text);
+	//
+	//		} else if ($(e.trigger).attr('data-im').toLowerCase() == "discord") {
+	//			openDiscord(e.text);
+	//
+	//		} else if ($(e.trigger).attr('data-im').toLowerCase() == "twitch") {
+	//			openTwitch(e.text);
+	//
+	//		} else if ($(e.trigger).attr('data-im').toLowerCase() == "facebook") {
+	//			openFacebook(e.text);
+	//		}
+	//	}, 3000);
+	//
+	//	e.clearSelection();
+	//});
+	//
+	//clipboard.on('error', function(e) {
+	//	console.error('Action:', e.action);
+	//	console.error('Trigger:', e.trigger);
+	//});
 
 
 	populateRows("overwatch");
 });
+
+
+function openMessenger(service, channelName) {
+	$('.overlay-title').text(channelName);
+	$('.overlay-message').html('Copied to clipboard, redirecting to '+service+'<br><div class="loader-circle">Loading...</div>');
+	$('.overlay-button').addClass('is-hidden');
+	$('.overlay-alert').removeClass('is-hidden');
+
+	setTimeout(function() {
+		$('.overlay-alert').addClass('is-hidden');
+		$('.overlay-button').removeClass('is-hidden');
+		if (service.toLowerCase() == "kik") {
+			openKik(channelName);
+
+		} else if (service.toLowerCase() == "discord") {
+			openDiscord(channelName);
+
+		} else if (service.toLowerCase() == "twitch") {
+			openTwitch(channelName);
+
+		} else if (service.toLowerCase() == "facebook") {
+			openFacebook(channelName);
+		}
+	}, 3000);
+}

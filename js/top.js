@@ -31,7 +31,7 @@ function openKik (channelName) {
 	if (isMobile()) {
 		if (kik.enabled) {
 			kik.openConversation("streamcard");
-			//window.open("https://kik.me/streamcard", '_blank');
+			//window.open("https://kik.me/streamcard");
 
 			//kik.send('streamcard', {
 			//  title     : 'Streamcard Notifications',
@@ -42,11 +42,11 @@ function openKik (channelName) {
 			//});
 
 		} else {
-			window.open("card://streamcard.tv/channel=" + channel);
+			location.href = "card://streamcard.tv/card.html?channel=" + channel;
 		}
 
 	} else {
-		window.open("https://kik.me/streamcard", '_blank');
+		location.href = "https://kik.me/streamcard";
 
 		//$('.overlay-title').text('Requires Kik');
 		//$('.overlay-message').text('Visit this page within Kik browser to enable.');
@@ -58,7 +58,7 @@ function openKik (channelName) {
 function openDiscord (channelName) {
 	console.log("DISCORD");
 	//location.href = "https://discord.gg/014do3goV6bJgwIf8";
-	window.open("https://discord.gg/014do3goV6bJgwIf8", '_blank');
+	location.href = "https://discord.gg/014do3goV6bJgwIf8";
 }
 
 function openTwitch (channelName) {
@@ -90,7 +90,7 @@ function openTwitch (channelName) {
 
 function openFacebook (channelName) {
 	console.log("FACEBOOK");
-	window.open("http://m.me/streamcard", "_blank");
+	location.href = "http://m.me/streamcard";
 }
 
 function twitchAuth(channelName) {
