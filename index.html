@@ -160,6 +160,36 @@
         height: 100%;
       }
 
+      .top-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 90%;
+        height: 48px;
+        background-color: #000;
+        padding: 0 5%;
+        z-index: 5;
+      }
+      .top-bar .logo {
+        height: 100%;
+        width: auto;
+      }
+      .top-bar .top-bar-icons {
+        float: right;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      .top-bar .top-bar-icons img {
+        width: 32px;
+        height: auto;
+        cursor: pointer;
+        margin-left: 5px;
+      }
+      .top-bar .top-bar-icons img:hover {
+        opacity: .5;
+      }
 
 		  @media (max-width: 600px) {
 			  .channel-name-flex {
@@ -182,6 +212,10 @@
           height: auto;
         }
 		  }
+
+      .index-wrapper {
+        margin-top: 50px;
+      }
 
 		  @-webkit-keyframes load4 {
 			  0%,
@@ -240,6 +274,16 @@
 	  </style>
   </head>
   <body>
+    <div class="top-bar">
+      <a href="/"><img class="logo" src="img/logo.png"/></a>
+
+      <div class="top-bar-icons">
+        <img src="img/icon-kik.png" onclick="openMessenger('kik');">
+        <img src="img/icon-discord.png" onclick="openMessenger('discord');">
+        <img src="img/icon-twitch.png" onclick="openMessenger('twitch');">
+        <img src="img/icon-fb.png" onclick="openMessenger('fb');">
+      </div>
+    </div>
     <div class="index-wrapper">
 
       <!-- HEADER clip:rect(0px auto 260px 0px) -->
