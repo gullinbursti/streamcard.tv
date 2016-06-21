@@ -136,6 +136,31 @@
 			  transform: translateZ(0);
 		  }
 
+      .game-icons {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+      }
+      .game-icons .game-icon {
+        height: 50px;
+        flex: 1 1 auto;
+        padding: 10px 10px;
+        opacity: 0.7;
+        cursor: pointer;
+        background-color: #050608;
+      }
+      .game-icon.is-selected {
+        opacity: .9; 
+      }
+      .game-icon:hover {
+        opacity: 1;
+      }
+      .game-icons .game-icon img {
+        width: auto;
+        height: 100%;
+      }
+
+
 		  @media (max-width: 600px) {
 			  .channel-name-flex {
 				  -webkit-flex: 1 0 0;
@@ -146,6 +171,16 @@
 				  -webkit-flex: 2 0 0;
 				  flex: 2 0 0;
 			  }
+
+        .game-icons .game-icon {
+          height: auto;
+          max-height: 60px;
+          padding: 5px;
+        }
+        .game-icons .game-icon img {
+          width: 100%;
+          height: auto;
+        }
 		  }
 
 		  @-webkit-keyframes load4 {
@@ -232,24 +267,11 @@
       </div>
 			
       <!-- GAME ICONS -->
-	    <div class="flex-container im-icons">
-		    <!--<div class="game-flex-item" id="overwatch-button" data-game="Overwatch" style="border-right: 0 solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608; border-bottom: 1px solid #1a1a1a;">-->
-			    <!--<img id="overwatch-ico" src="img/game-overwatch.png" width="50" style="padding-top:10px; padding-bottom:10px; vertical-align:middle;"></span>-->
-		    <!--</div>-->
-		    <!--<div class="game-flex-item" id="hearthstone-button" data-game="Hearthstone" style="border-right: 0 solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608; border-bottom: 1px solid #1a1a1a;">-->
-			    <!--<img id="hearthstone-ico" src="img/game-hearthstone-256.png" width="50" style="padding-top:25px; padding-bottom:10px;">-->
-		    <!--</div>-->
-		    <!--<div class="game-flex-item" id="lol-button" data-game="League of Legends" style="border-right: 0 solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608; border-bottom: 1px solid #1a1a1a;">-->
-			    <!--<img id="lol-ico" src="img/game-leagueoflegends-256.png" width="50" style="padding-top:25px; padding-bottom:10px;">-->
-		    <!--</div>-->
-		    <!--<div class="game-flex-item" id="dota-button" data-game="DOTA 2" style="border-right: 1px solid #1a1a1a; border-left: 1px solid #1a1a1a; background-color:#050608; border-bottom: 1px solid #1a1a1a;">-->
-			    <!--<img id="dota-ico" src="img/game-dota2.png" width="50" style="padding-top:10px; padding-bottom:10px;">-->
-		    <!--</div>-->
-
-		    <div class="im-icon is-selected game-flex-item" id="overwatch-button" data-game="Overwatch" style="background-image: url(/img/game-overwatch-256.png); background-size: 30% auto;"></div>
-		    <div class="im-icon game-flex-item" id="hearthstone-button" data-game="Hearthstone" style="background-image: url(/img/game-hearthstone-256.png); background-size: 30% auto;"></div>
-		    <div class=" im-icon game-flex-item" id="lol-button" data-game="League of Legends" style="background-image: url(/img/game-leagueoflegends-256.png); background-size: 30% auto;"></div>
-		    <div class="im-icon game-flex-item" id="dota-button" data-game="DOTA 2" style="background-image: url(/img/game-dota2-256.png); background-size: 30% auto;"></div>
+	    <div class="game-icons">
+        <div class="game-icon is-selected"><img src="/img/game-overwatch-256.png"/></div>
+        <div class="game-icon"><img src="/img/game-hearthstone-256.png"/></div>
+        <div class="game-icon"><img src="/img/game-leagueoflegends-256.png"/></div>
+        <div class="game-icon"><img src="/img/game-dota2-256.png"/></div>
 	    </div>
 
 
