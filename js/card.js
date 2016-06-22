@@ -2,9 +2,9 @@
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-79705534-1', 'auto');
+ga('create', 'UA-74998463-1', 'auto');
 ga('send', 'pageview');
 
 
@@ -54,6 +54,32 @@ function addCard() {
 
 function legal() {
 	location.href = "/legal.html";
+}
+
+function openMessenger(service) {
+	$('.overlay-title').text(channel);
+	$('.overlay-message').html('Copied to clipboard, redirecting to '+service+'<br><div class="loader">Loading...</div>');
+	$('.overlay-button').addClass('is-hidden');
+	$('.overlay-alert').removeClass('is-hidden');
+
+	setTimeout(function() {
+		$('.overlay-alert').addClass('is-hidden');
+		$('.overlay-button').removeClass('is-hidden');
+
+		if (service.toLowerCase() == "kik") {
+			openKik();
+
+		} else if (service.toLowerCase() == "discord") {
+			openDiscord();
+
+		} else if (service.toLowerCase() == "twitch") {
+			openTwitch();
+
+		} else if (service.toLowerCase() == "facebook") {
+			openFacebook();
+		}
+
+	}, 3000);
 }
 
 function openKik () {
@@ -121,7 +147,7 @@ function openTwitch () {
 
 function openFacebook () {
 	console.log("FACEBOOK");
-	location.href = "http://m.me/streamcard";
+	location.href = "http://m.me/streamcardtv";
 }
 
 function support () {
@@ -227,40 +253,6 @@ function setupChatAnimationEvents() {
 		});
 }
 
-function openMessenger(service) {
-	ga('send', {
-		'hitType'       : 'event',
-		'eventCategory' : service,
-		'eventAction'   : 'Open',
-		'eventLabel'    : (twitch_auth.twitch_name != "") ? twitch_auth.twitch_name : channel,
-		'eventValue'    : 1
-	});
-
-	$('.overlay-title').text(channel);
-	$('.overlay-message').html('Copied to clipboard, redirecting to '+service+'<br><div class="loader">Loading...</div>');
-	$('.overlay-button').addClass('is-hidden');
-	$('.overlay-alert').removeClass('is-hidden');
-
-	setTimeout(function() {
-		$('.overlay-alert').addClass('is-hidden');
-		$('.overlay-button').removeClass('is-hidden');
-
-		if (service.toLowerCase() == "kik") {
-			openKik();
-
-		} else if (service.toLowerCase() == "discord") {
-			openDiscord();
-
-		} else if (service.toLowerCase() == "twitch") {
-			openTwitch();
-
-		} else if (service.toLowerCase() == "facebook") {
-			openFacebook();
-		}
-
-	}, 3000);
-}
-
 function capitalize(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -269,6 +261,10 @@ var connectService = "";
 
 $(function(){
 	// on document ready
+
+	if (isMobile() && kik.enabled) {
+			kik.openConversation("streamcard");
+	}
 
 	resizeCardPage();
 	window.addEventListener('resize', resizeCardPage);
@@ -298,6 +294,6 @@ $(function(){
 
 	});
 
-	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' Streamcard.tv');
+	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' Streamcard.tv <br> Trademarks & logos belong to their respective owners');
 });
 

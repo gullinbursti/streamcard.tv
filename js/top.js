@@ -25,6 +25,43 @@ function topButton () {
 	alert ("top");
 }
 
+function openMessenger(service, channelName) {
+	ga('send', {
+		'hitType'       : 'event',
+		'eventCategory' : service,
+		'eventAction'   : 'Open',
+		'eventLabel'    : (twitch_auth.twitch_name != "") ? twitch_auth.twitch_name : channelName,
+		'eventValue'    : 1
+	});
+
+	$('.overlay-title').text(channelName);
+	$('.overlay-message').html('Copied to clipboard, redirecting to '+service+'');
+	$('.overlay-footer').html('<div class="loader-circle">Loading...</div>');
+	$('.overlay-button').addClass('is-hidden');
+	$('.overlay-alert').removeClass('is-hidden');
+
+
+	setTimeout(function() {
+		$('.overlay-alert').addClass('is-hidden');
+		$('.overlay-button').removeClass('is-hidden');
+
+		/*
+		if (service.toLowerCase() == "kik") {
+			openKik(channelName);
+
+		} else if (service.toLowerCase() == "discord") {
+			openDiscord(channelName);
+
+		} else if (service.toLowerCase() == "twitch") {
+			openTwitch(channelName);
+
+		} else if (service.toLowerCase() == "facebook") {
+			openFacebook(channelName);
+		}*/
+	}, 3000);
+
+}
+
 function openKik (channelName) {
 	console.log("KIK - ["+isMobile()+"]["+kik.enabled+"]");
 
@@ -42,7 +79,7 @@ function openKik (channelName) {
 			//});
 
 		} else {
-			location.href = "card://streamcard.tv/card.html?channel=" + channel;
+			//location.href = "card://streamcard.tv/card.html?channel=" + channel;
 		}
 
 	} else {
@@ -92,7 +129,7 @@ function openTwitch (channelName) {
 
 function openFacebook (channelName) {
 	console.log("FACEBOOK");
-	location.href = "http://m.me/streamcard";
+	location.href = "http://m.me/streamcardtv";
 }
 
 function twitchAuth(channelName) {
@@ -152,12 +189,26 @@ function support () {
 	}, 1);
 }
 
+function showInstantMessengersOverlay() {
+	$('.overlay-title').text('Sign up for Chat Stats');
+	$('.overlay-message').html(
+		'<img src="img/icon-kik.png" onclick="openMessenger(\'kik\');">' +
+		'<img src="img/icon-discord.png" onclick="openMessenger(\'discord\');">' +
+		'<img src="img/icon-twitch.png" onclick="openMessenger(\'twitch\');">' +
+		'<img src="img/icon-fb.png" onclick="openMessenger(\'facebook\');">'
+	);
+	$('.overlay-button').removeClass('is-hidden').text('Ok');
+	$('.overlay-alert').removeClass('is-hidden');
+
+}
+
 
 function resizer() {
-	var height = $('.header-wrapper').width() * 9 / 16;
+	var height = Math.floor($('.header-wrapper').width() * 9 / 16);
 
-	//$('.preview-video').css('height', Math.floor(height) + 'px');
-	$('.player-frame').attr('height', Math.floor(height));
+	//$('.preview-video').css('height', height + 'px');
+	$('.player-frame').attr('height', height);
+	//$('#header-text').css('padding-top', (height - 30) + 'px');
 }
 
 var twitch_auth = {
@@ -173,11 +224,11 @@ $(document).ready(function() {
 		resizer();
 	});
 
-	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' Streamcard.tv');
-
+	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' Streamcard.tv <br> Trademarks & logos belong to their respective owners');
+	
   // trigger an IM icon overlay if the user scrolls down enough to make the trigger div appear
   //  (uses jQuery "inview" plugin)
   $('#im-overlay-trigger-when-visible').one('inview', function(){
-    showInstantMessengersOverlay();
+    //showInstantMessengersOverlay();
   });
 });

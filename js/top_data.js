@@ -126,17 +126,6 @@ $(document).ready(function() {
 		}
 	});
 
-	//$('#overwatch-button').mouseover(function() {
-	//	$('#game-info').text(overwatch_info);
-	//	$(this).css('cursor', 'pointer');
-	//	$('#kik-ico').css('opacity', '0.2');
-	//});
-	//
-	//$('#overwatch-button').mouseleave(function() {
-	//	$(this).css('cursor', 'default');
-	//	$('#overwatch-ico').css('opacity', '1');
-	//});
-
 	$('#overwatch-button').click(function() {
 		populateRows($(this).attr('data-game').toLowerCase());
 		$('.game-name').text($(this).attr('data-game'));
@@ -145,18 +134,8 @@ $(document).ready(function() {
 		$('#hearthstone-button').removeClass('is-selected');
 		$('#lol-button').removeClass('is-selected');
 		$('#dota-button').removeClass('is-selected');
+		$('.game-header-image').attr('src', "img/home-device-overwatch.png");
 	});
-
-	//$('#hearthstone-button').mouseover(function() {
-	//	$('#game-info').text(hearthstone_info);
-	//	$(this).css('cursor', 'pointer');
-	//	$('#discord-ico').css('opacity', '0.2');
-	//});
-	//
-	//$('#hearthstone-button').mouseleave(function() {
-	//	$(this).css('cursor', 'default');
-	//	$('#hearthstone-ico').css('opacity', '1');
-	//});
 
 	$('#hearthstone-button').click(function() {
 		populateRows($(this).attr('data-game').toLowerCase());
@@ -166,18 +145,8 @@ $(document).ready(function() {
 		$('#overwatch-button').removeClass('is-selected');
 		$('#lol-button').removeClass('is-selected');
 		$('#dota-button').removeClass('is-selected');
+		$('.game-header-image').attr('src', "img/home-device-hearthstone.png");
 	});
-
-	//$('#lol-button').mouseover(function() {
-	//	$('#game-info').text(lol_info);
-	//	$(this).css('cursor', 'pointer');
-	//	$('#lol-ico').css('opacity', '0.2');
-	//});
-	//
-	//$('#lol-button').mouseleave(function() {
-	//	$(this).css('cursor', 'default');
-	//	$('#lol-ico').css('opacity', '1');
-	//});
 
 	$('#lol-button').click(function() {
 		populateRows($(this).attr('data-game').toLowerCase());
@@ -187,18 +156,8 @@ $(document).ready(function() {
 		$('#overwatch-button').removeClass('is-selected');
 		$('#hearthstone-button').removeClass('is-selected');
 		$('#dota-button').removeClass('is-selected');
+		$('.game-header-image').attr('src', "img/home-device-league.png");
 	});
-
-	//$('#dota-button').mouseover(function() {
-	//	$('#game-info').text(dota_info);
-	//	$(this).css('cursor', 'pointer');
-	//	$('#dota-ico').css('opacity', '0.2');
-	//});
-	//
-	//$('#dota-button').mouseleave(function() {
-	//	$(this).css('cursor', 'default');
-	//	$('#dota-ico').css('opacity', '1');
-	//});
 
 	$('#dota-button').click(function() {
 		populateRows($(this).attr('data-game').toLowerCase());
@@ -208,6 +167,7 @@ $(document).ready(function() {
 		$('#overwatch-button').removeClass('is-selected');
 		$('#hearthstone-button').removeClass('is-selected');
 		$('#lol-button').removeClass('is-selected');
+		$('.game-header-image').attr('src', "img/home-device-dota2.png");
 	});
 
 
@@ -250,52 +210,3 @@ $(document).ready(function() {
 
 	populateRows("overwatch");
 });
-
-
-function openMessenger(service, channelName) {
-	ga('send', {
-		'hitType'       : 'event',
-		'eventCategory' : service,
-		'eventAction'   : 'Open',
-		'eventLabel'    : (twitch_auth.twitch_name != "") ? twitch_auth.twitch_name : channelName,
-		'eventValue'    : 1
-	});
-
-	$('.overlay-title').text(channelName);
-	$('.overlay-message').html('Copied to clipboard, redirecting to '+service+'');
-	$('.overlay-footer').html('<div class="loader-circle">Loading...</div>');
-	$('.overlay-button').addClass('is-hidden');
-	$('.overlay-alert').removeClass('is-hidden');
-
-
-	setTimeout(function() {
-		$('.overlay-alert').addClass('is-hidden');
-		$('.overlay-button').removeClass('is-hidden');
-		if (service.toLowerCase() == "kik") {
-			openKik(channelName);
-
-		} else if (service.toLowerCase() == "discord") {
-			openDiscord(channelName);
-
-		} else if (service.toLowerCase() == "twitch") {
-			openTwitch(channelName);
-
-		} else if (service.toLowerCase() == "facebook") {
-			openFacebook(channelName);
-		}
-	}, 3000);
-
-}
-
-function showInstantMessengersOverlay() {
-  $('.overlay-title').text('Sign up for Chat Stats');
-  $('.overlay-message').html(
-    '<img src="img/icon-kik.png" onclick="openMessenger(\'kik\');">' +
-    '<img src="img/icon-discord.png" onclick="openMessenger(\'discord\');">' +
-    '<img src="img/icon-twitch.png" onclick="openMessenger(\'twitch\');">' +
-    '<img src="img/icon-fb.png" onclick="openMessenger(\'facebook\');">'
-  );
-  $('.overlay-button').removeClass('is-hidden').text('Ok');
-  $('.overlay-alert').removeClass('is-hidden');
-
-}

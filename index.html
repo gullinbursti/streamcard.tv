@@ -51,27 +51,28 @@
     <div class="top-bar">
       <a href="/"><img class="logo" src="img/logo.png"/></a>
       <div class="top-bar-icons">
-        <img src="img/icon-kik.png" onclick="openMessenger('kik');">
-        <img src="img/icon-discord.png" onclick="openMessenger('discord');">
-        <img src="img/icon-twitch.png" onclick="openMessenger('twitch', 'lirik');">
-        <img src="img/icon-fb.png" onclick="openMessenger('fb');">
+				<span class="top-bar-info">Get stats on</span>
+        <img src="img/icon-kik.png" onclick="openMessenger('kik');" style="padding:0px; border:2px solid #242433; border-radius:6px;">
+        <img src="img/icon-discord.png" onclick="openMessenger('discord');" style="padding:0px; border:2px solid #242433; border-radius:6px;">
+        <img src="img/icon-twitch.png" onclick="openMessenger('twitch', 'lirik');" style="padding:0px; border:2px solid #242433; border-radius:6px;">
+        <img src="img/icon-fb.png" onclick="openMessenger('facebook');" style="padding:0px; border:2px solid #242433; border-radius:6px;">
       </div>
     </div>
 
     <div class="index-wrapper">
       <!-- HEADER clip:rect(0px auto 260px 0px) -->
-      <div class="header-wrapper" style="background-color:#000;">
+      <div class="header-wrapper" style="background-color:#242433;">
 	      <!--<div class="preview-video" style="width:100%; height:260px; background-color: #000; opacity:0.2; overflow:hidden;"><iframe class="player-frame" src="" frameborder="0" scrolling="no" height="260" width="100%"></iframe></div>-->
-	      <div class="preview-video" style="width:100%; height:260px; background-color: #000; opacity:0.2; overflow:hidden;"><img class="preview-image" width="100%" /></div>
-        <div class="row center-xs" style="border:0; position: absolute; top:0; left:0; width:100%;">
+	      <div class="preview-video" style="width:100%; background-color: #242433; opacity:1; overflow:hidden; text-align:right;"><img class="game-header-image" src="img/home-device-overwatch.png" width="60%"></div>
+        <div class="row center-xs" style="border:0; position: absolute; top:0; left:0; width:100%; text-align:left;padding-left:0px;">
           <div class="col-xs-10">
-            <div class="box" style="font-weight:700px; padding-top:80px; padding-bottom:80px;">
+            <div id="header-text" class="box" style="font-weight:700px; padding-top:80px; padding-bottom:80px;">
               <div class="info" style="font-size:34px; color:#fff;">
-                <span class="desktop-text">Get  <span class="game-name"></span> player &amp; team chat stats now.</span>
-                <span class="mobile-text">Get chat stats<span>
+                <span class="desktop-text"><span class="game-name"></span> chatbot stats</span>
+                <span class="mobile-text"><span class="game-name"></span> stats</span>
               </div>
 	             <div class="info">
-                <span class="desktop-text">Receive chat stats from the best <span class="game-name"></span> players in the world.</span>
+                <span class="desktop-text">Get chatbot stats from the best <span class="game-name"></span> players in the world</span>
                 <span class="mobile-text">from the best players in the world<span>
               </div>
             </div>
@@ -83,10 +84,10 @@
       <div class="animation-title">
         <div class="row center-xs" style="background-color:#0e1116; border-top: 0px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; border-left: 1px solid #1a1a1a; border-right: 1px solid #1a1a1a;">
           <div class="col-xs-10">
-            <div class="box" style="font-weight:700px;">
+            <div class="box" style="font-weight:700px; ">
               <div id="game-info" class="info">
-                <span class="desktop-text">Click a <span class="game-name"></span> player below to sign up</span>
-                <span class="mobile-text">Click a player below to sign up</span>
+                <span class="desktop-text">Top 100 <span class="game-name"></span> players online</span>
+                <span class="mobile-text">Top 100 <span class="game-name"></span> players online</span>
                 </div>
             </div>
           </div>
@@ -181,7 +182,6 @@
 	    </div>
     </div>
 
-    <!-- the IM overlay displays when this div becomes visible the first time -->
     <div id="im-overlay-trigger-when-visible">&nbsp;</div>
   </body>
 </html>

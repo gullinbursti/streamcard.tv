@@ -443,7 +443,7 @@ function revealLoadedMessages() {
 	$('#player-title').removeClass('is-hidden');
 	$('#card-buttons-top').removeClass('is-hidden');
 	$('#card-buttons-bottom').removeClass('is-hidden');
-	$('#signup-title').removeClass('is-hidden');
+	//$('#signup-title').removeClass('is-hidden');
 }
 
 function updateGraph() {
