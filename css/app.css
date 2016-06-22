@@ -284,7 +284,6 @@ a:hover {
 	position: fixed;
 	top: 0;
 	left: 0;
-	text-align: left;
 	width: 100%;
 	height: 100%;
 	background: rgba(0,0,0,0.9);
@@ -314,23 +313,25 @@ a:hover {
   text-align: center;
   height: 60px;
   line-height: 60px;
+  white-space: nowrap;
 }
 
 .overlay-message {
-	padding: 20px 0 20px 0;
 	font-size: 14px;
 	line-height: 20px;
 	color: #aaa;
   display: flex;
   flex-direction: row;
   align-items: center;
+  align-contnet: space-around;
   justify-content: space-around;
   height: 170px;
-  padding: 0 50px;
+  width: 560px;
+  padding: 0 40px;
+  overflow: hidden;
 }
 .overlay-message > img {
   max-height: 70px;
-  margin: 25px;
   background-color: #1b1e28;
   border-radius: 5px;
   padding: 5px;
@@ -643,9 +644,6 @@ a:hover {
   display: none;
 }
 
-#
-
-
 @media (max-width: 600px) {
   
   #im-info {
@@ -724,6 +722,16 @@ a:hover {
   .game-icons .game-icon img {
     width: 100%;
     height: auto;
+  }
+
+  .overlay-container {
+    width: 90%;
+    min-width: 275px;
+  }
+  .overlay-message {
+    padding: 20px 40px;
+    width: auto;
+    flex-wrap: wrap;
   }
 
 }
