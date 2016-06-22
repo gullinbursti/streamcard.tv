@@ -171,11 +171,16 @@
     </div>
 
     <!-- OVERLAY -->
-    <div class="overlay-alert is-hidden">
+    <div class="overlay-alert">
 	    <div class="overlay-container">
-		    <div class="overlay-title"></div>
-		    <div class="overlay-message"></div>
-		    <button class="overlay-button" onclick="$('.overlay-alert').addClass('is-hidden');"></button>
+		    <div class="overlay-title">Sign up for Chat Stats</div>
+		    <div class="overlay-message">
+          <img src="img/icon-kik.png" onclick="openMessenger('kik');">
+          <img src="img/icon-discord.png" onclick="openMessenger('discord');">
+          <img src="img/icon-twitch.png" onclick="openMessenger('twitch');">
+          <img src="img/icon-fb.png" onclick="openMessenger('fb');">
+        </div>
+		    <button class="overlay-button" onclick="$('.overlay-alert').addClass('is-hidden');">Ok</button>
 	    </div>
     </div>
   </body>
