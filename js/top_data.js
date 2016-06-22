@@ -45,8 +45,8 @@ function populateRows(game_name) {
 				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="channel-avatar-flex" style="padding-top:16px; vertical-align: middle"><span style="display:inline-block; height:100%; vertical-align:middle;"><img src="' + ((item.logo == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.logo) + '" width="30" height="30" style="vertical-align:middle; max-height:30px; max-width:30px; border-radius:15px;"></span></div>';
 				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="channel-name-flex">'+item.channel+'</div>';
 				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="retention-flex"><span id="retention_'+item.channel+'">...</span></div>';
-				//html += '<div class="viewers-flex">' + numberWithCommas(item.viewers) + '</div>';
-				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="card-value-flex">$'+price+'</div>';
+				html += '<div class="viewers-flex">' + numberWithCommas(item.viewers) + '</div>';
+				//html += '<div onclick="rowHit(\'' + item.channel + '\')" class="card-value-flex">$'+price+'</div>';
 				//html += '<div class="card-button-flex" onclick="rowHit(\'' + item.channel + '\')"><span class="hover-link"><div class="buy-buton" style="margin:0; font-size:16px; line-height:0;">VIEW</div></span></div>';
 				html += '<div class="card-button-flex">';
 				html += '  <img class="im-button" data-im="Kik" onclick="openMessenger(\'Kik\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-kik.png" width="28" height="28" />';
@@ -253,10 +253,20 @@ $(document).ready(function() {
 
 
 function openMessenger(service, channelName) {
+	ga('send', {
+		'hitType'       : 'event',
+		'eventCategory' : service,
+		'eventAction'   : 'Open',
+		'eventLabel'    : (twitch_auth.twitch_name != "") ? twitch_auth.twitch_name : channelName,
+		'eventValue'    : 1
+	});
+
 	$('.overlay-title').text(channelName);
-	$('.overlay-message').html('Copied to clipboard, redirecting to '+service+'<br><div class="loader-circle">Loading...</div>');
+	$('.overlay-message').html('Copied to clipboard, redirecting to '+service+'');
+	$('.overlay-footer').html('<div class="loader-circle">Loading...</div>');
 	$('.overlay-button').addClass('is-hidden');
 	$('.overlay-alert').removeClass('is-hidden');
+
 
 	setTimeout(function() {
 		$('.overlay-alert').addClass('is-hidden');
@@ -274,6 +284,7 @@ function openMessenger(service, channelName) {
 			openFacebook(channelName);
 		}
 	}, 3000);
+
 }
 
 function showInstantMessengersOverlay() {
@@ -282,7 +293,7 @@ function showInstantMessengersOverlay() {
     '<img src="img/icon-kik.png" onclick="openMessenger(\'kik\');">' +
     '<img src="img/icon-discord.png" onclick="openMessenger(\'discord\');">' +
     '<img src="img/icon-twitch.png" onclick="openMessenger(\'twitch\');">' +
-    '<img src="img/icon-fb.png" onclick="openMessenger(\'fb\');">'
+    '<img src="img/icon-fb.png" onclick="openMessenger(\'facebook\');">'
   );
   $('.overlay-button').removeClass('is-hidden').text('Ok');
   $('.overlay-alert').removeClass('is-hidden');

@@ -80,6 +80,7 @@ function openTwitch (channelName) {
 			},
 			dataType: 'json',
 			success: function(response) {
+				$('.overlay-footer').empty();
 				$('.overlay-title').text('Subscribed to ' + channelName);
 				$('.overlay-message').text('You will now recieve updates from this streamer.');
 				$('.overlay-button').text('OK');
