@@ -2,9 +2,9 @@
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-74998463-1', 'auto');
+ga('create', 'UA-79705534-1', 'auto');
 ga('send', 'pageview');
 
 
@@ -65,6 +65,7 @@ function openTwitch (channelName) {
 	console.log("TWITCH");
 
 	if (twitch_auth.twitch_id == "") {
+		setCookie("channel", channelName);
 		setCookie('whisper_request', "1");
 		twitchAuth();
 
@@ -98,7 +99,7 @@ function twitchAuth(channelName) {
 
 	// localhost redirect
 	if (location.hostname == "localhost")
-		location.href = "https://api.twitch.tv/kraken/oauth2/authorize?action=authorize&client_id=bdmreezjx7g0syk09kyzmkds978vrdj&login=&login_type=login&redirect_uri=http%3A%2F%2Flocalhost%2Fcard.html&response_type=token&scope=user_read+channel_subscriptions+chat_login&utf8=%E2%9C%93&force_verify=false";
+		location.href = "https://api.twitch.tv/kraken/oauth2/authorize?action=authorize&client_id=bdmreezjx7g0syk09kyzmkds978vrdj&login=&login_type=login&redirect_uri=http%3A%2F%2Flocalhost%2Fcard.html&response_type=token&scope=user_read+channel_subscriptions+chat_login&utf8=%E2%9C%93&force_verify=true";
 
 	// live app redirect
 	else {

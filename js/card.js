@@ -2,9 +2,9 @@
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-74998463-1', 'auto');
+ga('create', 'UA-79705534-1', 'auto');
 ga('send', 'pageview');
 
 
@@ -228,6 +228,14 @@ function setupChatAnimationEvents() {
 }
 
 function openMessenger(service) {
+	ga('send', {
+		'hitType'       : 'event',
+		'eventCategory' : service,
+		'eventAction'   : 'Open',
+		'eventLabel'    : (twitch_auth.twitch_name != "") ? twitch_auth.twitch_name : channel,
+		'eventValue'    : 1
+	});
+
 	$('.overlay-title').text(channel);
 	$('.overlay-message').html('Copied to clipboard, redirecting to '+service+'<br><div class="loader">Loading...</div>');
 	$('.overlay-button').addClass('is-hidden');
