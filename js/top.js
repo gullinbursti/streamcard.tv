@@ -45,7 +45,7 @@ function openMessenger(service, channelName) {
 		$('.overlay-alert').addClass('is-hidden');
 		$('.overlay-button').removeClass('is-hidden');
 
-		/*
+
 		if (service.toLowerCase() == "kik") {
 			openKik(channelName);
 
@@ -57,7 +57,7 @@ function openMessenger(service, channelName) {
 
 		} else if (service.toLowerCase() == "facebook") {
 			openFacebook(channelName);
-		}*/
+		}
 	}, 3000);
 
 }
