@@ -281,12 +281,12 @@ a:hover {
 
 .overlay-alert {
 	z-index: 1000;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	text-align: left;
 	width: 100%;
-	height: 200%;
+	height: 100%;
 	background: rgba(0,0,0,0.9);
 }
 
@@ -642,6 +642,8 @@ a:hover {
 .mobile-text {
   display: none;
 }
+
+#
 
 
 @media (max-width: 600px) {

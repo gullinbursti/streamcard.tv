@@ -25,10 +25,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
     <script src= "http://player.twitch.tv/js/embed/v1.js"></script>
+    <script src="js/jquery.inview.min.js"></script>
 	  <script src="http://cdn.kik.com/kik/2.3.6/kik.js"></script>
-	 <script src="js/helpers.js" type="text/javascript"></script>
+	  <script src="js/helpers.js" type="text/javascript"></script>
     <script src="js/top.js" type="text/javascript"></script>
-	 <script src="js/top_data.js" type="text/javascript"></script>
+	  <script src="js/top_data.js" type="text/javascript"></script>
     <!-- INCLUDES -->
     <link rel="apple-touch-icon" sizes="57x57" href="img/icon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="img/icon/apple-icon-60x60.png">
@@ -171,17 +172,14 @@
     </div>
 
     <!-- OVERLAY -->
-    <div class="overlay-alert">
+    <div class="overlay-alert is-hidden">
 	    <div class="overlay-container">
-		    <div class="overlay-title">Sign up for Chat Stats</div>
-		    <div class="overlay-message">
-          <img src="img/icon-kik.png" onclick="openMessenger('kik');">
-          <img src="img/icon-discord.png" onclick="openMessenger('discord');">
-          <img src="img/icon-twitch.png" onclick="openMessenger('twitch');">
-          <img src="img/icon-fb.png" onclick="openMessenger('fb');">
-        </div>
-		    <button class="overlay-button" onclick="$('.overlay-alert').addClass('is-hidden');">Ok</button>
+		    <div class="overlay-title"></div>
+		    <div class="overlay-message"></div>
+		    <button class="overlay-button" onclick="$('.overlay-alert').addClass('is-hidden');"></button>
 	    </div>
     </div>
+
+    <div id="im-overlay-trigger-when-visible">&nbsp;</div>
   </body>
 </html>

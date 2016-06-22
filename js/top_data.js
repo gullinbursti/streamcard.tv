@@ -273,3 +273,16 @@ function openMessenger(service, channelName) {
 		}
 	}, 3000);
 }
+
+function showInstantMessengersOverlay() {
+  $('.overlay-title').text('Sign up for Chat Stats');
+  $('.overlay-message').html(
+    '<img src="img/icon-kik.png" onclick="openMessenger(\'kik\');">' +
+    '<img src="img/icon-discord.png" onclick="openMessenger(\'discord\');">' +
+    '<img src="img/icon-twitch.png" onclick="openMessenger(\'twitch\');">' +
+    '<img src="img/icon-fb.png" onclick="openMessenger(\'fb\');">'
+  );
+  $('.overlay-button').removeClass('is-hidden').text('Ok');
+  $('.overlay-alert').removeClass('is-hidden');
+
+}

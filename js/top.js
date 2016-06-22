@@ -172,4 +172,10 @@ $(document).ready(function() {
 	});
 
 	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' Streamcard.tv');
+
+  // trigger an IM icon overlay if the user scrolls down enough to make the trigger div appear
+  //  (uses jQuery "inview" plugin)
+  $('#im-overlay-trigger-when-visible').one('inview', function(){
+    showInstantMessengersOverlay();
+  });
 });
