@@ -228,6 +228,14 @@ function setupChatAnimationEvents() {
 }
 
 function openMessenger(service) {
+	ga('send', {
+		'hitType'       : 'event',
+		'eventCategory' : service,
+		'eventAction'   : 'Open',
+		'eventLabel'    : (twitch_auth.twitch_name != "") ? twitch_auth.twitch_name : channel,
+		'eventValue'    : 1
+	});
+
 	$('.overlay-title').text(channel);
 	$('.overlay-message').html('Copied to clipboard, redirecting to '+service+'<br><div class="loader">Loading...</div>');
 	$('.overlay-button').addClass('is-hidden');

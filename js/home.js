@@ -152,7 +152,8 @@ $(document).ready(function() {
 		data : { q : 'overwatch' },
 		dataType: 'json',
 		success: function (response) {
-			$('.player-frame').attr('src', "http://player.twitch.tv/?channel=" + response.streams[0].channel.name);
+			$('.preview-image').attr('src', response.streams[0].preview.medium);
+			//$('.player-frame').attr('src', "http://player.twitch.tv/?channel=" + response.streams[0].channel.name);
 		}
 	});
 

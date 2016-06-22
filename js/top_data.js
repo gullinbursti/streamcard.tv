@@ -1,11 +1,11 @@
 
 function rowHit(channel) {
 	ga('send', {
-		'hitType'			: 'event',
-		'eventCategory'	: 'user',
-		'eventAction'		: 'row-'+channel,
-		'eventLabel'		: channel,
-		'eventValue'		: 1
+		'hitType'       : 'event',
+		'eventCategory' : 'Card',
+		'eventAction'   : 'Click',
+		'eventLabel'    : channel,
+		'eventValue'    : 1
 	});
 
 	window.open("/card.html?channel="+encodeURIComponent(channel));
@@ -20,7 +20,8 @@ function populateRows(game_name) {
 		data : { q : game_name.toLowerCase() },
 		dataType: 'json',
 		success: function (response) {
-			$('.player-frame').attr('src', "http://player.twitch.tv/?channel=" + response.streams[0].channel.name);
+			$('.preview-image').attr('src', response.streams[0].preview.medium);
+			//$('.player-frame').attr('src', "http://player.twitch.tv/?channel=" + response.streams[0].channel.name);
 		}
 	});
 

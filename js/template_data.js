@@ -163,12 +163,6 @@ function statsUpdater(channelName) {
 				$('.chart-empty').hide();
 				$('#chart').show();
 
-				/*if ($('.player-frame').attr('src').length == 0)
-				 $('.player-frame').attr('src', 'https://player.twitch.tv/?channel='+channelName+'&autostart=1');
-				 $('.online-led').css('color', '#6a8767');
-				 $('.overlay-player-core-bg').css('background', 'url('+ response.stream.preview.large +')');
-				 */
-
 				if (viewers.init == 0) {
 					viewers.init = response.stream.viewers;
 					viewers.last = viewers.init;
