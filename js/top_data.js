@@ -101,6 +101,7 @@ var dota_info = "Dota2 Top 100 online players";
 
 
 $(document).ready(function() {
+	deleteCookie('whisper_request');
 	$('.game-name').text(game_video);
 
 	$.ajax({
