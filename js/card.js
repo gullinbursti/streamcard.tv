@@ -2,9 +2,9 @@
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-74998463-1', 'auto');
+ga('create', 'UA-79705534-1', 'auto');
 ga('send', 'pageview');
 
 
@@ -90,25 +90,15 @@ function openKik () {
 			kik.openConversation("streamcard");
 			//window.open("https://kik.me/streamcard");
 
-			//kik.send('streamcard', {
-			//  title     : 'Streamcard Notifications',
-			//  text      : channel,
-			//  data      : {
-			//    channel : channel
-			//  }
-			//});
-
 		} else {
-			location.href = "card://streamcard.tv/card.html?channel="+channel;
+			location.href = "card://streamcard.tv";
+			setTimeout(function () {
+				location.href = "https://kik.me/streamcard";
+			}, 2000);
 		}
 
 	} else {
 		location.href = "https://kik.me/streamcard";
-
-		//$('.overlay-title').text('Requires Kik');
-		//$('.overlay-message').text('Visit this page within Kik browser to enable.');
-		//$('.overlay-button').text('OK');
-		//$('.overlay-alert').removeClass('is-hidden');
 	}
 }
 
@@ -261,10 +251,29 @@ var connectService = "";
 
 $(function(){
 	// on document ready
-
-	if (isMobile() && kik.enabled) {
-			kik.openConversation("streamcard");
+	if (document.referrer.indexOf('scard.tv') >= 0) {
+		console.log("document.referrer: "+document.referrer);
+		ga('send', {
+			'hitType'			: 'event',
+			'eventCategory'	: 'bot',
+			'eventAction'		: 'view',
+			'eventLabel'		: 'document.referrer',
+			'eventValue'		: 1
+		});
 	}
+
+/*
+	if (isMobile()) {
+		setTimeout(function () {
+			if (kik.enabled) {
+				kik.openConversation("streamcard");
+
+			} else {
+				location.href = "https://kik.me/streamcard";
+			}
+		}, 3000);
+	}
+*/
 
 	resizeCardPage();
 	window.addEventListener('resize', resizeCardPage);

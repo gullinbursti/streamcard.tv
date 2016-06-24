@@ -62,33 +62,22 @@ function openMessenger(service, channelName) {
 
 }
 
-function openKik (channelName) {
+function openKik () {
 	console.log("KIK - ["+isMobile()+"]["+kik.enabled+"]");
 
 	if (isMobile()) {
 		if (kik.enabled) {
 			kik.openConversation("streamcard");
-			//window.open("https://kik.me/streamcard");
-
-			//kik.send('streamcard', {
-			//  title     : 'Streamcard Notifications',
-			//  text      : channel,
-			//  data      : {
-			//    channel : channel
-			//  }
-			//});
 
 		} else {
-			//location.href = "card://streamcard.tv/card.html?channel=" + channel;
+			location.href = "card://streamcard.tv";
+			setTimeout(function () {
+				location.href = "https://kik.me/streamcard";
+			}, 5000);
 		}
 
 	} else {
 		location.href = "https://kik.me/streamcard";
-
-		//$('.overlay-title').text('Requires Kik');
-		//$('.overlay-message').text('Visit this page within Kik browser to enable.');
-		//$('.overlay-button').text('OK');
-		//$('.overlay-alert').removeClass('is-hidden');
 	}
 }
 
@@ -104,7 +93,7 @@ function openTwitch (channelName) {
 	if (twitch_auth.twitch_id == "") {
 		setCookie("channel", channelName);
 		setCookie('whisper_request', "1");
-		twitchAuth();
+		//twitchAuth();
 
 	} else {
 		$.ajax({
@@ -192,10 +181,10 @@ function support () {
 function showInstantMessengersOverlay() {
 	$('.overlay-title').text('Sign up for Chat Stats');
 	$('.overlay-message').html(
-		'<img src="img/icon-kik.png" onclick="openMessenger(\'kik\');">' +
-		'<img src="img/icon-discord.png" onclick="openMessenger(\'discord\');">' +
-		'<img src="img/icon-twitch.png" onclick="openMessenger(\'twitch\');">' +
-		'<img src="img/icon-fb.png" onclick="openMessenger(\'facebook\');">'
+		'<img src="img/icon-kik.png" onclick="openMessenger(\'Kik\');">' +
+		'<img src="img/icon-discord.png" onclick="openMessenger(\'Discord\');">' +
+		'<img src="img/icon-twitch.png" onclick="openMessenger(\'Twitch\');">' +
+		'<img src="img/icon-fb.png" onclick="openMessenger(\'Facebook\');">'
 	);
 	$('.overlay-button').removeClass('is-hidden').text('Ok');
 	$('.overlay-alert').removeClass('is-hidden');

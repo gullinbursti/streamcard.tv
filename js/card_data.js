@@ -144,7 +144,7 @@ function statsUpdater(channelName) {
 				var options = {
 					width: 854,
 					height: 480,
-					channel: channelName,
+					channel: channelName
 					//video: "{VIDEO_ID}"
 				};
 				var player = new Twitch.Player('twitch-video', options);
