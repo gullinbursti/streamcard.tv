@@ -34,12 +34,15 @@ function openMessenger(service, channelName) {
 		'eventValue'    : 1
 	});
 
-	$('.overlay-title').text(channelName);
-	$('.overlay-message').html('Copied to clipboard, redirecting to '+service+'');
-	$('.overlay-footer').html('<div class="loader-circle">Loading...</div>');
+	$('.overlay-title').html('Opening ' + channelName + '&trade;');
+	$('.overlay-message').html(
+    renderOverlayImIcon(service, channelName)
+  );
+  $('.overlay-container').addClass('is-loading');
 	$('.overlay-button').addClass('is-hidden');
 	$('.overlay-alert').removeClass('is-hidden');
 
+  return;
 
 	setTimeout(function() {
 		$('.overlay-alert').addClass('is-hidden');
@@ -161,21 +164,25 @@ function support () {
 		'eventLabel'		: channel,
 		'eventValue'		: 1
 	});
-
-	
 }
 
 function showInstantMessengersOverlay(featureBotName) {
 	$('.overlay-title').text('Select a messenger');
 	$('.overlay-message').html(
-		'<img class="overlay-im-icon" src="img/icon-kik-white.png" onclick="openMessenger(\'Kik\', \''+featureBotName+'\');">' +
-		'<img class="overlay-im-icon" src="img/icon-discord-white.png" onclick="openMessenger(\'Discord\', \''+featureBotName+'\');">' +
-		'<img class="overlay-im-icon" src="img/icon-twitch-white.png" onclick="openMessenger(\'Twitch\', \''+featureBotName+'\');">' +
-		'<img class="overlay-im-icon" src="img/icon-fb-white.png" onclick="openMessenger(\'Facebook\', \''+featureBotName+'\');">'
+    renderOverlayImIcon('Kik', featureBotName) +
+    renderOverlayImIcon('Discord', featureBotName) +
+    renderOverlayImIcon('Twitch', featureBotName) +
+    renderOverlayImIcon('Facebook', featureBotName)
 	);
 	$('.overlay-button').removeClass('is-hidden').text('Cancel');
 	$('.overlay-alert').removeClass('is-hidden');
 }
+
+function renderOverlayImIcon(messengerDisplayName, featureBotDisplayName ) {
+  var lower = messengerDisplayName.toLowerCase();
+  return '<img class="overlay-im-icon" src="img/icon-'+lower+'-white.png" onclick="openMessenger(\''+messengerDisplayName+'\', \''+featureBotDisplayName+'\');">';
+}
+
 
 
 function registerTopFeatureBarButtonHandler() {
@@ -213,6 +220,8 @@ $(document).ready(function() {
 	});
 
   registerTopFeatureBarButtonHandler();
+
+  // openMessenger('Kik', 'Hearthstone');
 
 	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' GameBots™ <br> Trademarks & logos belong to their respective owners');
 	

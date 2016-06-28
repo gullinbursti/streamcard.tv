@@ -52,7 +52,7 @@ function populateRows(game_name) {
 				html += '  <img class="im-button" data-im="Kik" onclick="openMessenger(\'Kik\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-kik.png" width="28" height="28" />';
 				html += '  <img class="im-button" data-im="Discord" onclick="openMessenger(\'Discord\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-discord.png" width="28" height="28" />';
 				html += '  <img class="im-button" data-im="Twitch" onclick="openMessenger(\'Twitch\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-twitch.png" width="28" height="28" />';
-				html += '  <img class="im-button" data-im="Facebook" onclick="openMessenger(\'Facebook\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-fb.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Facebook" onclick="openMessenger(\'Facebook\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-facebook.png" width="28" height="28" />';
 				html += '</div>';
 				html += '</div>';
 

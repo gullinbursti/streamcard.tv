@@ -191,7 +191,7 @@ body {
 .im-icon.box-kik { background-image: url(/img/icon-kik.png); }
 .im-icon.box-discord { background-image: url(/img/icon-discord.png); }
 .im-icon.box-twitch { background-image: url(/img/icon-twitch.png); }
-.im-icon.box-fb { background-image: url(/img/icon-fb.png); }
+.im-icon.box-fb { background-image: url(/img/icon-facebook.png); }
 
 .im-chat {
   width: 428px;
@@ -789,6 +789,16 @@ a:hover {
 .overlay-button:hover {
   opacity: .5;
   cursor: pointer;
+}
+
+.overlay-spinner {
+  display: none;
+  position: absolute;
+  right: 15px;
+  top: -12px;
+}
+.overlay-container.is-loading .overlay-spinner {
+  display: block;
 }
 
 
