@@ -91,10 +91,10 @@ function openKik () {
 			//window.open("https://kik.me/streamcard");
 
 		} else {
-			location.href = "card://streamcard.tv";
+			location.href = "card://kik.me/streamcard";
 			setTimeout(function () {
 				location.href = "https://kik.me/streamcard";
-			}, 2000);
+			}, 5000);
 		}
 
 	} else {
@@ -149,20 +149,8 @@ function support () {
 		'eventValue'    : 1
 	});
 
-	setTimeout(function() {
-		$.ajax({
-			url: 'http://beta.modd.live/api/submit_support.php',
-			type: 'POST',
-			data: {
-				channel_id : channelID,
-				message : channel + " has been reported."
-			},
-			dataType: 'json',
-			success: function(response) {
-				$(".overlayLoading").fadeOut("fast", function() {});
-			}
-		});
-	}, 1);
+	
+	
 }
 
 function twitchAuth() {
@@ -303,6 +291,6 @@ $(function(){
 
 	});
 
-	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' Streamcard.tv <br> Trademarks & logos belong to their respective owners');
+	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' GameBots™ <br> Trademarks & logos belong to their respective owners');
 });
 

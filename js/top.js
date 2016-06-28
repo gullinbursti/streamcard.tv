@@ -70,7 +70,7 @@ function openKik () {
 			kik.openConversation("streamcard");
 
 		} else {
-			location.href = "card://streamcard.tv";
+			location.href = "card://kik.me/streamcard";
 			setTimeout(function () {
 				location.href = "https://kik.me/streamcard";
 			}, 5000);
@@ -93,7 +93,7 @@ function openTwitch (channelName) {
 	if (twitch_auth.twitch_id == "") {
 		setCookie("channel", channelName);
 		setCookie('whisper_request', "1");
-		//twitchAuth();
+		twitchAuth();
 
 	} else {
 		$.ajax({
@@ -162,20 +162,7 @@ function support () {
 		'eventValue'		: 1
 	});
 
-	setTimeout(function() {
-		$.ajax({
-			url: 'http://beta.modd.live/api/submit_support.php',
-			type: 'POST',
-			data: {
-				channel_id : channelID,
-				message : channel + " has been reported."
-			},
-			dataType: 'json',
-			success: function(response) {
-				$(".overlayLoading").fadeOut("fast", function() {});
-			}
-		});
-	}, 1);
+	
 }
 
 function showInstantMessengersOverlay() {
@@ -213,7 +200,7 @@ $(document).ready(function() {
 		resizer();
 	});
 
-	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' Streamcard.tv <br> Trademarks & logos belong to their respective owners');
+	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' GameBots™ <br> Trademarks & logos belong to their respective owners');
 	
   // trigger an IM icon overlay if the user scrolls down enough to make the trigger div appear
   //  (uses jQuery "inview" plugin)

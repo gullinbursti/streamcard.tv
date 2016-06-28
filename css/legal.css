@@ -1,0 +1,13 @@
+body {
+  padding: 0;
+  /*background-color: #090a0c;*/
+  background-color: #090a0c;
+  font-family: "Lato", Helvetica, Arial, "Lucida Grande", sans-serif;
+  letter-spacing: .8px;
+  color: #fff;
+  margin: 0 auto;
+  max-width: 100%;
+  width:94%;
+  padding-top:25px;
+	padding-bottom:25px;
+}

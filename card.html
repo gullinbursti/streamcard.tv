@@ -48,8 +48,35 @@
     <title></title>
   </head>
   <body>
-    
-    <div class="index-wrapper">
+
+
+    <div class="top-bar">
+      <a href="/" style="text-decoration:none;"><img class="logo" src="img/logo.png" style="vertical-align:middle;"/> <span class="top-bar-logo">GameBots<span style="opacity:1;">™</span></span></a>
+      <div class="top-bar-icons">
+				<span class="top-bar-info">Get <span class="channel-name"></span> on</span>
+        <img src="img/icon-kik-white.png" onclick="openMessenger('Kik');" style="padding:3px; border:2px solid #242433; border-radius:10px; margin: 3px;">
+        <img src="img/icon-discord-white.png" onclick="openMessenger('Discord');" style="padding:3px; border:2px solid #242433; border-radius:10px; margin: 3px;">
+        <img src="img/icon-twitch-white.png" onclick="openMessenger('Twitch', 'lirik');" style="padding:3px; border:2px solid #242433; border-radius:10px; margin: 3px;">
+        <img src="img/icon-fb-white.png" onclick="openMessenger('Facebook');" style="padding:3px; border:2px solid #242433; border-radius:10px; margin: 3px;">
+      </div>
+    </div>
+		
+		<div class="top-feature-bar" style="text-align:center;">
+      <div class="top-bar-icons" style="height:48px;">
+				
+				
+        <span style="font-weight:600; padding:6px; padding-left:8px; padding-right:8px; border:2px solid #3a577e; text-transform: uppercase; font-size:12px; color:#3a577e; font-weight:600; border-radius:10px; margin: 0px;">Kik</span>
+				
+				<span style="font-weight:600;  padding:6px; padding-left:8px; padding-right:8px; border:2px solid #3a577e; text-transform: uppercase; font-size:12px; color:#3a577e; font-weight:600; border-radius:10px; margin: 0px;">Discord</span>
+				
+				<span style="font-weight:600;  padding:6px; padding-left:8px; padding-right:8px; border:2px solid #3a577e; text-transform: uppercase; font-size:12px; color:#3a577e; font-weight:600; border-radius:10px; margin: 0px;">Whisper</span>
+				
+				<span style="font-weight:600; padding:6px; padding-left:8px; padding-right:8px; border:2px solid #3a577e; text-transform: uppercase; font-size:12px; color:#3a577e; font-weight:600; border-radius:10px; margin: 0px;">Facebook</span>
+				
+      </div>
+		</div>
+		
+    <div class="index-wrapper" style="margin-top:80px; height:auto;">
 
       <!-- PLAYER TITLE -->
       <div style="background-color:#151821; border: 0px solid #2f2f2f; border-bottom: 0;">
@@ -69,25 +96,13 @@
           <div id="player-title" class="title is-hidden"><span class="channel-name"></span> is playing <span class="game-name"></span></div>
       </div>
 			
-      <!-- BUY NOW BUTTON -->
-      <div id="card-buttons-top" class="is-hidden" style="border-bottom: 0 solid #242424;">
-				<!--<span class="hover-link"><span class="buy-buton connect-im" data-im="Kik" data-clipboard-target="#channel-name" style="background-color:#0e1116; border:1px solid #0e1116;">Kik</span></span>-->
-	      <span class="hover-link"><span class="buy-buton connect-im" data-im="Kik" onclick="openMessenger('Kik')" style="background-color:#0e1116; border:1px solid #0e1116;"><img src="img/icon-kik.png" width="50" height="50" /><br>Kik</span></span>
-				<span style="width:12px;"></span>
-				<span class="hover-link"><span class="buy-buton connect-im" data-im="Discord" onclick="openMessenger('Discord')" data-clipboard-target="#channel-name" style="background-color:#0e1116; border:1px solid #0e1116;"><img src="img/icon-discord.png" width="50" height="50" /><br>Discord</span></span>
-				<span style="width:12px;"></span>
-				<span class="hover-link"><span class="buy-buton connect-im" data-im="Twitch" onclick="openMessenger('Twitch')" data-clipboard-target="#channel-name" style="background-color:#0e1116; border:1px solid #0e1116;"><img src="img/icon-twitch.png" width="50" height="50" /><br>Whisper</span></span>
-				<span style="width:12px;"></span>
-				<span class="hover-link"><span class="buy-buton connect-im" data-im="Facebook" onclick="openMessenger('Facebook')" data-clipboard-target="#channel-name" style="background-color:#0e1116; border:1px solid #0e1116;"><img src="img/icon-fb.png" width="50" height="50" /><br>Facebook</span></span>
-      </div>
-
 	    <!-- SIGNUP -->
-	    <div id="signup-title" class="is-hidden" style="margin-top:20px; padding-bottom:5px; border-bottom:1px solid #1f1f1f; font-size:20px; color:#fff">
+	    <div id="signup-title" class="is-hidden" style="margin-top:0px; padding-bottom:5px; border-bottom:1px solid #1f1f1f; font-size:20px; color:#fff">
 		    Sign up for <span class="channel-name"></span>'s chat stats
 	    </div>
 			
       <!-- WHAT IS A STREAM CARD HEADER -->
-      <div style="margin-top:0; background-color:#0e1116; border-top: 0px solid #2f2f2f; border-bottom: 1px solid #242424; border-left: 0px solid #2f2f2f; border-right: 0px solid #2f2f2f;">
+      <div style="margin-top:0; background-color:#0e1116; border-top: 0px solid #2f2f2f; border-bottom: 0px solid #242424; border-left: 0px solid #2f2f2f; border-right: 0px solid #2f2f2f;">
         <div style="font-weight:700px;">
           <div id="im-info" class="info" style="display: none">Get stats from the hottest eSport games, teams, and players on Kik, Discord, Whisper, &amp; more</div>
         </div>
@@ -125,25 +140,40 @@
         </div>
 				
         <!-- BUY NOW BUTTON -->
-        <div id="card-buttons-bottom" class="is-hidden" style="border-top: 0px solid #2f2f42;border-bottom: 1px solid #2f2f42;">
+        <div id="card-buttons-bottom" class="is-hidden" style="border-top: 0px solid #2f2f42;border-bottom: 0px solid #2f2f42;">
 					<span class="hover-link"><span class="buy-buton" onclick="shareButton();" style="background-color:#0e1116; border:1px solid #0e1116;">Share</span></span>
 					<span style="width:12px;">&nbsp</span>
 					<span class="hover-link"><span class="buy-buton" onclick="topButton();" style="background-color:#0e1116; border:1px solid #0e1116;">Top Charts</span></span>
         </div>
       </div>
 
-      <!-- FOOTER NAV -->
-      <div style="padding-top:50px; padding-bottom:50px">
-	      <span class="hover-link" onclick="addCard();" style="padding-right:8px; border-right:1px solid #242424;"><a>Admin</a></span>
-	      <span class="hover-link" onclick="legal();" style="padding-left :8px; padding-right:8px; border-right:1px solid #242424;"><a>Legal</a></span>
-	      <span class="hover-link" onclick="support();" style="padding-left :8px;"><a>Support</a></span>
-      </div>
-
-      <!-- COPYRIGHT -->
-      <div style="padding-top:0px; padding-bottom:20px">
-	      <span id="footer-copyright" style="font-size:12px; color:#525569; text-transform:uppercase; font-weight:700; background-color:; padding-right:8px; border-right:0px solid #2f2f2f;"></span>
-      </div>
-    </div>
+	      <!-- FOOTER NAV -->
+	      <div class="row center-xs">
+	        <div class="col-xs-14">
+	          <div class="box" style="padding-top:0px; padding-bottom:20px">
+			        <span class="hover-link" style="padding-right:8px; color:#fff;"><a href="http://api.gamebots.chat" target="_blank" style="text-decoration:none;"> <span style="font-weight:600; padding:6px; padding-left:8px; padding-right:8px; border:2px solid #3a577e; text-transform: uppercase; text-decoration:none; font-size:12px; color:#3a577e; font-weight:600; border-radius:10px; margin: 0px;">GameBot API</span></a></span>
+			 			 <span class="hover-link" style="padding-right:8px; color:#fff;"><a href="http://dashboard.beta.modd.live/insights.html" target="_blank" style="text-decoration:none;"><span style="font-weight:600; padding:6px; padding-left:8px; padding-right:8px; border:2px solid #3a577e; text-transform: uppercase; text-decoration:none; font-size:12px; color:#3a577e; font-weight:600; border-radius:10px; margin: 0px;">Admin</span></a></span>
+			        <span class="hover-link" style="padding-right:8px; color:#fff;"><a href="legal.html" style="text-decoration:none;"><span style="font-weight:600; padding:6px; padding-left:8px; padding-right:8px; border:2px solid #3a577e; text-transform: uppercase; text-decoration:none; font-size:12px; color:#3a577e; font-weight:600; border-radius:10px; margin: 0px;">Legal</span></a></span>
+			        <span class="hover-link" style=""><a href="mailto:support@gamebots.chat" style="text-decoration:none;"><span style="font-weight:600; padding:6px; padding-left:8px; padding-right:8px; border:2px solid #3a577e; text-transform: uppercase; text-decoration:none; font-size:12px; color:#3a577e; font-weight:600; border-radius:10px; margin: 0px;">Support</span></a></span>
+	          </div>	
+	        </div>
+	      </div>
+			
+	      <!-- COPYRIGHT -->
+	      <div class="row center-xs">
+	        <div class="col-xs-12">
+	          <div class="box" style="padding-top:10px; padding-bottom:10px">
+	            <span id="footer-copyright" style="font-size:12px; color:#525569; text-transform:uppercase; font-weight:700; background-color:; padding-right:8px; border-right:0px solid #1a1a1a;"></span>
+						
+	          </div>
+						<div class="box">
+						
+							<span style="font-size:12px; display:inline; opacity:1; color:#525569; text-transform:uppercase; font-weight:700; background-color:; padding-right:8px; border-right:0px solid #1a1a1a;"><img src="img/logo-blue.png" width="60px"></span>
+						
+						</div>
+	        </div>
+	      </div>
+	    </div>
 
     <!-- OVERLAY -->
     <div class="overlay-alert is-hidden">
