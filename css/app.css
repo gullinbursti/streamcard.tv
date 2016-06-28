@@ -535,9 +535,22 @@ a:hover {
   padding-top: 0px;
 	padding-bottom: 0px;
   z-index: 5;
-		text-align:center;
+	text-align:center;
 	border-top:1px solid #1b1e28;
-
+}
+.top-feature-bar .feature-button {
+  font-weight:600;
+  padding:6px;
+  padding-left:8px;
+  padding-right:8px;
+  border:2px solid #3a577e;
+  text-transform: uppercase;
+  font-size:12px;
+  color:#3a577e;
+  font-weight:600;
+  border-radius:10px;
+  margin: 0px;
+  cursor: pointer;
 }
 
 .top-bar .logo {

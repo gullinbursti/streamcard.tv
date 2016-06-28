@@ -175,8 +175,20 @@ function showInstantMessengersOverlay() {
 	);
 	$('.overlay-button').removeClass('is-hidden').text('Ok');
 	$('.overlay-alert').removeClass('is-hidden');
-
 }
+
+
+function registerTopFeatureBarButtonHandler() {
+  $('.top-feature-bar').on('click', '.feature-button', function(event){
+    var $button = $(event.target);
+    var buttonText = $button.text();
+
+    showInstantMessengersOverlay(buttonText);
+
+  });
+}
+
+
 
 
 function resizer() {
@@ -186,6 +198,7 @@ function resizer() {
 	$('.player-frame').attr('height', height);
 	//$('#header-text').css('padding-top', (height - 30) + 'px');
 }
+
 
 var twitch_auth = {
 	twitch_id   : getCookie('twitch_id'),
@@ -200,6 +213,8 @@ $(document).ready(function() {
 		resizer();
 	});
 
+  registerTopFeatureBarButtonHandler();
+
 	$('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' GameBots™ <br> Trademarks & logos belong to their respective owners');
 	
   // trigger an IM icon overlay if the user scrolls down enough to make the trigger div appear
@@ -208,3 +223,6 @@ $(document).ready(function() {
     //showInstantMessengersOverlay();
   });
 });
+
+
+
