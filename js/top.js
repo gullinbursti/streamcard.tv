@@ -165,15 +165,15 @@ function support () {
 	
 }
 
-function showInstantMessengersOverlay() {
-	$('.overlay-title').text('Sign up for Chat Stats');
+function showInstantMessengersOverlay(featureBotName) {
+	$('.overlay-title').text('Select a messenger');
 	$('.overlay-message').html(
-		'<img src="img/icon-kik.png" onclick="openMessenger(\'Kik\');">' +
-		'<img src="img/icon-discord.png" onclick="openMessenger(\'Discord\');">' +
-		'<img src="img/icon-twitch.png" onclick="openMessenger(\'Twitch\');">' +
-		'<img src="img/icon-fb.png" onclick="openMessenger(\'Facebook\');">'
+		'<img class="overlay-im-icon" src="img/icon-kik-white.png" onclick="openMessenger(\'Kik\', \''+featureBotName+'\');">' +
+		'<img class="overlay-im-icon" src="img/icon-discord-white.png" onclick="openMessenger(\'Discord\', \''+featureBotName+'\');">' +
+		'<img class="overlay-im-icon" src="img/icon-twitch-white.png" onclick="openMessenger(\'Twitch\', \''+featureBotName+'\');">' +
+		'<img class="overlay-im-icon" src="img/icon-fb-white.png" onclick="openMessenger(\'Facebook\', \''+featureBotName+'\');">'
 	);
-	$('.overlay-button').removeClass('is-hidden').text('Ok');
+	$('.overlay-button').removeClass('is-hidden').text('Cancel');
 	$('.overlay-alert').removeClass('is-hidden');
 }
 
@@ -184,7 +184,6 @@ function registerTopFeatureBarButtonHandler() {
     var buttonText = $button.text();
 
     showInstantMessengersOverlay(buttonText);
-
   });
 }
 

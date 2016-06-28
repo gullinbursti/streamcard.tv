@@ -286,60 +286,7 @@ a:hover {
 }
 
 
-.overlay-alert {
-	z-index: 1000;
-	position: absolute;
-	top: 0;
-	left: 0;
-	text-align: left;
-	width: 100%;
-	height: 200%;
-	background: rgba(0,0,0,0.9);
-}
 
-.overlay-container {
-	background-color: #121317;
-	position: fixed;
-	font-family: "Lato", Helvetica, Arial, "Lucida Grande", sans-serif;
-	font-weight: 500;
-	letter-spacing: 1.1px;
-	width: auto;
-	height: auto;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	-webkit-transform: translate(-50%, -50%);
-	border-radius: 5px;
-	z-index: 2000;
-	padding: 20px;
-}
-
-.overlay-title {
-	line-height: 28px;
-	font-size: 22px;
-	color: #ccc;
-}
-
-.overlay-message {
-	padding: 20px 0 20px 0;
-	font-size: 14px;
-	line-height: 20px;
-	color: #aaa;
-}
-
-.overlay-button {
-	background-color: #1fa67a;
-	border-radius: 5px;
-	color: #090a0c;
-	padding: 10px 15px;
-	font-size: 16px;
-	border: 0;
-}
-
-.overlay-button:hover {
-	opacity: .5;
-	cursor: pointer;
-}
 
 .loader-circle {
   font-size: 4px;
@@ -629,7 +576,7 @@ a:hover {
 
 }
 @media (max-width: 600px) {
-	
+  
 	.legal-center-div {width:100%;}
 	
 	body {width:100%;}
@@ -758,3 +705,104 @@ a:hover {
 
   }
 }
+
+
+/*****  OVERLAY POPUP ******/
+
+.overlay-alert {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: left;
+  width: 100%;
+  height: 200%;
+  background: rgba(0,0,0,0.9);
+}
+
+.overlay-container {
+  background-color: #121317;
+  position: fixed;
+  font-family: "Lato", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 500;
+  letter-spacing: 1.1px;
+  width: auto;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  border-radius: 5px;
+  z-index: 2000;
+  overflow: hidden;   /* keeps rounded edge on top of title bar */
+}
+
+.overlay-title {
+  line-height: 28px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #1b1e28;
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.overlay-message {
+  font-size: 14px;
+  line-height: 20px;
+  color: #aaa;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: space-around;
+  justify-content: space-around;
+  height: 170px;
+  width: 560px;
+  padding: 0 20px;
+  overflow: hidden;
+}
+.overlay-message > .overlay-im-icon {
+  max-height: 70px;
+  background-color: transparent;
+  border-radius: 35%;
+  padding: 10px;
+  border: 5px solid #1b1e28;
+  cursor: pointer;
+}
+
+.overlay-button {
+  display: block;
+  width: 95%;
+  background-color: #1b1e28;
+  border-radius: 5px;
+  color: #fff;
+  padding: 15px;
+  font-size: 16px;
+  border: 0;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.overlay-button:hover {
+  opacity: .5;
+  cursor: pointer;
+}
+
+
+@media (max-width: 600px) {
+  .overlay-container {
+    width: 90%;
+  }
+  .overlay-message {
+    width: auto;
+    height: 140px;
+  }
+  .overlay-message > .overlay-im-icon {
+    width: 12%;
+  }
+
+}
+  
