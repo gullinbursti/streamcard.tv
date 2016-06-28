@@ -1,0 +1,30 @@
+{
+  "name": "node-webapp-template",
+  "description": "",
+  "main": "index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "secure-handlebars": "git://github.com/yahoo/secure-handlebars.git#~1.2.0",
+    "jquery": "~2.1.4",
+    "normalize-css": "~3.0.3",
+    "font-awesome": "fontawesome#^4.6.3",
+    "jquery.inview": "git://github.com/protonet/jquery.inview.git#~1.1.2",
+    "twitch.player": "http://player.twitch.tv/js/embed/v1.js",
+    "kik.api": "http://cdn.kik.com/kik/2.3.6/kik.js",
+    "clipboard": "^1.5.12"
+  },
+  "authors": [
+    "Adam Platti <adam@webuidude.com>"
+  ],
+  "overrides": {},
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": ""
+}
