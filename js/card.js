@@ -91,7 +91,7 @@ function openKik () {
 			//window.open("https://kik.me/streamcard");
 
 		} else {
-			location.href = "card://kik.me/streamcard";
+			location.href = "card://" + location.hostname + "/open_kik.html";
 			setTimeout(function () {
 				location.href = "https://kik.me/streamcard";
 			}, 5000);
