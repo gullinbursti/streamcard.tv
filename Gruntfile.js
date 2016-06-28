@@ -206,7 +206,7 @@ module.exports = function (grunt) {
           ignorePath: config.app
         },
         files: {
-          '<%= config.app %>/index.html': ['<%= config.app %>/**/*.js', '<%= config.app %>/scripts/main.js']
+          '<%= config.app %>/index.html': ['<%= config.app %>/**/*.js']
         }
       }
     },
@@ -288,10 +288,11 @@ module.exports = function (grunt) {
   
   grunt.registerTask('serve', 'Prepares files for main serve task', [
     'clean',
+    'wiredep',
+    'useminPrepare',
     'scss-build',
     'handlebars',
     'injector',
-    'wiredep',
     'browserSync:livereload',
     'watch'
   ]);

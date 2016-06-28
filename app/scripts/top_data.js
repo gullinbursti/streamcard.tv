@@ -12,6 +12,8 @@ function rowHit(channel) {
 }
 
 function populateRows(game_name) {
+  if (!game_name) return;
+  
 	$.ajax({
 		url: 'https://api.twitch.tv/kraken/search/streams',
 		beforeSend: function (request) {

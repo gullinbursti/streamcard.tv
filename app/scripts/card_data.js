@@ -655,13 +655,16 @@ var channel_id = "";
  facecbook : "Tap to receive "+channel+"'s stats on Facebook Messenger."
  };*/
 
-var twitch_auth = {
-	twitch_id   : getCookie('twitch_id'),
-	twitch_name : getCookie('twitch_name'),
-	oauth_token : getCookie('twitch_oauth_token')
-};
+var twitch_auth;
 
 $(document).ready(function() {
+
+  twitch_auth = {
+    twitch_id   : getCookie('twitch_id'),
+    twitch_name : getCookie('twitch_name'),
+    oauth_token : getCookie('twitch_oauth_token')
+  };
+
 	$('.highlight-wrapper-mobile').hide();
 	$('.chat-wrapper-mobile').hide();
 
