@@ -40,7 +40,7 @@ function openMessenger(service, channelName) {
   );
   $('.overlay-container').addClass('is-loading');
   $('.overlay-footer').html(
-    '<div class="overlay-footer-item success">Remeber to enter "Subscription"</div>'
+    '<div class="overlay-footer-item success-footer-item">Remeber to enter "Subscription"</div>'
   );
   $('.overlay-button').addClass('is-not-displayed');
   $('.overlay-alert').removeClass('is-hidden');
@@ -97,7 +97,7 @@ function openTwitch (channelName) {
   if (twitch_auth.twitch_id == "") {
     setCookie("channel", channelName);
     setCookie('whisper_request', "1");
-    twitchAuth();
+    twitchAuth(channelName);
 
   } else {
     $.ajax({
@@ -179,11 +179,6 @@ function showInstantMessengersOverlay(featureBotName) {
   $('.overlay-alert').removeClass('is-hidden');
 }
 
-function renderOverlayImIcon(messengerDisplayName, featureBotDisplayName ) {
-  var lower = messengerDisplayName.toLowerCase();
-  return '<img class="overlay-im-icon" src="img/icon-'+lower+'-white.png" onclick="openMessenger(\''+messengerDisplayName+'\', \''+featureBotDisplayName+'\');">';
-}
-
 
 
 function registerTopFeatureBarButtonHandler() {
@@ -230,6 +225,3 @@ $(document).ready(function() {
     //showInstantMessengersOverlay();
   });
 });
-
-
-

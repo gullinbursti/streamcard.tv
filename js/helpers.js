@@ -62,3 +62,15 @@ window.location.href.replace(
 	new RegExp("([^?=&]+)(=([^&]*))?", "g"),
 	function($0, $1, $2, $3) { queryString[$1] = $3; }
 );
+
+function renderOverlayImIcon(messengerDisplayName, featureBotDisplayName, excludeClickHandler) {
+  var lower = messengerDisplayName.toLowerCase();
+  var html = '<img class="overlay-im-icon" src="img/icon-'+lower+'-white.png"';
+  if (excludeClickHandler) {
+    html += '>';
+  } else {
+    html += ' onclick="openMessenger(\''+messengerDisplayName+'\', \''+featureBotDisplayName+'\');">';
+  }
+  return html;
+}
+
