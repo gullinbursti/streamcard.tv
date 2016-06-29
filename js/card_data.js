@@ -801,6 +801,10 @@ $(document).ready(function() {
             );
             $('.overlay-button').addClass('success').text('Success');
             $('.overlay-alert').removeClass('is-hidden');
+
+            setTimeout(function(){
+              $('.overlay-alert').addClass('is-hidden');
+            }, 3000);
           }
         });
       }
