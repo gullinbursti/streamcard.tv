@@ -479,6 +479,7 @@ a:hover {
   top: 48px;
   left: 0;
   width: 100%;
+  min-height: 48px;
   height: auto;
 	line-height:48px;
   background-color: #090a0c;
@@ -489,8 +490,11 @@ a:hover {
 	border-top:1px solid #1b1e28;
 }
 .top-feature-bar .feature-button {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
   font-weight:600;
-  padding:6px;
+  padding: 4px 6px;
   padding-left:8px;
   padding-right:8px;
   border:2px solid #3a577e;
@@ -601,12 +605,11 @@ a:hover {
 	  height: auto;
 		line-height:40px;
 	  background-color: ;
-	  padding-top: 18px;
-		padding-bottom: 0px;
+	  padding-top: 10px;
+		padding-bottom: 5px;
 	  z-index: 5;
 		border-top:1px solid #1b1e28;
-			text-align:center;
-
+		text-align:center;
 	}
 	
   #im-info {
