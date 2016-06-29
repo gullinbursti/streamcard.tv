@@ -34,7 +34,8 @@ function openMessenger(service, channelName) {
     'eventValue'    : 1
   });
 
-  $('.overlay-title').html('Opening ' + (channelName || service) + '&trade;');
+  // $('.overlay-title').html('Opening ' + (channelName || service) + '&trade;');
+  $('.overlay-title').html('Opening...');
   $('.overlay-message').addClass('narrow').html(
     renderOverlayImIcon(service, channelName)
   );
