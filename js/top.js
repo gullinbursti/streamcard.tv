@@ -34,7 +34,7 @@ function openMessenger(service, channelName) {
     'eventValue'    : 1
   });
 
-  $('.overlay-title').html('Opening ' + channelName + '&trade;');
+  $('.overlay-title').html('Opening ' + (channelName || service) + '&trade;');
   $('.overlay-message').addClass('narrow').html(
     renderOverlayImIcon(service, channelName)
   );
@@ -48,7 +48,6 @@ function openMessenger(service, channelName) {
   setTimeout(function() {
     $('.overlay-alert').addClass('is-hidden');
     $('.overlay-button').removeClass('is-hidden');
-
 
     if (service.toLowerCase() == "kik") {
       openKik(channelName);
