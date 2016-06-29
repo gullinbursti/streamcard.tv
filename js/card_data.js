@@ -796,7 +796,7 @@ $(document).ready(function() {
           dataType: 'json',
           success: function(response) {
             $('.overlay-title').text('Confirmation');
-            $('.overlay-message').html(
+            $('.overlay-message').addClass('narrow').html(
               renderOverlayImIcon('Twitch', channel, true)  // true excludes an onclick handler 
             );
             $('.overlay-button').addClass('success').text('Success');
