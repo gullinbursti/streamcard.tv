@@ -851,6 +851,12 @@ a:hover {
     width: auto;
     height: 140px;
   }
+  .overlay-message.narrow {
+    min-width: auto; 
+  }
+  .overlay-footer .overlay-footer-item {
+    min-width: auto;
+  }
   .overlay-message > .overlay-im-icon {
     width: 12%;
   }
