@@ -16,6 +16,9 @@ body {
 .is-hidden {
   visibility: hidden;
 }
+.is-not-displayed {
+  display: none !important;
+}
 
 
 
@@ -752,7 +755,7 @@ a:hover {
 .overlay-message {
   font-size: 14px;
   line-height: 20px;
-  color: #aaa;
+  color: #fff;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -762,6 +765,10 @@ a:hover {
   width: 560px;
   padding: 0 20px;
   overflow: hidden;
+}
+.overlay-message.narrow {
+  width: auto;
+  max-width: 560px;
 }
 .overlay-message > .overlay-im-icon {
   max-height: 70px;
@@ -784,6 +791,28 @@ a:hover {
   margin: 0 auto;
   margin-bottom: 15px;
   text-transform: uppercase;
+  text-align: center;
+}
+.overlay-footer {
+  padding: 0 15px;
+}
+.overlay-footer .overlay-footer-item {
+  display: block;
+  background-color: #1b1e28;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  border: 0;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  min-width: 430px;
+}
+.overlay-footer .overlay-footer-item.success {  
+  background-color: #418258;
+  height: 55px;
+  line-height: 55px;
 }
 
 .overlay-button:hover {
