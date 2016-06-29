@@ -501,6 +501,10 @@ a:hover {
   border-radius:10px;
   margin: 0px;
   cursor: pointer;
+  opacity: .8;
+}
+.top-feature-bar .feature-button:hover {
+  opacity: 1;
 }
 
 .top-bar .logo {
@@ -523,6 +527,7 @@ a:hover {
   opacity: 1.0;
   border: 2px solid #999;
   border-radius: 5px;
+  cursor: pointer;
 }
 .top-bar .top-bar-icons img:hover {
   opacity: .5;
