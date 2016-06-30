@@ -20,8 +20,6 @@ body {
   display: none !important;
 }
 
-
-
 #video-and-chat {
   display: flex;
   flex-direction: row;
@@ -277,7 +275,7 @@ a, a:link, a:active, a:visited {
 
 a:hover {
   text-decoration: none;
-  opacity: .5;
+  opacity: .8;
 }
 
 .main-title {
@@ -447,7 +445,7 @@ a:hover {
   padding: 10px 10px;
   opacity: 0.8;
   cursor: pointer;
-  background-color: #1b1d28;
+  background-color: #2d323f;
 }
 .game-icon.is-selected {
   background-color: #050607;
@@ -467,7 +465,7 @@ a:hover {
   width: 100%;
   height: 48px;
   line-height: 48px;
-  background-color: #0e1016;
+  background-color: #1e232d;
   padding: 0px;
   z-index: 5;
 
@@ -497,10 +495,10 @@ a:hover {
   padding: 4px 6px;
   padding-left:8px;
   padding-right:8px;
-  border:2px solid #3a577e;
+  border:2px solid #567496;
   text-transform: uppercase;
   font-size:12px;
-  color:#3a577e;
+  color:#567496;
   font-weight:600;
   border-radius:10px;
   margin: 0px;
@@ -508,11 +506,12 @@ a:hover {
   opacity: .8;
 }
 .top-feature-bar .feature-button:hover {
-  opacity: 1;
+  	opacity: 1;
 }
 
 .top-bar .logo {
   height: 100%;
+	
 
 }
 .top-bar .top-bar-icons {
@@ -522,23 +521,29 @@ a:hover {
   display: flex;
   flex-direction: row;
   align-items: center;
+
 }
 .top-bar .top-bar-icons img {
-  width: 26px;
+  width: 32px;
   height: auto;
   cursor: pointer;
   margin-left: 10px;
-  opacity: 1.0;
   border: 2px solid #999;
   border-radius: 5px;
+	opacity: .6;
   cursor: pointer;
 }
 .top-bar .top-bar-icons img:hover {
-  opacity: .5;
+  opacity: .8;
 }
 
 .info .desktop-text .top-bar-icons img:hover {
-  opacity: .5;
+  opacity: 1;
+	cursor: pointer;
+}
+
+.desktop-text .top-bar-icons2 img:hover {
+  opacity: .8;
 	cursor: pointer;
 }
 
@@ -549,14 +554,14 @@ a:hover {
   margin-top: 0px;
 }
 #game-info {
-  background-color: #0e1016;
+  background-color: #1e232d;
   color: #ccc;
 	text-transform:uppercase;
-	font-size:12px;
+	font-size:14px;
 	font-weight:600;
 }
 #table-header-row {
-  background-color: #1e2329;
+  background-color: #1f232d;
   color: #666666;
 }
 
@@ -568,8 +573,9 @@ a:hover {
 	padding-right: 6px;
 	font-size: 12px;
 	text-transform: uppercase;
-	color: #666;
+	color: #999999;
 	font-weight: 600;
+	
 }
 
 .top-bar-logo {
@@ -587,14 +593,29 @@ a:hover {
 	 padding-top:80px; padding-bottom:80px;
 
 }
+
+
+
+
 @media (max-width: 600px) {
+	
+	
+
   
 	.legal-center-div {width:100%;}
 	
 	body {width:100%;}
 	
 	.index-wrapper {
-	  margin-top: 190px;
+	  margin-top: 180px;
+	}
+	
+	#game-info {
+	  background-color: #1e232d;
+	  color: #ccc;
+		text-transform:uppercase;
+		font-size:12px;
+		font-weight:600;
 	}
 	
 	.top-feature-bar {
@@ -603,14 +624,28 @@ a:hover {
 	  left: 0;
 	  width: 100%;
 	  height: auto;
-		line-height:40px;
+		line-height:42px;
 	  background-color: ;
-	  padding-top: 10px;
-		padding-bottom: 5px;
+	  padding-top: 5px;
+		padding-bottom: 10px;
 	  z-index: 5;
 		border-top:1px solid #1b1e28;
 		text-align:center;
 	}
+	
+	.card-button-flex {
+	  flex: 0 1 auto;
+	  width: 240px;
+	  text-align: right;
+	  display: flex;
+	  flex-direction: row;
+	  align-items: right;
+	  flex-wrap: wrap;
+	  justify-content: right;
+	  padding: 0 0px;
+		padding-right:0px;
+	}
+	
 	
   #im-info {
     
@@ -697,8 +732,9 @@ a:hover {
   }
 	
   .im-button {
-    margin: 1px;
-    padding: 0;
+    margin: 2;
+    padding: 2;
+
   }
 
   .game-header-image {
@@ -718,6 +754,33 @@ a:hover {
 }
 
 
+@media (max-width: 320px) {
+	
+	.top-feature-bar {
+	  position: fixed;
+	  top: 48px;
+	  left: 0;
+	  width: 100%;
+	  height: auto;
+		line-height:38px;
+	  background-color: ;
+	  padding-top: 10px;
+		padding-bottom: 10px;
+	  z-index: 5;
+		border-top:1px solid #1b1e28;
+		text-align:center;
+	}
+	
+	
+	body {width:100%;}
+	
+	.index-wrapper {
+	  margin-top: 200px;
+	}
+	
+}
+
+
 /*****  OVERLAY POPUP ******/
 
 .overlay-alert {
@@ -727,7 +790,7 @@ a:hover {
   left: 0;
   text-align: left;
   width: 100%;
-  height: 200%;
+  height: 100%;
   background: rgba(0,0,0,0.9);
 }
 

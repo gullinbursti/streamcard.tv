@@ -40,7 +40,7 @@ function populateRows(game_name) {
 				var price = Math.max(Math.ceil(item.viewers * 0.00001) - 0.01, 0.99);
 				//console.log(response.message+': ('+item.views+') '+price);
 
-				var html = '<div class="flex-container hover-link row_'+item.channel+'" style="border-top: 0 solid #2f2f42; border-bottom: 0px solid #2f2f42; color:#ccc; font-weight:400; '+((i % 2 == 0) ? 'background-color:#1b1d28' : 'background-color:#15161f')+'">';
+				var html = '<div class="flex-container hover-link row_'+item.channel+'" style="border-top: 0 solid #2f2f42; border-bottom: 0px solid #2f2f42; color:#ccc; font-weight:400; '+((i % 2 == 0) ? 'background-color:#353948' : 'background-color:#2b2d3b')+'">';
 				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="rank-flex">#' + (i + 1) + '</div>';
 				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="channel-avatar-flex" style="padding-top:16px; vertical-align: middle"><span style="display:inline-block; height:100%; vertical-align:middle;"><img src="' + ((item.logo == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.logo) + '" width="30" height="30" style="vertical-align:middle; max-height:30px; max-width:30px; border-radius:15px;"></span></div>';
 				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="channel-name-flex">'+item.channel+'</div>';
@@ -49,10 +49,10 @@ function populateRows(game_name) {
 				//html += '<div onclick="rowHit(\'' + item.channel + '\')" class="card-value-flex">$'+price+'</div>';
 				//html += '<div class="card-button-flex" onclick="rowHit(\'' + item.channel + '\')"><span class="hover-link"><div class="buy-buton" style="margin:0; font-size:16px; line-height:0;">VIEW</div></span></div>';
 				html += '<div class="card-button-flex">';
-				html += '  <img class="im-button" data-im="Kik" onclick="openMessenger(\'Kik\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-kik.png" width="28" height="28" />';
-				html += '  <img class="im-button" data-im="Discord" onclick="openMessenger(\'Discord\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-discord.png" width="28" height="28" />';
-				html += '  <img class="im-button" data-im="Twitch" onclick="openMessenger(\'Twitch\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-twitch.png" width="28" height="28" />';
-				html += '  <img class="im-button" data-im="Facebook" onclick="openMessenger(\'Facebook\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-facebook.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Kik" onclick="openMessenger(\'Kik\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-kik-white.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Discord" onclick="openMessenger(\'Discord\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-discord-white.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Twitch" onclick="openMessenger(\'Twitch\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-twitch-white.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Facebook" onclick="openMessenger(\'Facebook\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-facebook-white.png" width="28" height="28" />';
 				html += '</div>';
 				html += '</div>';
 
@@ -95,7 +95,7 @@ var channel_rows = [];
 var game_video = "Overwatch";
 
 var overwatch_info = "Overwatch Top 100 online players";
-var hearthstone_info = "Hearthstone Top 100 online players";
+var csgo_info = "CS:GO Top 100 online players";
 var lol_info = "League of Legends Top 100 online players";
 var dota_info = "Dota2 Top 100 online players";
 
@@ -131,13 +131,13 @@ $(document).ready(function() {
 		$('.game-name').text($(this).attr('data-game'));
 
 		$(this).addClass('is-selected');
-		$('#hearthstone-button').removeClass('is-selected');
+		$('#CSGO-button').removeClass('is-selected');
 		$('#lol-button').removeClass('is-selected');
 		$('#dota-button').removeClass('is-selected');
 		$('.game-header-image').attr('src', "img/home-device-overwatch.png");
 	});
 
-	$('#hearthstone-button').click(function() {
+	$('#csgo-button').click(function() {
 		populateRows($(this).attr('data-game').toLowerCase());
 		$('.game-name').text($(this).attr('data-game'));
 
@@ -147,6 +147,17 @@ $(document).ready(function() {
 		$('#dota-button').removeClass('is-selected');
 		$('.game-header-image').attr('src', "img/home-device-hearthstone.png");
 	});
+	
+	$('#CSGO-button').click(function() {
+		populateRows($(this).attr('data-game').toLowerCase());
+		$('.game-name').text($(this).attr('data-game'));
+
+		$(this).addClass('is-selected');
+		$('#overwatch-button').removeClass('is-selected');
+		$('#lol-button').removeClass('is-selected');
+		$('#dota-button').removeClass('is-selected');
+		$('.game-header-image').attr('src', "img/home-device-csgo.png");
+	});
 
 	$('#lol-button').click(function() {
 		populateRows($(this).attr('data-game').toLowerCase());
@@ -154,7 +165,7 @@ $(document).ready(function() {
 
 		$(this).addClass('is-selected');
 		$('#overwatch-button').removeClass('is-selected');
-		$('#hearthstone-button').removeClass('is-selected');
+		$('#CSGO-button').removeClass('is-selected');
 		$('#dota-button').removeClass('is-selected');
 		$('.game-header-image').attr('src', "img/home-device-league.png");
 	});
@@ -165,7 +176,7 @@ $(document).ready(function() {
 
 		$(this).addClass('is-selected');
 		$('#overwatch-button').removeClass('is-selected');
-		$('#hearthstone-button').removeClass('is-selected');
+		$('#CSGO-button').removeClass('is-selected');
 		$('#lol-button').removeClass('is-selected');
 		$('.game-header-image').attr('src', "img/home-device-dota2.png");
 	});
