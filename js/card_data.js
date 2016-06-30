@@ -727,14 +727,6 @@ $(document).ready(function() {
     // no channel defined
     if (typeof queryString['channel'] == 'undefined') {
 
-      // check if returning from paypal
-      if (typeof queryString['paypal'] != 'undefined') {
-        setCookie('paypal_result', (queryString['paypal'] == "1") ? "1" : "0");
-
-        // refresh to clean out url
-        location.href = "/card.html?channel="+getCookie('channel');
-      }
-
       // no channel defined or previously redirected, get top streamer
       if (getCookie('channel') == "") {
         $.ajax({

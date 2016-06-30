@@ -25,7 +25,9 @@ function topButton () {
   alert ("top");
 }
 
-function openMessenger(service, channelName) {
+function openMessenger(service) {
+	channelName = getCookie('channel');
+
   ga('send', {
     'hitType'       : 'event',
     'eventCategory' : service,
@@ -41,7 +43,7 @@ function openMessenger(service, channelName) {
   );
   $('.overlay-container').addClass('is-loading');
   $('.overlay-footer').html(
-    '<div class="overlay-footer-item success-footer-item">Remeber to enter "Subscription"</div>'
+    '<div class="overlay-footer-item success-footer-item">Remember to enter "' + channelName + '"</div>'
   );
   $('.overlay-button').addClass('is-not-displayed');
   $('.overlay-alert').removeClass('is-hidden');
@@ -210,7 +212,7 @@ var twitch_auth = {
 
 
 $(document).ready(function() {
-  resizer();
+	resizer();
   window.addEventListener('resize', function(event) {
     resizer();
   });

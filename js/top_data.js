@@ -1,5 +1,6 @@
 
 function rowHit(channel) {
+	deleteCookie("channel");
 	ga('send', {
 		'hitType'       : 'event',
 		'eventCategory' : 'Card',
@@ -24,7 +25,6 @@ function populateRows(game_name) {
 			//$('.player-frame').attr('src', "http://player.twitch.tv/?channel=" + response.streams[0].channel.name);
 		}
 	});
-
 	$('.leaderboard-wrapper').empty();
 	$('.leaderboard-wrapper').html('<div class="flex-container" style="border-top:0 solid #1a1a1a; border-bottom:1px solid #1a1a1a; color:#ccc; font-weight:400;"><div class="game-flex-item"><div class="loader-circle">Loading...</div></div></div>');
 
@@ -101,7 +101,6 @@ var dota_info = "Dota2 Top 100 online players";
 
 
 $(document).ready(function() {
-	deleteCookie('whisper_request');
 	$('.game-name').text(game_video);
 
 	$.ajax({
@@ -127,6 +126,7 @@ $(document).ready(function() {
 	});
 
 	$('#overwatch-button').click(function() {
+		setCookie('channel', $(this).attr('data-game'));
 		populateRows($(this).attr('data-game').toLowerCase());
 		$('.game-name').text($(this).attr('data-game'));
 
@@ -136,19 +136,9 @@ $(document).ready(function() {
 		$('#dota-button').removeClass('is-selected');
 		$('.game-header-image').attr('src', "img/home-device-overwatch.png");
 	});
-
-	$('#csgo-button').click(function() {
-		populateRows($(this).attr('data-game').toLowerCase());
-		$('.game-name').text($(this).attr('data-game'));
-
-		$(this).addClass('is-selected');
-		$('#overwatch-button').removeClass('is-selected');
-		$('#lol-button').removeClass('is-selected');
-		$('#dota-button').removeClass('is-selected');
-		$('.game-header-image').attr('src', "img/home-device-hearthstone.png");
-	});
 	
-	$('#CSGO-button').click(function() {
+	$('#csgo-button').click(function() {
+		setCookie('channel', $(this).attr('data-game'));
 		populateRows($(this).attr('data-game').toLowerCase());
 		$('.game-name').text($(this).attr('data-game'));
 
@@ -160,6 +150,7 @@ $(document).ready(function() {
 	});
 
 	$('#lol-button').click(function() {
+		setCookie('channel', $(this).attr('data-game'));
 		populateRows($(this).attr('data-game').toLowerCase());
 		$('.game-name').text($(this).attr('data-game'));
 
@@ -171,6 +162,7 @@ $(document).ready(function() {
 	});
 
 	$('#dota-button').click(function() {
+		setCookie('channel', $(this).attr('data-game'));
 		populateRows($(this).attr('data-game').toLowerCase());
 		$('.game-name').text($(this).attr('data-game'));
 

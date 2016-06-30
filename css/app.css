@@ -639,7 +639,7 @@ a:hover {
 	  text-align: right;
 	  display: flex;
 	  flex-direction: row;
-	  align-items: right;
+	  /*align-items: right;*/
 	  flex-wrap: wrap;
 	  justify-content: right;
 	  padding: 0 0px;
@@ -763,12 +763,19 @@ a:hover {
 	  width: 100%;
 	  height: auto;
 		line-height:38px;
-	  background-color: ;
 	  padding-top: 10px;
 		padding-bottom: 10px;
 	  z-index: 5;
 		border-top:1px solid #1b1e28;
 		text-align:center;
+	}
+
+	.top-bar-logo {
+		font-size: 8px;
+	}
+
+	.top-bar-info {
+		display: none;
 	}
 	
 	
