@@ -47,6 +47,23 @@
     <title></title>
   </head>
   <body>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1624039391243435',
+          xfbml      : true,
+          version    : 'v2.6'
+        });
+      };
+
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
 		
     <div class="top-bar">
       <a href="/" style="text-decoration:none;"><img class="logo" src="img/logo.png" style="vertical-align:middle;"/> <span class="top-bar-logo">GameBots<span style="opacity:1;">™</span></span></a>
@@ -88,8 +105,8 @@
                 <span class="mobile-text"><span class="game-name"></span> <span style="text-transform:uppercase; font-weight:600;">GameBots<sup style="font-size:20px">™</sup></span</span></span>
               </div>
                <div class="info" style="text-transform:uppercase;font-size:14px;font-weight:600;">
-                <span class="desktop-text">Become a better <span class="game-name"></span> player with live help over chat</span>
-                <span class="mobile-text">Become a better <span class="game-name"></span> player with live help over chat<span>
+                <span class="desktop-text">Become a better <span class="game-name"></span> player with live chat help</span>
+                <span class="mobile-text">Become a better <span class="game-name"></span> player with live chat help<span>
               </div>
               <div class="info">
                 
@@ -167,7 +184,7 @@
       <div class="row center-xs">
         <div class="col-xs-14">
           <div class="box" style="padding-top:20px; padding-bottom:20px">
-            <span class="hover-link" style="padding-right:8px; color:#fff;"><a href="http://api.gamebots.chat" target="_blank" style="text-decoration:none;"> <span style="font-weight:600; padding:6px; padding-left:8px; padding-right:8px; border:2px solid #3a577e; text-transform: uppercase; text-decoration:none; font-size:12px; color:#3a577e; font-weight:600; border-radius:10px; margin: 0px;">GameBot API</span></a></span>
+            <span class="hover-link" style="padding-right:8px; color:#fff;"><a href="https://gamebots.api-docs.io/1.0" target="_blank" style="text-decoration:none;"> <span style="font-weight:600; padding:6px; padding-left:8px; padding-right:8px; border:2px solid #3a577e; text-transform: uppercase; text-decoration:none; font-size:12px; color:#3a577e; font-weight:600; border-radius:10px; margin: 0px;">GameBot API</span></a></span>
            <span class="hover-link" style="padding-right:8px; color:#fff;"><a href="http://dashboard.beta.modd.live/insights.html" target="_blank" style="text-decoration:none;"><span style="font-weight:600; padding:6px; padding-left:8px; padding-right:8px; border:2px solid #3a577e; text-transform: uppercase; text-decoration:none; font-size:12px; color:#3a577e; font-weight:600; border-radius:10px; margin: 0px;">Admin</span></a></span>
             <span class="hover-link" style="padding-right:8px; color:#fff;"><a href="legal.html" style="text-decoration:none;"><span style="font-weight:600; padding:6px; padding-left:8px; padding-right:8px; border:2px solid #3a577e; text-transform: uppercase; text-decoration:none; font-size:12px; color:#3a577e; font-weight:600; border-radius:10px; margin: 0px;">Legal</span></a></span>
             <span class="hover-link" style=""><a href="mailto:support@gamebots.chat" style="text-decoration:none;"><span style="font-weight:600; padding:6px; padding-left:8px; padding-right:8px; border:2px solid #3a577e; text-transform: uppercase; text-decoration:none; font-size:12px; color:#3a577e; font-weight:600; border-radius:10px; margin: 0px;">Support</span></a></span>
@@ -203,5 +220,18 @@
     </div>
 
     <div id="im-overlay-trigger-when-visible">&nbsp;</div>
+
+    <!--<div class="fb-send-to-messenger"-->
+         <!--messenger_app_id="1624039391243435"-->
+         <!--page_id="1182705821791569"-->
+         <!--data-ref="PASS_THROUGH_PARAM"-->
+         <!--color="blue"-->
+         <!--size="standard"></div>-->
+
+    <!--<div class="fb-messengermessageus"-->
+         <!--messenger_app_id="1624039391243435"-->
+         <!--page_id="1182705821791569"-->
+         <!--color="blue"-->
+         <!--size="standard" ></div>-->
   </body>
 </html>

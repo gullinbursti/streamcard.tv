@@ -131,7 +131,7 @@ $(document).ready(function() {
 		$('.game-name').text($(this).attr('data-game'));
 
 		$(this).addClass('is-selected');
-		$('#CSGO-button').removeClass('is-selected');
+		$('#csgo-button').removeClass('is-selected');
 		$('#lol-button').removeClass('is-selected');
 		$('#dota-button').removeClass('is-selected');
 		$('.game-header-image').attr('src', "img/home-device-overwatch.png");
@@ -156,7 +156,7 @@ $(document).ready(function() {
 
 		$(this).addClass('is-selected');
 		$('#overwatch-button').removeClass('is-selected');
-		$('#CSGO-button').removeClass('is-selected');
+		$('#csgo-button').removeClass('is-selected');
 		$('#dota-button').removeClass('is-selected');
 		$('.game-header-image').attr('src', "img/home-device-league.png");
 	});
@@ -168,7 +168,7 @@ $(document).ready(function() {
 
 		$(this).addClass('is-selected');
 		$('#overwatch-button').removeClass('is-selected');
-		$('#CSGO-button').removeClass('is-selected');
+		$('#csgo-button').removeClass('is-selected');
 		$('#lol-button').removeClass('is-selected');
 		$('.game-header-image').attr('src', "img/home-device-dota2.png");
 	});
