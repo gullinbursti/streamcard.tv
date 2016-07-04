@@ -25,16 +25,19 @@ function topButton () {
   alert ("top");
 }
 
+function topIcon(service) {
+	ga('send', {
+		'hitType'       : 'event',
+		'eventCategory' : 'icon',
+		'eventAction'   : service.toLowerCase(),
+		'eventLabel'    : '',
+		'eventValue'    : 1
+	});
+	openMessenger(service);
+}
+
 function openMessenger(service) {
 	channelName = getCookie('channel');
-
-  ga('send', {
-    'hitType'       : 'event',
-    'eventCategory' : service,
-    'eventAction'   : 'Open',
-    'eventLabel'    : (twitch_auth.twitch_name != "") ? twitch_auth.twitch_name : channelName,
-    'eventValue'    : 1
-  });
 
   // $('.overlay-title').html('Opening ' + (channelName || service) + '&trade;');
   $('.overlay-title').html('Opening...');
@@ -73,24 +76,24 @@ function openKik () {
 
   if (isMobile()) {
     if (kik.enabled) {
-      kik.openConversation("streamcard");
+      kik.openConversation("game.bots");
 
     } else {
       location.href = "card://" + location.hostname + "/open_kik.html";
       setTimeout(function () {
-        location.href = "https://kik.me/streamcard";
+        location.href = "https://kik.me/game.bots";
       }, 5000);
     }
 
   } else {
-    location.href = "https://kik.me/streamcard";
+    location.href = "https://kik.me/game.bots";
   }
 }
 
 function openDiscord (channelName) {
   console.log("DISCORD");
   //location.href = "https://discord.gg/014do3goV6bJgwIf8";
-  location.href = "https://discord.gg/014do3goV6bJgwIf8";
+	location.href = "https://discord.gg/f2h8Hta";
 }
 
 function openTwitch (channelName) {
@@ -124,7 +127,7 @@ function openTwitch (channelName) {
 
 function openFacebook (channelName) {
   console.log("FACEBOOK");
-  location.href = "http://m.me/streamcardtv";
+  location.href = "http://m.me/gamebotsc";
 }
 
 function twitchAuth(channelName) {
@@ -149,24 +152,10 @@ function legal() {
 }
 
 function share () {
-  ga('send', {
-    'hitType'     : 'event',
-    'eventCategory' : 'user',
-    'eventAction'   : 'share',
-    'eventLabel'    : channel,
-    'eventValue'    : 1
-  });
   window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent("Check out "+channel+"'s Stream Card. p.00m.co/"+channel)+"&via=TeamMODD");
 }
 
 function support () {
-  ga('send', {
-    'hitType'     : 'event',
-    'eventCategory' : 'user',
-    'eventAction'   : 'report',
-    'eventLabel'    : channel,
-    'eventValue'    : 1
-  });
 }
 
 function showInstantMessengersOverlay(featureBotName) {
@@ -187,6 +176,14 @@ function registerTopFeatureBarButtonHandler() {
   $('.top-feature-bar').on('click', '.feature-button', function(event){
     var $button = $(event.target);
     var buttonText = $button.text();
+
+	  ga('send', {
+		  'hitType'			: 'event',
+		  'eventCategory'	: 'button',
+		  'eventAction'		: buttonText.toLowerCase(),
+		  'eventLabel'		: '',
+		  'eventValue'		: 1
+	  });
 
     showInstantMessengersOverlay(buttonText);
   });

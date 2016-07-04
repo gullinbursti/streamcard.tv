@@ -1,13 +1,5 @@
 
 function rowHit(channel) {
-	ga('send', {
-		'hitType'			: 'event',
-		'eventCategory'	: 'user',
-		'eventAction'		: 'row-'+channel,
-		'eventLabel'		: channel,
-		'eventValue'		: 1
-	});
-
 	window.open("player.html?channel="+encodeURIComponent(channel));
 }
 

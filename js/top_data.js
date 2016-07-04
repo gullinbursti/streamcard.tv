@@ -1,15 +1,27 @@
 
 function rowHit(channel) {
-	deleteCookie("channel");
 	ga('send', {
-		'hitType'       : 'event',
-		'eventCategory' : 'Card',
-		'eventAction'   : 'Click',
-		'eventLabel'    : channel,
-		'eventValue'    : 1
+		'hitType'			: 'event',
+		'eventCategory'	: 'row',
+		'eventAction'		: channel,
+		'eventLabel'		: '',
+		'eventValue'		: 1
 	});
 
+	deleteCookie("channel");
 	window.open("/card.html?channel="+encodeURIComponent(channel));
+}
+
+function rowIcon(service, channel) {
+	ga('send', {
+		'hitType'			: 'event',
+		'eventCategory'	: 'row',
+		'eventAction'		: service.toLowerCase(),
+		'eventLabel'		: channel,
+		'eventValue'		: 1
+	});
+
+	openMessenger(service, channel);
 }
 
 function populateRows(game_name) {
@@ -49,10 +61,10 @@ function populateRows(game_name) {
 				//html += '<div onclick="rowHit(\'' + item.channel + '\')" class="card-value-flex">$'+price+'</div>';
 				//html += '<div class="card-button-flex" onclick="rowHit(\'' + item.channel + '\')"><span class="hover-link"><div class="buy-buton" style="margin:0; font-size:16px; line-height:0;">VIEW</div></span></div>';
 				html += '<div class="card-button-flex">';
-				html += '  <img class="im-button" data-im="Kik" onclick="openMessenger(\'Kik\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-kik-white.png" width="28" height="28" />';
-				html += '  <img class="im-button" data-im="Discord" onclick="openMessenger(\'Discord\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-discord-white.png" width="28" height="28" />';
-				html += '  <img class="im-button" data-im="Twitch" onclick="openMessenger(\'Twitch\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-twitch-white.png" width="28" height="28" />';
-				html += '  <img class="im-button" data-im="Facebook" onclick="openMessenger(\'Facebook\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-facebook-white.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Kik" onclick="rowIcon(\'Kik\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-kik-white.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Discord" onclick="rowIcon(\'Discord\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-discord-white.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Twitch" onclick="rowIcon(\'Twitch\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-twitch-white.png" width="28" height="28" />';
+				html += '  <img class="im-button" data-im="Facebook" onclick="rowIcon(\'Facebook\', \''+item.channel+'\')" data-channel="'+item.channel+'" src="/img/icon-facebook-white.png" width="28" height="28" />';
 				html += '</div>';
 				html += '</div>';
 

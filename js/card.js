@@ -14,14 +14,6 @@ function channel_name () {
 }
 
 function buyButton () {
-	ga('send', {
-		'hitType'			: 'event',
-		'eventCategory'	: 'user',
-		'eventAction'		: 'buy-button',
-		'eventLabel'		: channel,
-		'eventValue'		: 1
-	});
-
 	// not authed
 	if (twitch_auth.oauth_token == "") {
 		setCookie('paypal_request', '1');
@@ -34,13 +26,6 @@ function buyButton () {
 }
 
 function shareButton () {
-	ga('send', {
-		'hitType'     : 'event',
-		'eventCategory' : 'user',
-		'eventAction'   : 'share',
-		'eventLabel'    : channel,
-		'eventValue'    : 1
-	});
 	window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent("Check out "+channel+"'s Stream Card. scard.tv/channel/"+channel)+"&via=Streamcardtv");
 }
 
@@ -54,6 +39,17 @@ function addCard() {
 
 function legal() {
 	location.href = "/legal.html";
+}
+
+function topIcon(service) {
+	ga('send', {
+		'hitType'       : 'event',
+		'eventCategory' : 'icon',
+		'eventAction'   : service.toLowerCase(),
+		'eventLabel'    : channel,
+		'eventValue'    : 1
+	});
+	openMessenger(service);
 }
 
 function openMessenger(service) {
@@ -87,24 +83,24 @@ function openKik () {
 
 	if (isMobile()) {
 		if (kik.enabled) {
-			kik.openConversation("streamcard");
+			kik.openConversation("game.bots");
 			//window.open("https://kik.me/streamcard");
 
 		} else {
 			location.href = "card://" + location.hostname + "/open_kik.html";
 			setTimeout(function () {
-				location.href = "https://kik.me/streamcard";
+				location.href = "https://kik.me/game.bots";
 			}, 5000);
 		}
 
 	} else {
-		location.href = "https://kik.me/streamcard";
+		location.href = "https://kik.me/game.bots";
 	}
 }
 
 function openDiscord () {
 	console.log("DISCORD");
-	location.href = "https://discord.gg/014do3goV6bJgwIf8";
+	location.href = "https://discord.gg/f2h8Hta";
 	//window.open("https://discord.gg/014do3goV6bJgwIf8");
 }
 
@@ -137,20 +133,10 @@ function openTwitch () {
 
 function openFacebook () {
 	console.log("FACEBOOK");
-	location.href = "http://m.me/streamcardtv";
+	location.href = "http://m.me/gamebotsc";
 }
 
 function support () {
-	ga('send', {
-		'hitType'     : 'event',
-		'eventCategory' : 'user',
-		'eventAction'   : 'report',
-		'eventLabel'    : channel,
-		'eventValue'    : 1
-	});
-
-	
-	
 }
 
 function twitchAuth() {

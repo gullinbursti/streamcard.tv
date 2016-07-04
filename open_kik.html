@@ -12,7 +12,9 @@
 	<body>
 		<script>
 			$(document).ready(function() {
-				kik.openConversation("streamcard");
+        kik.ready(function () {
+          kik.openConversation("game.bots");
+        });
 			});
 		</script>
 	</body>
