@@ -84,24 +84,23 @@ function openKik () {
 	if (isMobile()) {
 		if (kik.enabled) {
 			kik.openConversation("game.bots");
-			//window.open("https://kik.me/streamcard");
 
 		} else {
-			location.href = "card://" + location.hostname + "/open_kik.html";
+			//location.href = "card://" + location.hostname + "/open_kik.html";
+			location.href = "card://kik.me/game.bots";
 			setTimeout(function () {
-				location.href = "https://kik.me/game.bots";
+				window.open("https://kik.me/game.bots");
 			}, 5000);
 		}
 
 	} else {
-		location.href = "https://kik.me/game.bots";
+		window.open("https://kik.me/game.bots");
 	}
 }
 
 function openDiscord () {
 	console.log("DISCORD");
-	location.href = "https://discord.gg/f2h8Hta";
-	//window.open("https://discord.gg/014do3goV6bJgwIf8");
+	window.open("https://discord.gg/f2h8Hta");
 }
 
 function openTwitch () {
@@ -133,7 +132,7 @@ function openTwitch () {
 
 function openFacebook () {
 	console.log("FACEBOOK");
-	location.href = "http://m.me/gamebotsc";
+	window.open("http://m.me/gamebotsc");
 }
 
 function support () {

@@ -79,21 +79,22 @@ function openKik () {
       kik.openConversation("game.bots");
 
     } else {
-      location.href = "card://" + location.hostname + "/open_kik.html";
+      //location.href = "card://" + location.hostname + "/open_kik.html";
+	    //location.href = "card://kik.me/game.bots";
       setTimeout(function () {
-        location.href = "https://kik.me/game.bots";
+	      window.open("https://kik.me/game.bots");
       }, 5000);
     }
 
   } else {
-    location.href = "https://kik.me/game.bots";
+	  window.open("https://kik.me/game.bots");
   }
 }
 
 function openDiscord (channelName) {
   console.log("DISCORD");
   //location.href = "https://discord.gg/014do3goV6bJgwIf8";
-	location.href = "https://discord.gg/f2h8Hta";
+	window.open("https://discord.gg/f2h8Hta");
 }
 
 function openTwitch (channelName) {
@@ -127,7 +128,7 @@ function openTwitch (channelName) {
 
 function openFacebook (channelName) {
   console.log("FACEBOOK");
-  location.href = "http://m.me/gamebotsc";
+	window.open("http://m.me/gamebotsc");
 }
 
 function twitchAuth(channelName) {
@@ -176,6 +177,7 @@ function registerTopFeatureBarButtonHandler() {
   $('.top-feature-bar').on('click', '.feature-button', function(event){
     var $button = $(event.target);
     var buttonText = $button.text();
+	  setCookie('channel', buttonText);
 
 	  ga('send', {
 		  'hitType'			: 'event',
@@ -214,6 +216,7 @@ $(document).ready(function() {
     resizer();
   });
 
+	setCookie('channel', 'overwatch');
   registerTopFeatureBarButtonHandler();
 
   $('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' GameBots™ <br> Trademarks & logos belong to their respective owners');
