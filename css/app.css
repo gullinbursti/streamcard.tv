@@ -354,6 +354,11 @@ a:hover {
 }
 
 
+
+/* ******************** */
+/* ***  Leaderboard *** */
+/* ******************** */
+
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -380,11 +385,11 @@ a:hover {
 
 .channel-name-flex {
   line-height: 65px;
-  flex: 2 0 0;
+  flex: 1 0 0;
   text-align: left;
   text-overflow: ellipsis;
-  min-width: 180px;
-
+  overflow: hidden;
+  min-width: 120px;
 }
 
 .retention-flex {
@@ -398,6 +403,7 @@ a:hover {
   line-height: 65px;
   flex: 1 0 0;
   text-align: center;
+  min-width: 60px;
 }
 
 .card-value-flex {
@@ -407,7 +413,7 @@ a:hover {
 }
 
 .card-button-flex {
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   width: 185px;
   text-align: center;
   display: flex;
@@ -418,6 +424,33 @@ a:hover {
   padding: 0 5px;
 	padding-right:10px;
 }
+
+
+@media (max-width: 600px) {
+  .flex-container {
+    font-size: 12px;
+  }
+
+  .channel-avatar-flex {
+    display: none;
+  }
+
+  .channel-name-flex {
+    flex: 1 1 0;
+  }
+
+  .rank-flex {
+    width: 50px;
+  }
+
+  .retention-flex { display: none; }
+  .viewers-flex { display: none; }
+  .card-value-flex { display: none; }
+
+}
+
+
+
 
 .im-button {
   margin: 3px;
@@ -588,13 +621,15 @@ a:hover {
 
 .preview-video {width:100%;overflow:hidden; }
 
-#header-text {
- 
-	 padding-top:80px; padding-bottom:80px;
-
+.header-wrapper {
 }
 
-
+.game-header-image {
+  width: 60%;
+}
+#header-text {
+  padding-top: 80px;
+}
 
 
 @media (max-width: 600px) {
@@ -648,10 +683,8 @@ a:hover {
 	
 	
   #im-info {
-    
     font-size:14px;
     padding:5px;
-    
   }
   #video-and-chat {
     flex-direction: column;
@@ -674,31 +707,6 @@ a:hover {
 		
   }
 
-  .flex-container {
-    font-size: 12px;
-  }
-
-  .channel-avatar-flex {
-    display: none;
-  }
-
-  .channel-name-flex {
-    -webkit-flex: 1 0 0;
-    flex: 1 0 0;
-  }
-
-  .retention-flex {
-    display: none;
-  }
-
-  .viewers-flex {
-    display: none;
-  }
-
-  .card-value-flex {
-    display: none;
-  }
-
   .im-chat {
     width: auto;
   }
@@ -712,7 +720,6 @@ a:hover {
 
   .channel-name-flex {
     min-width: 60px;
-    max-width: auto;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -747,9 +754,6 @@ a:hover {
 
   #header-text {
 	  display: none;
-		text-align:center;
-		 padding-top:10px; padding-bottom:10px;
-
   }
 }
 
