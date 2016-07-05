@@ -360,6 +360,21 @@ a:hover {
 /* ***  Leaderboard *** */
 /* ******************** */
 
+.leaderboard-row {
+  border-top: 0; 
+  border-bottom: 0px; 
+  color: #ccc; 
+  font-weight: 400;
+  background-color: #2b2d3b;
+}
+.leaderboard-row:nth-child(odd) {
+  background-color: #353948;
+} 
+.leaderboard-row:nth-child(even) .im-button {
+  border-color: #353948;
+}
+
+
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -624,6 +639,7 @@ a:hover {
 
 .header-wrapper {
   position: relative;
+  overflow-y: hidden;
 }
 
 .game-header-image {
@@ -631,9 +647,10 @@ a:hover {
 }
 #header-text {
   position: absolute;
-  top: 80px;
+  top: 13%;
   left:0;
   width:100%;
+  height: 100%;
   text-align:left;
   padding-left:0px;
 }
@@ -646,7 +663,7 @@ a:hover {
 	body {width:100%;}
 	
 	.index-wrapper {
-	  margin-top: 180px;
+	  margin-top: 165px;
 	}
 	
 	#game-info {

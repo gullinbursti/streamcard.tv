@@ -52,7 +52,7 @@ function populateRows(game_name) {
 				var price = Math.max(Math.ceil(item.viewers * 0.00001) - 0.01, 0.99);
 				//console.log(response.message+': ('+item.views+') '+price);
 
-				var html = '<div class="flex-container hover-link row_'+item.channel+'" style="border-top: 0 solid #2f2f42; border-bottom: 0px solid #2f2f42; color:#ccc; font-weight:400; '+((i % 2 == 0) ? 'background-color:#353948' : 'background-color:#2b2d3b')+'">';
+				var html = '<div class="leaderboard-row flex-container hover-link row_'+item.channel+'">';
 				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="rank-flex">#' + (i + 1) + '</div>';
 				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="channel-avatar-flex" style="padding-top:16px; vertical-align: middle"><span style="display:inline-block; height:100%; vertical-align:middle;"><img src="' + ((item.logo == "") ? "http://i.imgur.com/o8KEq67.jpg" : item.logo) + '" width="30" height="30" style="vertical-align:middle; max-height:30px; max-width:30px; border-radius:15px;"></span></div>';
 				html += '<div onclick="rowHit(\'' + item.channel + '\')" class="channel-name-flex">'+item.channel+'</div>';
