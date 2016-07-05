@@ -835,7 +835,7 @@ a:hover {
 
 .overlay-alert {
   z-index: 1000;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   text-align: left;
@@ -973,11 +973,11 @@ a:hover {
     height: 140px;
   }
   .overlay-message.narrow {
-    min-width: auto; 
+    min-width: 0;
   }
   .overlay-footer .overlay-footer-item {
     height: auto;
-    min-width: auto;
+    min-width: 0;
     line-height: 1.2em;
     padding: 15px;
   }
