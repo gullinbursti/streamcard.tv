@@ -107,7 +107,7 @@
           </div>
           <div class="info" style="text-transform:uppercase;font-size:14px;font-weight:600;">
             <span class="desktop-text">Become a better <span class="game-name"></span> player with live chat support</span>
-            <span class="mobile-text">Become a better <span class="game-name"></span> player with live chat support<span>
+            <span class="mobile-text">Become a better <span class="game-name"></span> player with live chat support</span>
           </div>
           <div class="info">
             <span class="desktop-text">
@@ -118,6 +118,8 @@
                   <img src="img/icon-facebook-white.png" onclick="topIcon('Facebook');" style="padding:0px; border:2px solid #242433; border-radius:12px;opacity:1;width:50px; margin-left: 10px;">
               </div>
             </span>
+          </div>
+          <div class="video-hit" style="position: absolute; top: 0; right: 100px; width: 300px; height: 100%">
           </div>
         </div>
       </div>
@@ -199,6 +201,14 @@
         <div class="overlay-message"></div>
         <div class="overlay-footer"></div>
         <button class="overlay-button" onclick="$('.overlay-alert').addClass('is-hidden');"></button>
+      </div>
+    </div>
+
+    <div class="overlay-video is-hidden" onclick="$(this).addClass('is-hidden'); $('.overlay-player').trigger('pause');">
+      <div class="overlay-container">
+        <video class="overlay-player" width="90%" height="90%" controls preload>
+          <source id="video-source" src="video/overwatch.mov" type="video/mp4">
+        </video>
       </div>
     </div>
 

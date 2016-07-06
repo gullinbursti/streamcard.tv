@@ -46,7 +46,7 @@ function openMessenger(service) {
   );
   $('.overlay-container').addClass('is-loading');
   $('.overlay-footer').html(
-    '<div class="overlay-footer-item success-footer-item">Remember to enter "' + channelName + '"</div>'
+    '<div class="overlay-footer-item success-footer-item">Remember to enter ' + channelName + '</div>'
   );
   $('.overlay-button').addClass('is-not-displayed');
   $('.overlay-alert').removeClass('is-hidden');
@@ -200,6 +200,10 @@ function resizer() {
   //$('.preview-video').css('height', height + 'px');
   $('.player-frame').attr('height', height);
   //$('#header-text').css('padding-top', (height - 30) + 'px');
+
+
+	$('.overlay-player').css('height', $('.overlay-video').height() * 0.9);
+	$('.overlay-player').css('width', ($('.overlay-player').height() * 9) / 16);
 }
 
 
@@ -218,6 +222,22 @@ $(document).ready(function() {
 
 	setCookie('channel', 'overwatch');
   registerTopFeatureBarButtonHandler();
+
+	if (isMobile()) {
+		setTimeout(function() {
+			$('.overlay-video').removeClass('is-hidden');
+			$('.overlay-player').get(0).currentTime = 0;
+			$('.overlay-player').trigger('play');
+		}, 5000);
+	}
+
+	$('.video-hit').click(function() {
+		console.log("SHOW VIDEO: "+ getCookie('channel'));
+		$('.overlay-video').removeClass('is-hidden');
+		//$('#video-source').attr('src', "video/" + getCookie('channel') + ".mov");
+		$('.overlay-player').get(0).currentTime = 0;
+		$('.overlay-player').trigger('play');
+	});
 
   $('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' GameBots™ <br> Trademarks & logos belong to their respective owners');
   
