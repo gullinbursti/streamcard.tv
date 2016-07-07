@@ -288,7 +288,9 @@ a:hover {
 }
 
 
-
+.game-name {
+  color: #c5bd36;
+}
 
 .loader-circle {
   font-size: 4px;
