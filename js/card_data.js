@@ -759,7 +759,7 @@ $(document).ready(function() {
 
         $('.overlay-title').text('Confirmation');
         $('.overlay-message').addClass('narrow').html(
-          renderOverlayImIcon('Twitch', channel, true)  // true excludes an onclick handler 
+          renderOverlayImIcon('Twitch', channel, true, false)  // true excludes an onclick handler
         );
         $('.overlay-button').addClass('failure').text('Failed').off('click').on('click', function(){
           // redirect to index page
@@ -789,7 +789,7 @@ $(document).ready(function() {
           success: function(response) {
             $('.overlay-title').text('Confirmation');
             $('.overlay-message').addClass('narrow').html(
-              renderOverlayImIcon('Twitch', channel, true)  // true excludes an onclick handler 
+              renderOverlayImIcon('Twitch', channel, true, false)  // true excludes an onclick handler
             );
             $('.overlay-button').addClass('success').text('Success');
             $('.overlay-alert').removeClass('is-hidden');

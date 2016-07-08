@@ -42,7 +42,7 @@ function openMessenger(service) {
   // $('.overlay-title').html('Opening ' + (channelName || service) + '&trade;');
   $('.overlay-title').html('Opening...');
   $('.overlay-message').addClass('narrow').html(
-    renderOverlayImIcon(service, channelName)
+    renderOverlayImIcon(service, channelName, false, false)
   );
   $('.overlay-container').addClass('is-loading');
   $('.overlay-footer').html(
@@ -51,27 +51,27 @@ function openMessenger(service) {
   $('.overlay-button').addClass('is-not-displayed');
   $('.overlay-alert').removeClass('is-hidden');
 
-  setTimeout(function() {
-    $('.overlay-alert').addClass('is-hidden');
-    $('.overlay-button').removeClass('is-hidden');
-
-    if (service.toLowerCase() == "kik") {
-      openKik(channelName);
-
-    } else if (service.toLowerCase() == "discord") {
-      openDiscord(channelName);
-
-    } else if (service.toLowerCase() == "twitch") {
-      openTwitch(channelName);
-
-    } else if (service.toLowerCase() == "facebook") {
-      openFacebook(channelName);
-    }
-  }, 3000);
+  //setTimeout(function() {
+  //  $('.overlay-alert').addClass('is-hidden');
+  //  $('.overlay-button').removeClass('is-hidden');
+  //
+  //  if (service.toLowerCase() == "kik") {
+  //    openKik(channelName);
+  //
+  //  } else if (service.toLowerCase() == "discord") {
+  //    openDiscord(channelName);
+  //
+  //  } else if (service.toLowerCase() == "twitch") {
+  //    openTwitch(channelName);
+  //
+  //  } else if (service.toLowerCase() == "facebook") {
+  //    openFacebook(channelName);
+  //  }
+  //}, 3000);
 
 }
 
-function openKik () {
+function openKik (channelName) {
   console.log("KIK - ["+isMobile()+"]["+kik.enabled+"]");
 
   if (isMobile()) {
@@ -162,10 +162,10 @@ function support () {
 function showInstantMessengersOverlay(featureBotName) {
   $('.overlay-title').text('Select a messenger');
   $('.overlay-message').html(
-    renderOverlayImIcon('Kik', featureBotName) +
-    renderOverlayImIcon('Discord', featureBotName) +
-    renderOverlayImIcon('Twitch', featureBotName) +
-    renderOverlayImIcon('Facebook', featureBotName)
+    renderOverlayImIcon('Kik', featureBotName, false, true) +
+    renderOverlayImIcon('Discord', featureBotName, false, true) +
+    renderOverlayImIcon('Twitch', featureBotName, false, true) +
+    renderOverlayImIcon('Facebook', featureBotName, false, true)
   );
   $('.overlay-button').removeClass('is-hidden').text('Cancel');
   $('.overlay-alert').removeClass('is-hidden');
@@ -234,7 +234,31 @@ $(document).ready(function() {
 	$('.video-hit').click(function() {
 		console.log("SHOW VIDEO: "+ getCookie('channel'));
 		$('.overlay-video').removeClass('is-hidden');
-		//$('#video-source').attr('src', "video/" + getCookie('channel') + ".mov");
+
+		var source = document.createElement('source');
+
+		var video_url = "video/GameBot_BetterOverwatch.mp4";
+		switch (getCookie('channel')) {
+			case "Overwatch":
+				video_url = "video/GameBot_BetterOverwatch.mp4";
+				break;
+
+			case "Counter-Strike: Global Offensive":
+				video_url = "video/GameBot_BetterCS-GO.mp4";
+				break;
+
+			case "League of Legends":
+				video_url = "video/GameBots_BetterLoL.mp4";
+				break;
+
+			case "DOTA 2":
+				video_url = "video/GameBot_BetterDota2.mp4";
+				break;
+		}
+
+		$('.overlay-video .overlay-container').html('<video class="overlay-player" width="90%" height="90%" controls preload><source src="'+video_url+'" type="video/mp4"></video>');
+		resizer();
+
 		$('.overlay-player').get(0).currentTime = 0;
 		$('.overlay-player').trigger('play');
 	});

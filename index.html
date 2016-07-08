@@ -194,7 +194,7 @@
     </div>
 
     <!-- OVERLAY -->
-    <div class="overlay-alert is-hidden">
+    <div class="overlay-alert is-hidden" onclick="$(this).addClass('is-hidden');">
       <div class="overlay-container">
         <div class="overlay-title"></div>
         <div class="overlay-spinner loader-circle"></div>
@@ -207,7 +207,7 @@
     <div class="overlay-video is-hidden" onclick="$(this).addClass('is-hidden'); $('.overlay-player').trigger('pause');">
       <div class="overlay-container">
         <video class="overlay-player" width="90%" height="90%" controls preload>
-          <source id="video-source" src="video/overwatch.mov" type="video/mp4">
+          <source src="video/GameBot_BetterOverwatch.mp4" type="video/mp4">
         </video>
       </div>
     </div>

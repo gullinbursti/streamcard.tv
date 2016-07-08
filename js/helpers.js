@@ -63,13 +63,30 @@ window.location.href.replace(
 	function($0, $1, $2, $3) { queryString[$1] = $3; }
 );
 
-function renderOverlayImIcon(messengerDisplayName, featureBotDisplayName, excludeClickHandler) {
+function renderOverlayImIcon(messengerDisplayName, featureBotDisplayName, excludeClickHandler, isMessengerSelector) {
   var lower = messengerDisplayName.toLowerCase();
   var html = '<img class="overlay-im-icon" src="img/icon-'+lower+'-white.png"';
   if (excludeClickHandler) {
     html += '>';
   } else {
-    html += ' onclick="openMessenger(\''+messengerDisplayName+'\', \''+featureBotDisplayName+'\');">';
+
+	  if (isMessengerSelector) {
+		  html += ' onclick="openMessenger(\'' + messengerDisplayName + '\', \'' + featureBotDisplayName + '\');">';
+
+	  } else {
+		  if (messengerDisplayName.toLowerCase() == "kik") {
+			  html += ' onclick="openKik(\'' + featureBotDisplayName + '\');">';
+
+		  } else if (messengerDisplayName.toLowerCase() == "discord") {
+			  html += ' onclick="openDiscord(\'' + featureBotDisplayName + '\');">';
+
+		  } else if (messengerDisplayName.toLowerCase() == "twitch") {
+			  html += ' onclick="openTwitch(\'' + featureBotDisplayName + '\');">';
+
+		  } else if (messengerDisplayName.toLowerCase() == "facebook") {
+			  html += ' onclick="openFacebook(\'' + featureBotDisplayName + '\');">';
+		  }
+	  }
   }
   return html;
 }
