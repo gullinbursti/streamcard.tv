@@ -25,46 +25,6 @@ function topButton () {
   alert ("top");
 }
 
-function videoOverlayPlayback() {
-	console.log("SHOW VIDEO: "+ getCookie('channel'));
-	$('.overlay-video').removeClass('is-hidden');
-
-	$('.overlay-video').removeClass('is-hidden');
-	$('.overlay-player').get(0).currentTime = 0;
-	$('.overlay-player').trigger('play');
-
-
-	var source = document.createElement('source');
-
-	var video_url;
-	switch (getCookie('channel')) {
-		case "Overwatch":
-			video_url = "video/GameBot_BetterOverwatch.mp4";
-			break;
-
-		case "Counter-Strike: Global Offensive":
-			video_url = "video/GameBot_BetterCS-GO.mp4";
-			break;
-
-		case "League of Legends":
-			video_url = "video/GameBots_BetterLoL.mp4";
-			break;
-
-		case "DOTA 2":
-			video_url = "video/GameBot_BetterDota2.mp4";
-			break;
-
-		default:
-			video_url  = "video/GameBot_BetterOverwatch.mp4";
-	}
-
-	$('.overlay-video .overlay-container').html('<video class="overlay-player" width="90%" height="90%" controls preload><source src="'+video_url+'" type="video/mp4"></video>');
-	resizer();
-
-	$('.overlay-player').get(0).currentTime = 0;
-	$('.overlay-player').trigger('play');
-}
-
 function topIcon(service) {
 	ga('send', {
 		'hitType'       : 'event',
@@ -80,14 +40,9 @@ function openMessenger(service) {
 	channelName = getCookie('channel');
 
   // $('.overlay-title').html('Opening ' + (channelName || service) + '&trade;');
-  $('.overlay-title').html('Opening...');
-  //$('.overlay-message').addClass('narrow').html(
-  //  renderOverlayImIcon(service, channelName, false, false)
-  //);
+  //$('.overlay-message').addClass('narrow').html(renderOverlayImIcon(service, channelName, false, false));
   $('.overlay-container').addClass('is-loading');
-  $('.overlay-footer').html(
-    '<div class="overlay-footer-item success-footer-item">Remember to enter ' + channelName + '</div>'
-  );
+  //$('.overlay-footer').html('<div class="overlay-footer-item success-footer-item">Remember to enter ' + channelName + '</div>');
   $('.overlay-button').addClass('is-not-displayed');
   $('.overlay-alert').removeClass('is-hidden');
 
@@ -184,6 +139,42 @@ function twitchAuth(channelName) {
   }
 }
 
+function videoOverlayPlayback() {
+	console.log("SHOW VIDEO: "+ getCookie('channel'));
+	$('.overlay-video').removeClass('is-hidden');
+
+	var source = document.createElement('source');
+
+	var video_url;
+	switch (getCookie('channel')) {
+		case "Overwatch":
+			video_url = "video/GameBot_BetterOverwatch.mp4";
+			break;
+
+		case "Counter-Strike: Global Offensive":
+			video_url = "video/GameBot_BetterCS-GO.mp4";
+			break;
+
+		case "League of Legends":
+			video_url = "video/GameBots_BetterLoL.mp4";
+			break;
+
+		case "DOTA 2":
+			video_url = "video/GameBot_BetterDota2.mp4";
+			break;
+
+		default:
+			video_url  = "video/GameBot_BetterOverwatch.mp4";
+	}
+
+	$('.overlay-video .overlay-container').html('<video class="overlay-player" width="90%" height="90%" controls preload><source src="'+video_url+'" type="video/mp4"></video>');
+	resizer();
+
+	$('.overlay-player').get(0).currentTime = 0;
+	$('.overlay-player').trigger('play');
+}
+
+
 function addCard() {
   location.href = "http://dashboard.modd.live";
 }
@@ -201,12 +192,12 @@ function support () {
 
 function showInstantMessengersOverlay(featureBotName) {
   $('.overlay-title').text('Select a messenger');
-  $('.overlay-message').html(
-    renderOverlayImIcon('Kik', featureBotName, false, true) +
-    renderOverlayImIcon('Discord', featureBotName, false, true) +
-    renderOverlayImIcon('Twitch', featureBotName, false, true) +
-    renderOverlayImIcon('Facebook', featureBotName, false, true)
-  );
+  //$('.overlay-message').html(
+  //  renderOverlayImIcon('Kik', featureBotName, false, true) +
+  //  renderOverlayImIcon('Discord', featureBotName, false, true) +
+  //  renderOverlayImIcon('Twitch', featureBotName, false, true) +
+  //  renderOverlayImIcon('Facebook', featureBotName, false, true)
+  //);
   $('.overlay-button').removeClass('is-hidden').text('Cancel');
   $('.overlay-alert').removeClass('is-hidden');
 }
@@ -262,6 +253,14 @@ $(document).ready(function() {
 
 	setCookie('channel', 'overwatch');
   registerTopFeatureBarButtonHandler();
+
+	if (isMobile()) {
+		//setTimeout(function() {
+		//	$('.overlay-video').removeClass('is-hidden');
+		//	$('.overlay-player').get(0).currentTime = 0;
+		//	$('.overlay-player').trigger('play');
+		//}, 5000);
+	}
 
 	$('.video-hit').click(function() {
 		videoOverlayPlayback();

@@ -448,19 +448,28 @@ a:hover {
 	padding-right:10px;
 }
 
-.footer-alert {position:fixed; bottom:0; left:0;width:100%; line-height:68px;  text-align:center; background-color:#218767; z-index:1000;}
+.footer-alert {position:fixed; bottom:0; left:0;width:100%; line-height:68px;  text-align:center; background-color:#3a577e; z-index:1000;}
 .footer-blue-logo {
 	font-size:12px; display:inline; opacity:1; color:#525569; text-transform:uppercase; font-weight:700; background-color:; padding-right:8px; border-right:0px solid #1a1a1a; padding-bottom:80px;
 }	
 	.interstitial {display:none; z-index:999; position:absolute; top:0px; left:0px; background-color:#090a0c; width:100%; height:100%; overflow:hidden; padding:0; text-align:center;}
-	
+
 @media (max-width: 600px) {
 	
-	body {overflow:hidden;}
+	body {
+		overflow-x:hidden;
+		overflow-y:hidden;
+
+		-webkit-overflow-scrolling: auto;
+	}
 	
 	.footer-alert {line-height:48px; padding-bottom:10px; padding-top:10px; }
 	.footer-blue-logo {padding-bottom:120px;}
 	.interstitial {display:inline;}
+
+	.index-wrapper {
+		display: none;
+	}
 	
   #table-header-row {
     line-height: 50px;
@@ -498,6 +507,7 @@ a:hover {
   .retention-flex { display: none; }
   .viewers-flex { display: none; }
   .card-value-flex { display: none; }
+
 }
 
 
@@ -876,7 +886,7 @@ a:hover {
 
 .overlay-title {
   line-height: 28px;
-  font-size: 16px;
+  font-size: 18px;
   color: #fff;
   background-color: #1b1e28;
   text-align: center;
@@ -895,8 +905,8 @@ a:hover {
   align-items: center;
   align-content: space-around;
   justify-content: space-around;
-  height: 170px;
-  width: 560px;
+  /*height: 170px;*/  height: 120px;
+  /*width: 560px;*/ width: 260px;
   padding: 0 20px;
   overflow: hidden;
 }
@@ -937,6 +947,8 @@ a:hover {
 
 .overlay-footer {
   padding: 0 15px;
+	font-size: 12px;
+	text-align: center;
 }
 .overlay-footer .overlay-footer-item {
   display: block;
@@ -972,6 +984,20 @@ a:hover {
   right: 15px;
   top: -12px;
 }
+
+.overlay-close {
+	position: absolute;
+	right: 15px;
+	top: 16px;
+	font-size: 20px;
+}
+
+.overlay-close:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+
 .overlay-container.is-loading .overlay-spinner {
   display: block;
 }
@@ -994,17 +1020,9 @@ a:hover {
     line-height: 1.2em;
     padding: 15px;
   }
-  /*.overlay-message > .overlay-im-icon {*/
-	  /*max-height: 70px;*/
-	  /*background-color: transparent;*/
-	  /*border-radius: 35%;*/
-	  /*padding: 10px;*/
-	  /*border: 5px solid #1b1e28;*/
-	  /*cursor: pointer;*/
-
-
-    /*width: 12%;*/
-  /*}*/
+  .overlay-message > .overlay-im-icon {
+    width: 12%;
+  }
 
 }
   

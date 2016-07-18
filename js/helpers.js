@@ -24,8 +24,8 @@ function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function truncate(val, amt) {
-	return ((val.length > amt) ? (val.substring(0, amt - 1) + "…") : (val));
+function truncate(val, amt, ellipsis) {
+	return ((val.length > amt) ? (val.substring(0, amt - 1) + ((!ellipsis) ? "…" : "")) : (val));
 }
 
 function getCookie(key) {
