@@ -64,12 +64,37 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
+			
+			<div class="footer-alert">
+			Want to help answer game questions?
+      <!--<a href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email&client_id=59466813172.60333016485" ><img style="vertical-align:middle;" alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>-->
+        <a href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email&client_id=59466813172.60333016485" target="_blank"><img style="vertical-align:middle;" alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
+      </div>
+		
+		<div class="interstitial">
+			<div style="padding-left:10%;padding-right:10%;padding-top:5%; text-align:center;">
+			<div><img class="logo" src="img/logo-blue.png" style="vertical-align:middle; width:50%;"/></div>
+			<div style="font-size:28px; text-transform:uppercase; font-weight:800;padding-top:5px;">GameBots<span style="opacity:1; font-weight:100; font-size:20px;"><sup>™</sup></span></div>
+			<div style="font-size:16px; line-height:24px; color:#59759a; font-weight:800; padding-top:20px; text-transform:uppercase;">Get live esports chat help from top players</div>
+			
+      <div class="top-bar-icons" style="padding-top:20px;">
+          <div style="font-size:14px; line-height:18px; color:#494949; font-weight:600; padding-bottom:20px; text-transform:uppercase;">Get help on...</div>
+					<img src="img/icon-kik-white.png" onclick="topIcon('Kik');" style="padding:0px; border:2px solid #242433; width:50px; border-radius:12px;	opacity:1; ">
+          <img src="img/icon-discord-white.png" onclick="topIcon('Discord');" style="padding:0px; border:2px solid #242433; border-radius:12px;width:50px; opacity:1;margin-left: 10px;">
+          <img src="img/icon-twitch-white.png" onclick="topIcon('Twitch');" style="padding:0px; border:2px solid #242433; border-radius:12px;opacity:1;width:50px; margin-left: 10px;">
+          <img src="img/icon-facebook-white.png" onclick="topIcon('Facebook');" style="padding:0px; border:2px solid #242433; border-radius:12px;opacity:1;width:50px; margin-left: 10px;">	
+      </div>
+			
+			
+			
+			</div>
+		</div>
 		
     <div class="top-bar">
       <div class="top-bar-inner">
-        <a href="/" style="text-decoration:none;"><img class="logo" src="img/logo.png" style="vertical-align:middle;"/> <span class="top-bar-logo">GameBots<span style="opacity:1;">™</span></span></a>
+        <a href="/" style="text-decoration:none; opacity:;"><img class="logo" src="img/logo-blue.png" style="vertical-align:middle;"/><span class="top-bar-logo" style="color:#59759a;">GameBots<span style="opacity:1;">™</span><span></a>
         <div class="top-bar-icons">
-          <span class="top-bar-info">Get GameBots<span style="opacity:1;">™</span> on</span>
+          <span class="top-bar-info">Get help on</span>
           <img src="img/icon-kik-white.png" onclick="topIcon('Kik');" style="padding:3px; border:2px solid #242433; border-radius:10px; margin: 3px;">
           <img src="img/icon-discord-white.png" onclick="topIcon('Discord');" style="padding:3px; border:2px solid #242433; border-radius:10px; margin: 3px;">
           <img src="img/icon-twitch-white.png" onclick="topIcon('Twitch', 'lirik');" style="padding:3px; border:2px solid #242433; border-radius:10px; margin: 3px;">
@@ -78,18 +103,7 @@
       </div>
     </div>
     
-    <div class="top-feature-bar" style="text-align:center;">
-      <div class="top-bar-icons">
-        <span class="feature-button">CS:GO Skins</span>
-        <span class="feature-button">CS:GO Servers</span>
-        <span class="feature-button">CS:GO Bets</span>
-        <span class="feature-button">Hearthstone</span>
-        <span class="feature-button">League of Legends</span>
-        <span class="feature-button">Dota2</span>
-        <span class="feature-button">Overwatch</span>
-        <span class="feature-button">eSports</span>
-      </div>
-    </div>
+
   
 
     <div class="index-wrapper">
@@ -102,12 +116,12 @@
         
         <div id="header-text">
           <div class="info" style="font-size:38px; color:#fff;">
-            <span class="desktop-text"><span class="game-name"></span> <span style="text-transform:uppercase; font-weight:600;">GameBots<sup style="font-size:20px">™</sup></span></span>
-            <span class="mobile-text"><span class="game-name"></span> <span style="text-transform:uppercase; font-weight:600;">GameBots<sup style="font-size:20px">™</sup></span</span></span>
+            <span class="desktop-text" style="text-transform:uppercase; font-weight:600; color:#fff;">Live game help</span>
+            <span class="mobile-text"><span class="game-name" style="color:#3a577e;"></span> <span style="text-transform:uppercase; font-weight:600;">GameBots<sup style="font-size:20px">™</sup></span</span></span>
           </div>
-          <div class="info" style="text-transform:uppercase;font-size:14px;font-weight:600;">
-            <span class="desktop-text">Become a better <span class="game-name"></span> player with live chat support</span>
-            <span class="mobile-text">Become a better <span class="game-name"></span> player with live chat support</span>
+          <div class="info" style="text-transform:uppercase;font-size:16px;font-weight:600; padding-bottom:20px; color:#3a577e;">
+            <span class="desktop-text">Get live gaming chat help from top players</span>
+            <span class="mobile-text">Become a better <span class="game-name"></span> player with <span style="text-decoration:underline;">live chat support</span></span>
           </div>
           <div class="info">
             <span class="desktop-text">
@@ -116,10 +130,11 @@
                   <img src="img/icon-discord-white.png" onclick="topIcon('Discord');" style="padding:0px; border:2px solid #242433; border-radius:12px;width:50px; opacity:1;margin-left: 10px;">
                   <img src="img/icon-twitch-white.png" onclick="topIcon('Twitch');" style="padding:0px; border:2px solid #242433; border-radius:12px;opacity:1;width:50px; margin-left: 10px;">
                   <img src="img/icon-facebook-white.png" onclick="topIcon('Facebook');" style="padding:0px; border:2px solid #242433; border-radius:12px;opacity:1;width:50px; margin-left: 10px;">
+									
               </div>
             </span>
           </div>
-          <div class="video-hit" style="position: absolute; top: 0; right: 100px; width: 300px; height: 100%">
+          <div class="video-hit" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%">
           </div>
         </div>
       </div>
@@ -128,18 +143,7 @@
       <div class="animation-title">
         
         
-        
-        <div class="row center-xs" style="background-color:#1a1f27; border-top: 0px solid #1a1a1a; border-bottom: 0px solid #1a1a1a; border-left: 0px solid #1a1a1a; border-right:0px solid #1a1a1a;">
-          <div class="col-xs-10">
-            <div class="box">
-              <div id="game-info" class="info">
-                <span class="desktop-text">Top 100 <span class="game-name"></span> GameBots™ online</span>
-                <span class="mobile-text">Top 100 <span class="game-name"></span> GameBots™</span>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
+       
       
       <!-- GAME ICONS -->
       <div class="game-icons">
@@ -147,6 +151,19 @@
         <div id="csgo-button" data-game="Counter-Strike: Global Offensive" class="game-icon"><img src="/img/game-csgo-256.png"/></div>
         <div id="lol-button" data-game="League of Legends" class="game-icon"><img src="/img/game-leagueoflegends-256.png"/></div>
         <div id="dota-button" data-game="DOTA 2" class="game-icon"><img src="/img/game-dota2-256.png"/></div>
+      </div>
+			
+        
+        <div class="row center-xs" style="background-color:#162437; border-top: 0px solid #1a1a1a; border-bottom: 0px solid #1a1a1a; border-left: 0px solid #1a1a1a; border-right:0px solid #1a1a1a;">
+          <div class="col-xs-10">
+            <div class="box">
+              <div id="game-info" class="info" style="background-color:#090a0c;">
+                <span class="desktop-text">Top <span class="game-name"></span> players ready to help</span>
+                <span class="mobile-text">Top 100 <span class="game-name"></span> players</span>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
 
 
@@ -176,19 +193,13 @@
         </div>
       </div>
       
-      <!-- FOOTER NAV -->
-      <div id="footer-links" style="padding-top:20px; padding-bottom:20px">
-        <a class="footer-link hover-link" href="https://gamebots.api-docs.io/1.0" target="_blank">GameBot API</a>
-        <a class="footer-link hover-link" href="http://dashboard.beta.modd.live/insights.html" target="_blank">Admin</a>
-        <a class="footer-link hover-link" href="legal.html">Legal</a>
-        <a class="footer-link hover-link" href="mailto:support@gamebots.chat">Support</a>
-      </div>  
+     
       
       <!-- COPYRIGHT -->
       <div class="box" style="padding-top:10px; padding-bottom:10px">
         <span id="footer-copyright" style="font-size:12px; color:#525569; text-transform:uppercase; font-weight:700; background-color:; padding-right:8px; border-right:0px solid #1a1a1a;"></span>
       </div>
-      <div style="font-size:12px; display:inline; opacity:1; color:#525569; text-transform:uppercase; font-weight:700; background-color:; padding-right:8px; border-right:0px solid #1a1a1a;">
+      <div class="footer-blue-logo">
         <img src="img/logo-blue.png" width="60px">
       </div>
     </div>
@@ -199,7 +210,7 @@
         <div class="overlay-title"></div>
         <div class="overlay-spinner loader-circle"></div>
         <div class="overlay-message"></div>
-        <div class="overlay-footer"></div>
+        <div class="overlay-footer" style="display: none"></div>
         <button class="overlay-button" onclick="$('.overlay-alert').addClass('is-hidden');"></button>
       </div>
     </div>

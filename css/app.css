@@ -152,7 +152,7 @@ body {
   max-width: 1200px;
   position: relative;
   text-align: center;
-  margin: 100px auto 0 auto;
+  margin: 50px auto 0 auto;
 }
 
 
@@ -448,8 +448,20 @@ a:hover {
 	padding-right:10px;
 }
 
-
+.footer-alert {position:fixed; bottom:0; left:0;width:100%; line-height:68px;  text-align:center; background-color:#218767; z-index:1000;}
+.footer-blue-logo {
+	font-size:12px; display:inline; opacity:1; color:#525569; text-transform:uppercase; font-weight:700; background-color:; padding-right:8px; border-right:0px solid #1a1a1a; padding-bottom:80px;
+}	
+	.interstitial {display:none; z-index:999; position:absolute; top:0px; left:0px; background-color:#090a0c; width:100%; height:100%; overflow:hidden; padding:0; text-align:center;}
+	
 @media (max-width: 600px) {
+	
+	body {overflow:hidden;}
+	
+	.footer-alert {line-height:48px; padding-bottom:10px; padding-top:10px; }
+	.footer-blue-logo {padding-bottom:120px;}
+	.interstitial {display:inline;}
+	
   #table-header-row {
     line-height: 50px;
   }
@@ -486,7 +498,6 @@ a:hover {
   .retention-flex { display: none; }
   .viewers-flex { display: none; }
   .card-value-flex { display: none; }
-
 }
 
 
@@ -538,7 +549,7 @@ a:hover {
   width: 100%;
   height: 48px;
   line-height: 48px;
-  background-color: #1e232d;
+  background-color: #090a0c;
   padding: 0px;
   z-index: 5;
 }
@@ -561,7 +572,7 @@ a:hover {
 	padding-bottom: 0px;
   z-index: 5;
 	text-align:center;
-	border-top:1px solid #1b1e28;
+	border-top:0px solid #1b1e28;
 }
 .top-feature-bar .feature-button {
   display: inline-block;
@@ -983,9 +994,17 @@ a:hover {
     line-height: 1.2em;
     padding: 15px;
   }
-  .overlay-message > .overlay-im-icon {
-    width: 12%;
-  }
+  /*.overlay-message > .overlay-im-icon {*/
+	  /*max-height: 70px;*/
+	  /*background-color: transparent;*/
+	  /*border-radius: 35%;*/
+	  /*padding: 10px;*/
+	  /*border: 5px solid #1b1e28;*/
+	  /*cursor: pointer;*/
+
+
+    /*width: 12%;*/
+  /*}*/
 
 }
   
