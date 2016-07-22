@@ -40,14 +40,15 @@ function openMessenger(service) {
   channelName = getCookie('channel');
 
   // $('.overlay-title').html('Opening ' + (channelName || service) + '&trade;');
-  $('.overlay-title').html('Opening...');
-  $('.overlay-message').addClass('narrow').html(
-    renderOverlayImIcon(service, channelName, false, false)
-  );
-  $('.overlay-container').addClass('is-loading');
-  $('.overlay-footer').html(
-    '<div class="overlay-footer-item success-footer-item">Remember to enter ' + channelName + '</div>'
-  );
+  // $('.overlay-title').html('Opening...');
+  // $('.overlay-message').addClass('narrow').html(
+  //   renderOverlayImIcon(service, channelName, false, false)
+  // );
+  // $('.overlay-container').addClass('is-loading');
+  // $('.overlay-footer').html(
+  //   '<div class="overlay-footer-item success-footer-item">Remember to enter ' + channelName + '</div>'
+  // );
+  
   $('.overlay-button').addClass('is-not-displayed');
   $('.overlay-alert').removeClass('is-hidden');
 
