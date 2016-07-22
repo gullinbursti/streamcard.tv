@@ -463,7 +463,7 @@ a:hover {
 		-webkit-overflow-scrolling: auto;
 	}
 	
-	.footer-alert {line-height:48px; padding-bottom:10px; padding-top:10px; }
+	.footer-alert {line-height:45px; padding-bottom:15px;}
 	.footer-blue-logo {padding-bottom:120px;}
 	.interstitial {display:inline;}
 
