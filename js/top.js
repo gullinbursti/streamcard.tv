@@ -146,7 +146,7 @@ function twitchAuth(channelName) {
 
 function videoOverlayPlayback() {
   console.log("SHOW VIDEO: "+ getCookie('channel'));
-  $('.overlay-video').removeClass('is-hidden');
+  $('.overlay-video').removeClass('is-not-displayed');
 
   var source = document.createElement('source');
 
