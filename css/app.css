@@ -867,6 +867,7 @@ a:hover {
   background: rgba(0,0,0,0.9);
 }
 
+
 .overlay-container {
   background-color: #121317;
   position: fixed;
@@ -1004,6 +1005,10 @@ a:hover {
 
 
 @media (max-width: 600px) {
+  .overlay-video .overlay-player {
+    display: block;
+    margin: 0 auto;
+  }
   .overlay-container {
     width: 90%;
   }
