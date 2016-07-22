@@ -26,18 +26,18 @@ function topButton () {
 }
 
 function topIcon(service) {
-	ga('send', {
-		'hitType'       : 'event',
-		'eventCategory' : 'icon',
-		'eventAction'   : service.toLowerCase(),
-		'eventLabel'    : '',
-		'eventValue'    : 1
-	});
-	openMessenger(service);
+  ga('send', {
+    'hitType'       : 'event',
+    'eventCategory' : 'icon',
+    'eventAction'   : service.toLowerCase(),
+    'eventLabel'    : '',
+    'eventValue'    : 1
+  });
+  openMessenger(service);
 }
 
 function openMessenger(service) {
-	channelName = getCookie('channel');
+  channelName = getCookie('channel');
 
   // $('.overlay-title').html('Opening ' + (channelName || service) + '&trade;');
   $('.overlay-title').html('Opening...');
@@ -80,21 +80,21 @@ function openKik (channelName) {
 
     } else {
       //location.href = "card://" + location.hostname + "/open_kik.html";
-	    //location.href = "card://kik.me/game.bots";
+      //location.href = "card://kik.me/game.bots";
       setTimeout(function () {
-	      window.open("https://kik.me/game.bots");
+        window.open("https://kik.me/game.bots");
       }, 5000);
     }
 
   } else {
-	  window.open("https://kik.me/game.bots");
+    window.open("https://kik.me/game.bots");
   }
 }
 
 function openDiscord (channelName) {
   console.log("DISCORD");
   //location.href = "https://discord.gg/014do3goV6bJgwIf8";
-	window.open("https://discord.gg/f2h8Hta");
+  window.open("https://discord.gg/f2h8Hta");
 }
 
 function openTwitch (channelName) {
@@ -128,7 +128,7 @@ function openTwitch (channelName) {
 
 function openFacebook (channelName) {
   console.log("FACEBOOK");
-	window.open("http://m.me/gamebotsc");
+  window.open("http://m.me/gamebotsc");
 }
 
 function twitchAuth(channelName) {
@@ -145,12 +145,12 @@ function twitchAuth(channelName) {
 }
 
 function videoOverlayPlayback() {
-	console.log("SHOW VIDEO: "+ getCookie('channel'));
-	$('.overlay-video').removeClass('is-hidden');
+  console.log("SHOW VIDEO: "+ getCookie('channel'));
+  $('.overlay-video').removeClass('is-hidden');
 
-	var source = document.createElement('source');
+  var source = document.createElement('source');
 
-	var video_url;
+  var video_url;
   if (isMobile()) {
     var videos = [
       "video/GameBots_BetterPokemonGO_compressed.mp4",
@@ -164,33 +164,33 @@ function videoOverlayPlayback() {
 
   } else {
 
-  	switch (getCookie('channel')) {
-  		case "Pokémon Go":
-  			video_url = "video/GameBots_BetterPokemonGO_compressed.mp4";
-  			break;
+    switch (getCookie('channel')) {
+      case "Pokémon Go":
+        video_url = "video/GameBots_BetterPokemonGO_compressed.mp4";
+        break;
 
-  		case "Counter-Strike: Global Offensive":
-  			video_url = "video/GameBot_BetterCS-GO.mp4";
-  			break;
+      case "Counter-Strike: Global Offensive":
+        video_url = "video/GameBot_BetterCS-GO.mp4";
+        break;
 
-  		case "League of Legends":
-  			video_url = "video/GameBots_BetterLoL.mp4";
-  			break;
+      case "League of Legends":
+        video_url = "video/GameBots_BetterLoL.mp4";
+        break;
 
-  		case "DOTA 2":
-  			video_url = "video/GameBot_BetterDota2.mp4";
-  			break;
+      case "DOTA 2":
+        video_url = "video/GameBot_BetterDota2.mp4";
+        break;
 
-  		default:
-  			video_url  = "video/GameBots_BetterPokemonGO_compressed.mp4";
-  	}
+      default:
+        video_url  = "video/GameBots_BetterPokemonGO_compressed.mp4";
+    }
   }
 
-	$('.overlay-video .overlay-container').html('<video class="overlay-player" width="90%" height="90%" controls preload><source src="'+video_url+'" type="video/mp4"></video>');
-	resizer();
+  $('.overlay-video .overlay-container').html('<video class="overlay-player" width="90%" height="90%" controls preload><source src="'+video_url+'" type="video/mp4"></video>');
+  resizer();
 
-	$('.overlay-player').get(0).currentTime = 0;
-	$('.overlay-player').trigger('play');
+  $('.overlay-player').get(0).currentTime = 0;
+  $('.overlay-player').trigger('play');
 }
 
 
@@ -227,15 +227,15 @@ function registerTopFeatureBarButtonHandler() {
   $('.top-feature-bar').on('click', '.feature-button', function(event){
     var $button = $(event.target);
     var buttonText = $button.text();
-	  setCookie('channel', buttonText);
+    setCookie('channel', buttonText);
 
-	  ga('send', {
-		  'hitType'			: 'event',
-		  'eventCategory'	: 'button',
-		  'eventAction'		: buttonText.toLowerCase(),
-		  'eventLabel'		: '',
-		  'eventValue'		: 1
-	  });
+    ga('send', {
+      'hitType'     : 'event',
+      'eventCategory' : 'button',
+      'eventAction'   : buttonText.toLowerCase(),
+      'eventLabel'    : '',
+      'eventValue'    : 1
+    });
 
     showInstantMessengersOverlay(buttonText);
   });
@@ -252,8 +252,8 @@ function resizer() {
   //$('#header-text').css('padding-top', (height - 30) + 'px');
 
 
-	$('.overlay-player').css('height', $('.overlay-video').height() * 0.9);
-	$('.overlay-player').css('width', ($('.overlay-player').height() * 9) / 16);
+  $('.overlay-player').css('height', $('.overlay-video').height() * 0.9);
+  $('.overlay-player').css('width', ($('.overlay-player').height() * 9) / 16);
 }
 
 
@@ -265,17 +265,17 @@ var twitch_auth = {
 
 
 $(document).ready(function() {
-	resizer();
+  resizer();
   window.addEventListener('resize', function(event) {
     resizer();
   });
 
-	setCookie('channel', 'Pokémon Go');
+  setCookie('channel', 'Pokémon Go');
   registerTopFeatureBarButtonHandler();
 
-	$('.video-hit').click(function() {
-		videoOverlayPlayback();
-	});
+  $('.video-hit').click(function() {
+    videoOverlayPlayback();
+  });
 
   $('#footer-copyright').html('&copy; '+(new Date()).getFullYear()+' GameBots™ <br> Trademarks & logos belong to their respective owners');
   
