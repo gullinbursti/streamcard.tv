@@ -21,6 +21,23 @@ function rowHit(channel) {
 	$('.overlay-button').addClass('is-not-displayed');
 	$('.overlay-alert').removeClass('is-hidden');
 
+	/*
+	$.ajax({
+		url: 'http://beta.modd.live/api/irc_message.php',
+		type : 'GET',
+		data : {
+			channel : "matty_devdev",
+			message : "Selected ["+channel+"] on GameBots" + String.fromHtmlEntities("&#8482;")
+		},
+		dataType: 'json',
+		success: function (response) {
+			//alert(JSON.stringify(response));
+
+		}, error: function(jqXHR, textStatus, errorThrown) {
+			//alert(textStatus+": "+errorThrown);
+		}
+	});
+	*/
 
 	//deleteCookie("channel");
 	//window.open("/card.html?channel="+encodeURIComponent(channel));
@@ -57,6 +74,7 @@ function populateRows(game_name) {
 	$.ajax({
 		url: 'http://beta.modd.live/api/top_games.php',
 		type: 'GET',
+		contentType: "application/x-www-form-urlencoded;charset=utf-8",
 		data: { game : game_name },
 		dataType: 'json',
 		success: function (response) {
@@ -94,7 +112,7 @@ function populateRows(game_name) {
 
 				if (i < 25) {
 					//onlineChecker(item.channel);
-					retentionLookup(item.channel);
+					//retentionLookup(item.channel);
 					$('.leaderboard-wrapper').append(html);
 				}
 			});
@@ -122,12 +140,7 @@ function retentionLookup(channelName) {
 }
 
 var channel_rows = [];
-var game_video = "Overwatch";
-
-var overwatch_info = "Overwatch Top 100 online players";
-var csgo_info = "CS:GO Top 100 online players";
-var lol_info = "League of Legends Top 100 online players";
-var dota_info = "Dota2 Top 100 online players";
+var game_video = "Pokémon Go";
 
 
 $(document).ready(function() {
@@ -150,56 +163,59 @@ $(document).ready(function() {
 
 		for (var i=25; i<Math.min(channel_rows.length, 100); i++) {
 			//onlineChecker(channel_rows[i].item.channel);
-			retentionLookup(channel_rows[i].item.channel);
+			//retentionLookup(channel_rows[i].item.channel);
 			$('.leaderboard-wrapper').append(channel_rows[i].html);
 		}
 	});
 
-	$('#overwatch-button').click(function() {
+	$('#tab-1-button').click(function() {
 		setCookie('channel', $(this).attr('data-game'));
-		populateRows($(this).attr('data-game').toLowerCase());
+		game = $(this).attr('data-game').toLowerCase().split(' ');
+		game.pop();
+
+		populateRows(game.join(" "));
 		$('.game-name').text($(this).attr('data-game'));
 
 		$(this).addClass('is-selected');
-		$('#csgo-button').removeClass('is-selected');
-		$('#lol-button').removeClass('is-selected');
-		$('#dota-button').removeClass('is-selected');
+		$('#tab-2-button').removeClass('is-selected');
+		$('#tab-3-button').removeClass('is-selected');
+		$('#tab-4-button').removeClass('is-selected');
 		$('.game-header-image').attr('src', "img/home-device-overwatch.png");
 	});
 	
-	$('#csgo-button').click(function() {
+	$('#tab-2-button').click(function() {
 		setCookie('channel', $(this).attr('data-game'));
 		populateRows($(this).attr('data-game').toLowerCase());
 		$('.game-name').text($(this).attr('data-game'));
 
 		$(this).addClass('is-selected');
-		$('#overwatch-button').removeClass('is-selected');
-		$('#lol-button').removeClass('is-selected');
-		$('#dota-button').removeClass('is-selected');
+		$('#tab-1-button').removeClass('is-selected');
+		$('#tab-3-button').removeClass('is-selected');
+		$('#tab-4-button').removeClass('is-selected');
 		$('.game-header-image').attr('src', "img/home-device-csgo.png");
 	});
 
-	$('#lol-button').click(function() {
+	$('#tab-3-button').click(function() {
 		setCookie('channel', $(this).attr('data-game'));
 		populateRows($(this).attr('data-game').toLowerCase());
 		$('.game-name').text($(this).attr('data-game'));
 
 		$(this).addClass('is-selected');
-		$('#overwatch-button').removeClass('is-selected');
-		$('#csgo-button').removeClass('is-selected');
-		$('#dota-button').removeClass('is-selected');
+		$('#tab-1-button').removeClass('is-selected');
+		$('#tab-2-button').removeClass('is-selected');
+		$('#tab-4-button').removeClass('is-selected');
 		$('.game-header-image').attr('src', "img/home-device-league.png");
 	});
 
-	$('#dota-button').click(function() {
+	$('#tab-4-button').click(function() {
 		setCookie('channel', $(this).attr('data-game'));
 		populateRows($(this).attr('data-game').toLowerCase());
 		$('.game-name').text($(this).attr('data-game'));
 
 		$(this).addClass('is-selected');
-		$('#overwatch-button').removeClass('is-selected');
-		$('#csgo-button').removeClass('is-selected');
-		$('#lol-button').removeClass('is-selected');
+		$('#tab-1-button').removeClass('is-selected');
+		$('#tab-2-button').removeClass('is-selected');
+		$('#tab-3-button').removeClass('is-selected');
 		$('.game-header-image').attr('src', "img/home-device-dota2.png");
 	});
 
@@ -241,5 +257,5 @@ $(document).ready(function() {
 	//});
 
 
-	populateRows("overwatch");
+	populateRows("Pokémon Go");
 });

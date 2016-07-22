@@ -91,3 +91,34 @@ function renderOverlayImIcon(messengerDisplayName, featureBotDisplayName, exclud
   return html;
 }
 
+
+
+Array.prototype.contains = function(obj) {
+	var i = this.length;
+	while (i--) {
+		if (this[i] === obj)
+			return (true);
+	}
+
+	return (false);
+};
+
+
+
+/**
+ * Convert a string to HTML entities
+ */
+String.prototype.toHtmlEntities = function() {
+	return this.replace(/./gm, function(s) {
+		return "&#" + s.charCodeAt(0) + ";";
+	});
+};
+
+/**
+ * Create string from HTML entities
+ */
+String.fromHtmlEntities = function(string) {
+	return (string+"").replace(/&#\d+;/gm,function(s) {
+		return String.fromCharCode(s.match(/\d+/gm)[0]);
+	})
+};

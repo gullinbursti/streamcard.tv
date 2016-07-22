@@ -1,15 +1,90 @@
 <html>
 	<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Gamebots&trade; / Slack Auth</title>
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="js/template_data.js" type="text/javascript"></script>
+    <script src="js/helpers.js" type="text/javascript"></script>
 
-		<style type="text/css" rel="stylesheet">
-			div { padding: 10px; border-bottom: 1px solid #aaa }
-			span { font-weight: bold }
-		</style>
+		<style type="text/css" rel="stylesheet" ></style>
+
+    <script>
+      var code = (typeof queryString['code'] != 'undefined') ? queryString['code'] : "";
+
+      var CLIENT_ID = "15568901414.60983505446";
+      var CLIENT_SECRET = "26e95fb857e6799b1732f2af1282fb6a";
+
+      if (code.length > 0) {
+        $.ajax({
+          url: "https://slack.com/api/oauth.access",
+          type: 'GET',
+          data: {
+            client_id : CLIENT_ID,
+            client_secret : CLIENT_SECRET,
+            code : code
+          },
+          dataType: 'json',
+          success: function(response) {
+            //document.write(JSON.stringify(response));
+
+            var scope_arr = response.scope.split(',');
+
+            if (response.ok) {
+              $.ajax({
+                url: "http://beta.modd.live/api/slackbot_auth.php",
+                type: 'POST',
+                data: {
+                  team_id          : response.team_id,
+                  team_name        : response.team_name,
+                  channel_id       : response.incoming_webhook.channel_id,
+                  channel_name     : response.incoming_webhook.channel,
+                  webhook          : response.incoming_webhook.url,
+                  bot_user_id      : response.bot.bot_user_id,
+                  bot_access_token : response.bot.bot_access_token,
+                  access_token     : response.access_token
+                },
+                dataType: 'json',
+                success: function(response) {
+                  alert ("Connected! Going back to site.");
+                  location.href = "/";
+                }
+              });
+
+            } else {
+              alert ("Couldn't auth! Try again.");
+              location.href = "https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=" + CLIENT_ID;
+            }
+          }
+        });
+      }
+    </script>
 	</head>
-
-	<body>
-    Redirection to GameBots Slack Team...
-	</body>
+	<body></body>
 </html>
+
+
+<script>
+/**
+ * {
+ *   "ok":true,
+ *   "access_token":"xoxp-15568901414-15590312210-61001199201-d05338919d",
+ *   "scope":"identify,bot,commands,incoming-webhook",
+ *   "user_id":"U0FHC9666",
+ *   "team_name":"TEAMMODD",
+ *   "team_id":"T0FGQSHC6",
+ *   "incoming_webhook": {
+ *   "channel":"#slack-dev",
+ *     "channel_id":"C1SUXM99N",
+ *     "configuration_url":"https:\/\/teammodd.slack.com\/services\/B1T05R22E",
+ *     "url":"https:\/\/hooks.slack.com\/services\/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"
+ *   }, "bot": {
+ *     "bot_user_id":"U1T05R2DQ",
+ *     "bot_access_token":"xoxb-61005852466-ZD2UnShTglYFaa8OTiQqreC9"
+ *   }
+ * }
+ *
+ * curl -X POST --data-urlencode 'payload={"text": "This is posted from add to slack button", "channel": "#slack-dev", "username": "gamebot", "icon_url": "http:\/\/i.imgur.com\/UIPHvq5.png"}' https://hooks.slack.com/services/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
+ *
+ */
+</script>
