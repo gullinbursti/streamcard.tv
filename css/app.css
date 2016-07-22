@@ -906,8 +906,7 @@ a:hover {
   align-items: center;
   align-content: space-around;
   justify-content: space-around;
-  /*height: 170px;*/  height: 120px;
-  /*width: 560px;*/ width: 260px;
+  height: 120px;
   padding: 0 20px;
   overflow: hidden;
 }
@@ -948,8 +947,9 @@ a:hover {
 
 .overlay-footer {
   padding: 0 15px;
-	font-size: 12px;
+	font-size: 15px;
 	text-align: center;
+  margin-bottom: 5px;
 }
 .overlay-footer .overlay-footer-item {
   display: block;
@@ -989,8 +989,8 @@ a:hover {
 .overlay-close {
 	position: absolute;
 	right: 15px;
-	top: 16px;
-	font-size: 20px;
+	top: 10px;
+	font-size: 30px;
 }
 
 .overlay-close:hover {
