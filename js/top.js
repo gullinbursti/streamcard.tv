@@ -151,26 +151,40 @@ function videoOverlayPlayback() {
 	var source = document.createElement('source');
 
 	var video_url;
-	switch (getCookie('channel')) {
-		case "Pokémon Go":
-			video_url = "video/GameBots_BetterPokemonGO_compressed.mp4";
-			break;
+  if (isMobile()) {
+    var videos = [
+      "video/GameBots_BetterPokemonGO_compressed.mp4",
+      "video/GameBot_BetterCS-GO.mp4",
+      "video/GameBots_BetterLoL.mp4",
+      "video/GameBot_BetterDota2.mp4"
+    ];
 
-		case "Counter-Strike: Global Offensive":
-			video_url = "video/GameBot_BetterCS-GO.mp4";
-			break;
+    var randomIndex = Math.floor(Math.random() * videos.length);
+    video_url = videos[randomIndex];
 
-		case "League of Legends":
-			video_url = "video/GameBots_BetterLoL.mp4";
-			break;
+  } else {
 
-		case "DOTA 2":
-			video_url = "video/GameBot_BetterDota2.mp4";
-			break;
+  	switch (getCookie('channel')) {
+  		case "Pokémon Go":
+  			video_url = "video/GameBots_BetterPokemonGO_compressed.mp4";
+  			break;
 
-		default:
-			video_url  = "video/GameBots_BetterPokemonGO_compressed.mp4";
-	}
+  		case "Counter-Strike: Global Offensive":
+  			video_url = "video/GameBot_BetterCS-GO.mp4";
+  			break;
+
+  		case "League of Legends":
+  			video_url = "video/GameBots_BetterLoL.mp4";
+  			break;
+
+  		case "DOTA 2":
+  			video_url = "video/GameBot_BetterDota2.mp4";
+  			break;
+
+  		default:
+  			video_url  = "video/GameBots_BetterPokemonGO_compressed.mp4";
+  	}
+  }
 
 	$('.overlay-video .overlay-container').html('<video class="overlay-player" width="90%" height="90%" controls preload><source src="'+video_url+'" type="video/mp4"></video>');
 	resizer();
@@ -258,14 +272,6 @@ $(document).ready(function() {
 
 	setCookie('channel', 'Pokémon Go');
   registerTopFeatureBarButtonHandler();
-
-	if (isMobile()) {
-		setTimeout(function() {
-			$('.overlay-video').removeClass('is-hidden');
-			$('.overlay-player').get(0).currentTime = 0;
-			$('.overlay-player').trigger('play');
-		}, 5000);
-	}
 
 	$('.video-hit').click(function() {
 		videoOverlayPlayback();
