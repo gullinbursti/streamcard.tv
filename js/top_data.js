@@ -124,11 +124,13 @@ function populateRows(game_name) {
 
 function retentionLookup(channelName) {
 	$.ajax({
-		url: 'http://159.203.220.30:8888/retention',//'http://159.203.220.30:8888/cohort',
+		//url: 'http://159.203.220.30:8888/retention',//'http://159.203.220.30:8888/cohort',
+		url : 'http://beta.modd.live/api/streamer_retention.php',
 		type: 'GET',
 		data: {
 			date: "2016-04-01",
-			streamer: channelName.toLowerCase()
+			channel : channelName
+			//streamer: channelName.toLowerCase()
 		},
 		dataType: 'json',
 		success: function (response) {
