@@ -1,0 +1,347 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="description" content="">
+    <meta name="author" content="MODD Website V.0.5.0">
+    <title>KikBot Sender</title>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.timeago.js"></script>
+
+    <!-- FONTS -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:200,300,400,500,700,800,900' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #090a0c;
+        font-family: "Lato", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-size: 16px;
+        color: #fff;
+      }
+
+      .panel-header {
+        flex: 1 0 auto;
+        margin: 4px 0 4px 0;
+        text-transform: uppercase;
+        text-decoration: underline;
+        font-weight: 600;
+        color: #3a577e;
+      }
+
+      .criteria-wrapper {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: inline-flex;
+        flex-flow: row nowrap;
+        align-items: stretch;
+        justify-content: space-around;
+        align-content: stretch;
+      }
+
+      .games-wrapper, .levels-wrapper {
+        flex: 1 0 auto;
+        border: 1px dotted #ffffff;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: flex-start;
+      }
+
+      .games-wrapper {
+        /*justify-content: space-between;*/
+      }
+
+      .checkbox-wrapper {
+        width: 100%;
+        margin-bottom: 10px;
+        flex: 3 0 auto;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        align-content: flex-start;
+        border-top: 1px solid #221f33;
+      }
+
+      .checkbox-item {
+        flex: 0 1 auto;
+        color: #999999;
+        padding: 1px;
+      }
+
+      .button-wrapper {
+        flex: 0 1 auto;
+        align-self: stretch;
+        border: 1px dashed #00ff00;
+      }
+
+      .sessions-wrapper {
+        margin: 8px;
+        padding: 0;
+        list-style: none;
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+        align-content: flex-start;
+        color: #999999;
+      }
+
+      .session-header, .session-row {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        list-style: none;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: flex-start;
+        align-content: flex-start;
+        justify-content: space-between;
+      }
+
+      .session-header {
+        background-color: #3f3960;
+        color: #cccccc;
+        font-weight: bold;
+      }
+
+      .session-row {
+        color: #999999;
+        border-bottom: 1px solid #242424;
+      }
+
+      .session-row:nth-child(odd) {
+        background-color: #353948;
+      }
+
+      .session-row:nth-child(even) {
+        background-color: #2b2d3b;
+      }
+
+
+      .session-cell {
+        margin: 0;
+        padding: 4px;
+      }
+
+      .session-index {
+        flex: 1 0 0;
+        text-align: left;
+      }
+
+      .session-row .session-index {
+        color: #666666;
+      }
+
+      .session-username {
+        flex: 5 1 0;
+        text-align: left;
+      }
+
+      .session-topic-name {
+        flex: 5 1 0;
+        text-align: left;
+      }
+
+      .session-level {
+        flex: 2 1 0;
+        text-align: left;
+      }
+
+      .session-timestamp {
+        flex: 3 0 0;
+        text-align: right;
+      }
+
+      .is-hidden {
+        display: none;
+      }
+
+      .checked {
+        color: #cccccc;
+      }
+
+      .chkbox {
+        background-color: #ff0000;
+        color: #0000ff;
+        margin:2px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <ul class="criteria-wrapper">
+      <li class="games-wrapper">
+        <div class="panel-header">Games:</div>
+        <div class="checkbox-wrapper">
+          <div class="checkbox-item checked"><input type="checkbox" name="games-checkbox" class="chkbox" title="Hearthstone" value="Hearthstone" checked />Hearthstone</div>
+          <div class="checkbox-item checked"><input type="checkbox" name="games-checkbox" class="chkbox" title="Dota 2" value="Dota 2" checked />Dota 2</div>
+          <div class="checkbox-item checked"><input type="checkbox" name="games-checkbox" class="chkbox" title="League of Legends" value="League of Legends" checked />League of Legends</div>
+          <div class="checkbox-item checked"><input type="checkbox" name="games-checkbox" class="chkbox" title="CS:GO" value="CS:GO" checked />CS:GO</div>
+        </div>
+        <div class="button-wrapper"><button id="all-games-button" class="form-button">Deselect All</button></div>
+      </li>
+      <li class="levels-wrapper">
+        <div class="panel-header">Levels:</div>
+        <div class="checkbox-wrapper">
+          <div class="checkbox-item checked"><input type="checkbox" class="chkbox" name="levels-checkbox" title="Intro" value="Intro" checked />Intro</div>
+          <div class="checkbox-item checked"><input type="checkbox" class="chkbox" name="levels-checkbox" title="Level 1-3" value="Level 1-3" checked />Level 1-3</div>
+          <div class="checkbox-item checked"><input type="checkbox" class="chkbox" name="levels-checkbox" title="Level 4-7" value="Level 4-7" checked />Level 4-7</div>
+          <div class="checkbox-item checked"><input type="checkbox" class="chkbox" name="levels-checkbox" title="Level 8-10" value="Level 8-10" checked />Level 8-10</div>
+          <div class="checkbox-item checked"><input type="checkbox" class="chkbox" name="levels-checkbox" title="Level 10+" value="Level 10+" checked />Level 10+</div>
+        </div>
+        <div class="button-wrapper"><button id="all-levels-button" class="form-button">Deselect All</button></div>
+      </li>
+    </ul>
+
+    <ul class="button-wrapper is-hidden">
+    </ul>
+
+    <div class="submit-wrapper">
+      <button id="submit-button" class="form-button">Submit</button>
+    </div>
+
+		<script type="text/javascript">
+      function retrieveSessions(topic, level) {
+        topic = (topic || "");
+        level = (level || "");
+
+        $('.sessions-wrapper').empty();
+        $.ajax({
+          url       : "http://beta.modd.live/api/kikbot_sessions.php",
+          method    : 'POST',
+          dataType  : 'json',
+          data      : {
+            action: (topic == "" && level == "") ? "all" : "filtered",
+            topic: topic,
+            level: level
+          }
+        }).done(function (data) {
+          var html = '<li class="session-header" data-id="0" data-chat-id="">';
+          html += '  <div class="session-index session-cell">#</div>';
+          html += '  <div class="session-username session-cell">Kik Name</div>';
+          html += '  <div class="session-topic-name session-cell">Game</div>';
+          html += '  <div class="session-level session-cell">Level</div>';
+          html += '  <div class="session-timestamp session-cell">Started</div>';
+          html += '</li>';
+          $('.sessions-wrapper').append(html);
+
+          $.each(data, function(i, item) {
+            html = "";
+            html += '<li class="session-row" data-id="'+item.id+'" data-chat-id="'+item.chat_id+'">';
+            html += '  <div class="session-index session-cell">'+(i+1)+'</div>';
+            html += '  <div class="session-username session-cell">'+item.username+'</div>';
+            html += '  <div class="session-topic-name session-cell">'+item.topic_name+'</div>';
+            html += '  <div class="session-level session-cell">'+item.level+'</div>';
+            html += '  <div class="session-timestamp session-cell">'+jQuery.timeago(new Date(item.added))+'</div>';
+            html += '</li>';
+
+            $('.sessions-wrapper').append(html);
+          });
+
+          html = '<li class="session-header" data-id="0" data-chat-id="">';
+          html += '  <div class="session-index session-cell">'+data.length+'</div>';
+          html += '  <div class="session-username session-cell"></div>';
+          html += '  <div class="session-topic-name session-cell"></div>';
+          html += '  <div class="session-level session-cell"></div>';
+          html += '  <div class="session-timestamp session-cell"></div>';
+          html += '</li>';
+          $('.sessions-wrapper').append(html);
+
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+        }).then(null, function (jqXHR, textStatus, errorThrown) {
+        }).always(function () {
+        });
+
+	      //$("input").prop('disabled', true);
+	      //$("input").prop('disabled', false);
+      }
+
+
+			function submitForm() {
+        $.ajax({
+          url   : 'http://159.203.250.4:8080/topic-notify',
+          type  : 'POST',
+          data  : {
+            token   : "1b9700e13ea17deb5a487adac8930ad2",
+            chat_id : chat_id
+          },
+          dataType: 'json',
+          success: function (response) {
+            alert("Submitted!");
+          }
+        });
+			}
+
+
+      var chat_id = "c7f052fcb84fd5634430bc71f0d085eaa7cc76bccf0c2b944bc3a32ea99e8bd3";
+		
+		
+			$(document).ready(function() {
+        retrieveSessions();
+
+        $('#all-games-button').click(function(e) {
+          if ($(this).text() == "Select All") {
+            $(this).text("Deselect All");
+
+          } else {
+            $(this).text("Select All");
+          }
+
+          $('.games-wrapper .checkbox-wrapper .checkbox-item').children(':checkbox').each(function (index, element) {
+            this.checked = !this.checked;
+
+            if (this.checked) {
+              $(this).parent().addClass('checked')
+
+            } else {
+              $(this).parent().removeClass('checked')
+            }
+          });
+        });
+
+        $('#all-levels-button').click(function(e) {
+          if ($(this).text() == "Select All") {
+            $(this).text("Deselect All");
+
+          } else {
+            $(this).text("Select All");
+          }
+
+          $('.levels-wrapper .checkbox-wrapper .checkbox-item').children(':checkbox').each(function (index, element) {
+            this.checked = !this.checked;
+
+            if (this.checked) {
+              $(this).parent().addClass('checked')
+
+            } else {
+              $(this).parent().removeClass('checked')
+            }
+          });
+        });
+
+
+        $(':checkbox').change(function() {
+          if (this.checked) {
+            $(this).parent().addClass('checked')
+
+          } else {
+            $(this).parent().removeClass('checked')
+          }
+        });
+
+        $('#submit-button').click(function(e) {
+					submitForm();
+				});
+			});
+		</script>
+  </body>
+</html>

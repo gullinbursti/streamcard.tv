@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+  <head>
+		<title>KikBot Sender</title>
+	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>
+  		function submitForm() {
+  			if ($('#type-selector').val() != "") {
+			  
+  			  var usernames_arr = $('.usernames-txt').val().split(' ');
+			  
+  			  for (var i=0; i<usernames_arr.length; i++) {
+  			    $.ajax({
+  						url: 'http://159.203.250.4:8080/message',
+  						type: 'POST',
+  						crossDomain: true,
+  						data: {
+  							type : $('#type-selector').val(),
+  							recipient : usernames_arr[i],
+  							body : $('.body-txt').val(),
+  							url : $('.url-txt').val(),
+  							image_url : $('.image-txt').val(),
+  							video_url : $('.video-txt').val()
+  						},
+  						dataType: 'json',
+  						success: function (response) {
+  							$('.results').append('<br />Sent to: ' + usernames_arr[i]);
+  						}
+  					}); 
+  			  }
+  			}
+  		}
+		</script>
+		
+		<style>
+			.is-hidden {
+				display: none;
+			}
+		</style>
+  </head>
+
+  <body>
+		<div>
+			<select id="type-selector">
+				<option value="" selected="selected">Select type...</option>
+				<option value="TextMessage">Text</option>
+				<option value="LinkMessage">Photo / Link</option>
+				<option value="VideoMessage">Video</option>
+			</select>
+		</div>
+		
+		<hr />
+		
+		<div class="text-message is-hidden">
+			<table cellpadding="2" cellspacing="0" border="0">
+				<tr><td><label for="usernames-txt">Usernames</label></td><td>:</td><td><textarea rows="10" class="usernames-txt"></textarea></td></tr>
+				<tr><td><label for="body-txt">Body</label></td><td>:</td><td><input type="text" class="body-txt"></td></tr>
+				<tr><td colspan="3" align="right"><hr /><input type="button" value="submit" onclick="submitForm();"></td></tr>
+			</table>
+		</div>
+		
+		<div class="link-message is-hidden">
+			<table cellpadding="2" cellspacing="0" border="0">
+				<tr><td><label for="usernames-txt">Usernames</label></td><td>:</td><td><textarea rows="10" class="usernames-txt"></textarea></td></tr>
+				<tr><td><label for="image-txt">Image URL</label></td><td>:</td><td><input type="text" class="image-txt"></td></tr>
+				<tr><td><label for="url-txt">URL</label></td><td>:</td><td><input type="text" class="url-txt"></td></tr>
+				<tr><td><label for="body-txt">Body</label></td><td>:</td><td><input type="text" class="body-txt"></td></tr>
+				<tr><td colspan="3" align="right"><hr /><input type="button" value="submit" onclick="submitForm();"></td></tr>
+			</table>
+		</div>
+		
+		<div class="video-message is-hidden">
+			<table cellpadding="2" cellspacing="0" border="0">
+				<tr><td><label for="usernames-txt">Usernames</label></td><td>:</td><td><textarea rows="10" class="usernames-txt"></textarea></td></tr>
+				<tr><td><label for="video-txt">Video URL</label></td><td>:</td><td><input type="text" class="video-txt"></td></tr>
+				<tr><td colspan="3" align="right"><hr /><input type="button" value="submit" onclick="submitForm();"></td></tr>
+			</table>
+		</div>
+	  
+	  <hr />
+	  <div class="results"></div>
+	
+		<script>
+			$(document).ready(function() {
+				$('#type-selector').change(function() {
+					if ($(this).val() == "") {
+						$('.text-message').addClass('is-hidden');
+						$('.link-message').addClass('is-hidden');
+						$('.video-message').addClass('is-hidden');
+						
+					} else if ($(this).val() == "TextMessage") {
+						$('.text-message').removeClass('is-hidden');
+						$('.link-message').addClass('is-hidden');
+						$('.video-message').addClass('is-hidden');
+						
+					} else if ($(this).val() == "LinkMessage") {
+						$('.link-message').removeClass('is-hidden');
+						$('.text-message').addClass('is-hidden');
+						$('.video-message').addClass('is-hidden');
+						
+					} else if ($(this).val() == "VideoMessage") {
+						$('.video-message').removeClass('is-hidden');
+						$('.text-message').addClass('is-hidden');
+						$('.link-message').addClass('is-hidden');
+					}
+				});
+			});
+		</script>
+
+  </body>
+</html>
