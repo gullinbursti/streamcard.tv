@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+	<head>
+		<title>GameBots</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<link rel='shortcut icon' href='img/icons/favicon.ico' type='image/x-icon'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+		<script type="text/javascript">
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-79705534-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+	</head>
+
+	<body>
+		<form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="UQKVHVRF9MYKU">
+			<!--<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">-->
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+		</form>
+		<script type="text/javascript">
+			function getCookie(key) {
+				var val = "";
+
+				var cookies = document.cookie.split(';');
+				for (var i=0; i<cookies.length; i++) {
+					var c = cookies[i];
+					while (c.charAt(0) == ' ')
+						c = c.substring(1);
+
+					if (c.indexOf(key) != -1) {
+						val = c.split("=")[1];
+						break;
+					}
+				}
+
+				return (val);
+			}
+
+			function setCookie(key, val) {
+				var d = new Date();
+				d.setDate(d.getDate() + 365);
+				document.cookie = key+"="+val+"; expires="+d.toUTCString();
+			}
+
+			function deleteCookie(key) {
+				document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			}
+
+			var queryString = {};
+			window.location.href.replace(
+				new RegExp("([^?=&]+)(=([^&]*))?", "g"),
+				function($0, $1, $2, $3) {
+					queryString[$1] = $3;
+				}
+			);
+
+			$(document).ready(function () {
+				if (queryString['u'] != 'undefined') {
+					setCookie('username', queryString['username']);
+					$('.paypal-form').submit();
+				}
+
+				if (queryString['s'] != 'undefined') {
+					if (queryString['s'] == "1") {
+						kik.send('support.game.bots', {
+							title     : 'PayPal',
+							text      : getCookie('username'),
+							pic       : 'http://cdn.kik.com/user/pic/game.bots',
+							big       : false,
+							noForward : false,
+							data      : {
+								username : getCookie('username')
+							}
+						});
+						
+						$.ajax({
+							type: 'POST',
+							url: 'http://beta.modd.live/api/paypal.php',
+							data : {
+							  action : "insert"
+								username : queryString['username']
+							},
+							success: function (data) {
+								$.ajax({
+    							type: 'POST',
+    							url: 'http://159.203.250.4:8080/paypal-callback',
+    							data : {
+    								token : "9343328d1ea69bf36158868bcdd6f5c7",
+    								username : queryString['username']
+    							},
+    							success: function (data) {
+    								success();
+    							}
+    						});
+							}
+						});
+
+					} else {
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

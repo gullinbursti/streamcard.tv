@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>GameBots</title>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel='shortcut icon' href='img/icons//favicon.ico' type='image/x-icon'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/kik.js"></script>
+    <script src="js/bot.js"></script>
+		<script type="text/javascript" src="js/md5.js"></script>
+
+    <link rel="stylesheet" href="css/index.css">
+		<link href="https://fonts.googleapis.com/css?family=PT+Sans|Rajdhani" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="overlay-menu-bg" style="display:none;" onclick="remove()"></div>
+	
+	<div class="overlay-menu-profile" style="display:none;">
+  	<div class="header-item" onclick="kik()"><img src="http://cdn.kik.com/user/pic/game.bots" class="profile-image"></div>
+		<div class="footer-item"><button class="main-action">Start Chatting</button></div>
+		<div class="loader-item"><img src="img/loader.gif" width="48px" height="48px"></div>
+	</div>
+	
+	<div class="overlay-menu-steam" style="display:none;">
+  	<div class="header-item"><img src="http://cdn.kik.com/user/pic/game.bots" class="profile-image"></div>
+		<div class="footer-item" onclick="steamRedirect()"><div class="main-action-steam"><img src="img/steamButton.png" width="70%"></div></div>
+		<div class="footer-item" id="steam"></div>
+		<div class="loader-item"><img src="img/loader.gif" width="48px" height="48px"></div>
+	</div>
+	
+	
+	<div class="overlay-menu-video" style="display:none;">
+  	<div class="header-item" onclick="kik()"><img src="http://cdn.kik.com/user/pic/game.bots" class="profile-image"></div>
+		<div class="header-title"><span class="game-name"></span><br><span class="game-level"></span></div>
+		<div class="footer-item" onclick=""><iframe class="video-frame" width="100%" height="auto" src="https://www.youtube.com/embed/ZKnmA4zqtVw?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div>
+		<div class="footer-item" onclick="cancel()"><button class="main-action-cancel">Start Chatting</button></div>
+	</div>
+
+	<div class="stripe-form" style="display: none">
+		<form action="/your-server-side-code" method="POST">
+			<script
+				src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+				data-key=" pk_test_hEOqIXLLiGcTTj7p2W9XxuCP"
+				data-amount="999"
+				data-name="Stripe.com"
+				data-description="Widget"
+				data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+				data-locale="auto"
+				data-zip-code="true">
+			</script>
+		</form>
+	</div>
+
+</body>
+</html>
